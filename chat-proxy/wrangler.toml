@@ -1,0 +1,14 @@
+# EHC request assistant (Cloudflare Worker). Deploy from this folder with: npx wrangler deploy
+name = "ehc-chat"
+main = "src/index.js"
+compatibility_date = "2025-09-01"
+
+[vars]
+FIREBASE_PROJECT_ID = "ehc-inventory"
+ALLOWED_DOMAINS = "dau.ac.in"
+# Every address the site is served from. Add your custom domain here if you set one up.
+ALLOWED_ORIGINS = "https://ehc-inventory.web.app,https://ehc-inventory.firebaseapp.com,http://localhost:8080,http://localhost:5000,http://127.0.0.1:5500,http://localhost:5500"
+# MODEL = "openai/gpt-oss-120b"
+
+# The Groq key is a secret, not a var. Set it once with:
+#   npx wrangler secret put GROQ_API_KEY

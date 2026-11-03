@@ -6,12 +6,14 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
+  // `external` items are separate pages (not React Router routes), so they need a real <a> and a full page load.
+  const navItems: { name: string; href: string; external?: boolean }[] = [
     { name: "Home", href: "/" },
     { name: "Gallery", href: "/gallery" },
     { name: "Projects", href: "/projects" },
     { name: "Events", href: "/events" },
     { name: "Team", href: "/team" },
+    { name: "Inventory", href: "/inventory/", external: true },
   ];
 
   return (
@@ -31,7 +33,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) =>
-              item.href.startsWith("/#") ? (
+              item.external || item.href.startsWith("/#") ? (
                 <a
                   key={item.name}
                   href={item.href}
@@ -76,7 +78,7 @@ const Navbar = () => {
         <div className="md:hidden glass backdrop-blur-md border-t border-primary/20 animate-slide-up">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navItems.map((item) =>
-              item.href.startsWith("/#") ? (
+              item.external || item.href.startsWith("/#") ? (
                 <a
                   key={item.name}
                   href={item.href}

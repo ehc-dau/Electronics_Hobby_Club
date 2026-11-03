@@ -1,0 +1,128 @@
+rules_version = '2';
+
+// EHC Inventory: Firestore security rules.
+//
+// These rules ARE the security model. The web page only hides buttons; anything
+// not allowed here is impossible, whatever someone does in their browser console.
+//
+// Allowed sign-in domain: the regex in collegeEmail(). If you change
+// CONFIG.allowedDomains in public/index.html, change it here too.
+// Two domains, e.g.: '^[^@]+@(dau|daiict)[.]ac[.]in$'
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function collegeEmail(e) {
+      return e.matches('^[^@]+@dau[.]ac[.]in$');
+    }
+    function myEmail() {
+      return request.auth.token.email.lower();
+    }
+    function isCollege() {
+      return request.auth != null
+        && request.auth.token.email is string
+        && request.auth.token.email_verified == true
+        && collegeEmail(myEmail());
+    }
+    function isAdmin() {
+      return isCollege()
+        && exists(/databases/$(database)/documents/admins/$(myEmail()));
+    }
+
+    // admins/{email}: document ID is the lower-cased email address.
+    // The very first admin is created by hand in the Firebase console (see README).
+    match /admins/{adminEmail} {
+      allow get: if isCollege() && (adminEmail == myEmail() || isAdmin());
+      allow list: if isAdmin();
+      allow create: if isAdmin()
+        && adminEmail == adminEmail.lower()
+        && collegeEmail(adminEmail);
+      allow update: if false;
+      // Nobody can remove themselves, so the last admin can never lock everyone out.
+      allow delete: if isAdmin() && adminEmail != myEmail();
+    }
+
+    // users/{email}: the name and phone each person registers once.
+    // You read and write only your own; admins can read everyone's (names on requests, phone for pickups).
+    match /users/{userEmail} {
+      allow read: if isCollege() && (userEmail == myEmail() || isAdmin());
+      allow create, update: if isCollege()
+        && userEmail == myEmail()
+        && request.resource.data.keys().hasOnly(['name', 'phone', 'updatedAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() >= 2 && request.resource.data.name.size() <= 60
+        && request.resource.data.phone is string && request.resource.data.phone.size() <= 20;
+      allow delete: if isCollege() && userEmail == myEmail();
+    }
+
+    // components/{id}: anyone with a college account can browse; only admins change stock.
+    match /components/{componentId} {
+      allow read: if isCollege();
+      allow create, update: if isAdmin()
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.totalQty is number
+        && request.resource.data.availableQty is number
+        && request.resource.data.availableQty >= 0
+        && request.resource.data.availableQty <= request.resource.data.totalQty
+        && (!('tags' in request.resource.data) || (request.resource.data.tags is list && request.resource.data.tags.size() <= 12));
+      allow delete: if isAdmin();
+    }
+
+    // locations/{id}: where things are kept, with a small thumbnail. Core team only.
+    match /locations/{locationId} {
+      allow read, delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.keys().hasOnly(['name', 'notes', 'thumb', 'photoAt', 'createdAt', 'updatedAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 60
+        && (!('thumb' in request.resource.data) || (request.resource.data.thumb is string && request.resource.data.thumb.size() < 150000));
+    }
+
+    // locationPhotos/{locationId}: the full-size photo, fetched only when someone opens it.
+    // Stored as a JPEG data URL because Cloud Storage needs the paid plan; a Firestore doc caps at 1 MiB.
+    match /locationPhotos/{locationId} {
+      allow read, delete: if isAdmin();
+      allow create, update: if isAdmin()
+        && request.resource.data.data is string
+        && request.resource.data.data.size() < 900000;
+    }
+
+    // requests/{id}: you see your own; admins see all.
+    match /requests/{requestId} {
+      allow read: if isAdmin()
+        || (isCollege() && resource.data.requesterEmail == myEmail());
+
+      // Anyone with a college account can open a request, only in their own name,
+      // only as "pending". Item quantities and kinds are re-checked by the admin's
+      // approval against live inventory, so a forged item list can't move stock.
+      allow create: if isCollege()
+        && request.resource.data.keys().hasOnly(['type', 'requesterEmail', 'requesterName', 'requesterPhone', 'title', 'message', 'neededBy', 'items', 'status', 'createdAt', 'updatedAt', 'history'])
+        && request.resource.data.requesterEmail == myEmail()
+        && request.resource.data.status == 'pending'
+        && request.resource.data.type in ['component', 'help', 'guidance']
+        && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 120
+        && request.resource.data.message is string && request.resource.data.message.size() <= 2000
+        && request.resource.data.items is list && request.resource.data.items.size() <= 30;
+
+      // Admins move requests through the lifecycle. Requesters may edit or cancel their
+      // own request only while it's still pending. Edits can't touch status, type, owner or
+      // history, and approval re-checks every item against live stock anyway.
+      allow update: if isAdmin()
+        || (isCollege()
+            && resource.data.requesterEmail == myEmail()
+            && resource.data.status == 'pending'
+            && (
+              (request.resource.data.status == 'cancelled'
+                && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt']))
+              || (request.resource.data.status == 'pending'
+                && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['title', 'message', 'neededBy', 'items', 'updatedAt'])
+                && request.resource.data.title is string && request.resource.data.title.size() > 0 && request.resource.data.title.size() <= 120
+                && request.resource.data.message is string && request.resource.data.message.size() <= 2000
+                && request.resource.data.items is list && request.resource.data.items.size() <= 30)
+            ));
+
+      allow delete: if isAdmin();
+    }
+  }
+}
