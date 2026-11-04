@@ -1,41 +1,33 @@
-import { Toaster } from "@/components/ui/toaster";
-import { Toaster as Sonner } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { BrowserRouter, MemoryRouter, Routes, Route } from 'react-router-dom';
+import Layout from './site/Layout';
+import Home from './pages/Home';
 
-import Navbar from "@/components/Navbar";
-import Index from "./pages/Index";
-import NotFound from "./pages/NotFound";
+// The other pages load on demand, so the first visit only downloads the home page.
+const EventsPage = lazy(() => import('./pages/EventsPage'));
+const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
+const TeamPage = lazy(() => import('./pages/TeamPage'));
+const GalleryPage = lazy(() => import('./pages/GalleryPage'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
-// Separate pages
-import Team from "./components/Team";
-import Projects from "./components/Projects";
-import Events from "./components/Events";
-import Gallery from "./components/Gallery";
+// The preview build runs inside a page that doesn't own the URL, so it keeps routes in memory.
+const Router = import.meta.env.VITE_MEMORY_ROUTER === '1' ? MemoryRouter : BrowserRouter;
 
-const queryClient = new QueryClient();
-
-const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <BrowserRouter>
-        <div className="min-h-screen bg-background text-foreground">
-          <Navbar /> {/* ✅ Always visible */}
+export default function App() {
+  return (
+    <Router>
+      <Layout>
+        <Suspense fallback={<div className="page-loading" aria-busy="true" />}>
           <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/team" element={<Team />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/events" element={<Events />} />
-            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/" element={<Home />} />
+            <Route path="/events" element={<EventsPage />} />
+            <Route path="/projects" element={<ProjectsPage />} />
+            <Route path="/team" element={<TeamPage />} />
+            <Route path="/gallery" element={<GalleryPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
-        </div>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
-);
-
-export default App;
+        </Suspense>
+      </Layout>
+    </Router>
+  );
+}

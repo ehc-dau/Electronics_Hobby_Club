@@ -512,6 +512,47 @@ body.displaying{overflow:hidden}
 .disp-count b{font:italic 700 44px/1 var(--display);color:#33a564;margin-right:6px}
 @media (max-width:760px){.disp-main{grid-template-columns:1fr;gap:20px;padding-top:12px}.disp-qr{max-width:420px;margin:0 auto;width:100%}.disp-how{display:none}}
 
+
+/* ---------- website dashboard ---------- */
+.site-status{display:flex;align-items:center;justify-content:space-between;gap:12px 20px;flex-wrap:wrap;padding:14px 16px;margin:0 0 20px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--warn)}
+.site-status.live{border-left-color:var(--brand)}
+.site-status b{display:block;font:600 17px/1.3 var(--display)}
+.site-status span{color:var(--ink-2);font-size:14px}
+.row-head{display:flex;align-items:center;justify-content:space-between;gap:10px 20px;flex-wrap:wrap;margin:0 0 6px}
+.row-head p{margin:0}
+.pcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:10px}
+.pcard{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;padding:10px 12px;background:var(--surface);border:1px solid var(--line)}
+.pc-photo{width:56px;height:56px;background:var(--ink);color:var(--surface);display:grid;place-items:center;overflow:hidden;clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);font:italic 700 20px/1 var(--display)}
+.pc-photo img{width:100%;height:100%;object-fit:cover}
+.pc-body{min-width:0;display:flex;flex-wrap:wrap;align-items:center;gap:2px 6px}
+.pc-body b{flex-basis:100%;font:600 16px/1.25 var(--display);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pc-body small{flex-basis:100%;color:var(--muted)}
+.pc-actions{display:flex;gap:4px;align-items:center}
+.icon-btn{width:34px;height:34px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;font-size:16px;line-height:1}
+.icon-btn:hover:not(:disabled){border-color:var(--ink)}
+.icon-btn:disabled{opacity:.3;cursor:default}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:14px}
+.ptile{display:flex;flex-direction:column;text-align:left;padding:0;border:1px solid var(--line);border-top:3px solid var(--ink);background:var(--surface);cursor:pointer;color:var(--ink)}
+.ptile:hover{border-top-color:var(--brand)}
+.pt-img{aspect-ratio:4/3;background:var(--ink);display:grid;place-items:center;overflow:hidden;color:var(--brand);font:italic 700 40px/1 var(--display)}
+.pt-img img{width:100%;height:100%;object-fit:cover}
+.pt-body{display:grid;gap:4px;padding:12px 14px 14px}
+.pt-body b{font:600 17px/1.25 var(--display)}
+.pt-body small{color:var(--ink-2);font-size:13.5px}
+.pt-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.gtiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:14px}
+.gtile{position:relative;padding:0;border:0;aspect-ratio:1;overflow:hidden;cursor:pointer;background:var(--surface-2)}
+.gtile img{width:100%;height:100%;object-fit:cover}
+.gtile span{position:absolute;left:0;right:0;bottom:0;padding:16px 8px 6px;font-size:12.5px;color:#fff;text-align:left;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+.gtile span:empty{display:none}
+.gtile.off img{opacity:.4}
+.photo-now{display:flex;align-items:center;gap:14px;margin:-4px 0 14px}
+.photo-now img{width:72px;height:72px;object-fit:cover}
+.photo-now.wide img{width:100%;max-width:360px;height:auto;max-height:240px;object-fit:contain;background:var(--surface-2)}
+.upload-note{margin:10px 0 0;padding:9px 12px;background:var(--brand-tint);color:var(--brand);font-weight:600}
+.site-form{max-width:760px;margin-top:14px}
+@media (max-width:720px){.pcards{grid-template-columns:1fr}.pcard{grid-template-columns:48px 1fr}.pc-actions{grid-column:1/-1;justify-content:flex-end}.pc-photo{width:48px;height:48px}}
+
 /* logo swap for dark mode (kept last so it wins) */
 .logo-dark{display:none}
 @media (prefers-color-scheme:dark){
@@ -1013,11 +1054,16 @@ function seedData() {
     'componentPrivate/c_a4988': { remarks: 'All four are out with the robotic arm team.', rate: 120 },
     'componentPrivate/c_18650': { remarks: 'Store at 3.7 V. One cell swells slightly; keep an eye on it.', rate: 250 },
     'requestPrivate/v6Jq1MsT9': { remark: 'Promised to return after the midsems. Has a spare Uno at home.' },
+    'site/settings': { public: false, tagline: '', about: '', email: 'ehc@dau.ac.in', instagram: '', linkedin: '', github: '' },
+    'projects/p_maze': { title: 'Line maze solving robot (sample)', summary: 'Learns a maze on the first run, then takes the shortest path without stopping at junctions.', description: '', status: 'ongoing', year: '2026', team: '', tags: ['robotics', 'line follower'], link: '', image: '', featured: true, published: true, order: 1 },
+    'projects/p_quad': { title: 'Club quadcopter (sample)', summary: 'F405 stack, 2300 KV motors and a carbon frame, built and tuned at build nights.', description: '', status: 'completed', year: '2026', team: '', tags: ['drone'], link: '', image: '', featured: false, published: false, order: 2 },
   };
+  [['Shyam Bhuva', 'Convenor'], ['Vyom Patel', 'Deputy Convenor'], ['Jeet Patel', 'Core member'], ['Rucheer Patel', 'Core member'], ['Rushiraj Khediya', 'Core member'], ['Aum Bavarva', 'Core member'], ['Preet Patel', 'Extended core member'], ['Het Sachani', 'Extended core member']]
+    .forEach(([name, role], i) => { x[`team/t${i}`] = { name, role, group: /convenor/i.test(role) ? 'leads' : /extended/i.test(role) ? 'extended' : 'core', order: i + 1, photo: '', linkedin: '', github: '', email: '', published: true }; });
   return { components, requests, admins, users, locations, locationPhotos: {}, x };
 }
 function makeDemoBackend() {
-  const KEY = 'ehc-inventory-preview-v4';
+  const KEY = 'ehc-inventory-preview-v5';
   const load = () => { try { const s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch { return null; } };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch { /* storage unavailable: preview still works in memory */ } };
   let db = load() || seedData();
@@ -1197,6 +1243,7 @@ const S = {
   editing: null, stash: null, // editing = { id } of a pending request loaded into the form
   priv: {}, reqPriv: {},       // core-team-only remarks on parts and requests
   events: [], eventView: null, att: [], attUnsub: null, myAtt: {}, display: null, pendingCheckin: null,
+  site: { settings: null, admin: null, team: [], projects: [], gallery: [] }, siteTab: 'team', galleryUpload: null,
   chat: { open: false, msgs: [], card: null, busy: false, mode: CONFIG.chatEndpoint ? 'ai' : 'basic' },
 };
 const username = email => String(email || '').split('@')[0];
@@ -1205,7 +1252,7 @@ const byName = (a, b) => a.name.localeCompare(b.name, 'en', { numeric: true, sen
 const byNewest = (a, b) => String(b.createdAt).localeCompare(String(a.createdAt));
 const compById = id => S.components.find(c => c.id === id);
 const cartItems = () => Object.entries(S.cart).map(([id, qty]) => ({ c: compById(id), qty })).filter(x => x.c);
-const ADMIN_VIEWS = ['queue', 'stock', 'locations', 'admins'];
+const ADMIN_VIEWS = ['queue', 'stock', 'locations', 'website', 'admins'];
 const locById = id => S.locations.find(l => l.id === id);
 const personName = (email, fallback = '') => (S.users[email] && S.users[email].name) || fallback || email;
 const personPhone = (email, fallback = '') => (S.users[email] && S.users[email].phone) || fallback || '';
@@ -1288,13 +1335,25 @@ function toJpeg(img, maxDim, quality) {
   ctx.drawImage(img, 0, 0, w, h);
   return c.toDataURL('image/jpeg', quality);
 }
-async function photoPair(file) {
+async function photoSquare(file, size) {
+  const { img, url } = await loadImage(file);
+  try {
+    const side = Math.min(img.naturalWidth, img.naturalHeight), out = Math.min(size, side);
+    const c = document.createElement('canvas');
+    c.width = out; c.height = out;
+    // Portraits: keep the upper part, where faces usually are, rather than the exact middle.
+    const top = img.naturalHeight > img.naturalWidth ? (img.naturalHeight - side) * 0.2 : (img.naturalHeight - side) / 2;
+    c.getContext('2d').drawImage(img, (img.naturalWidth - side) / 2, top, side, side, 0, 0, out, out);
+    return c.toDataURL('image/jpeg', 0.8);
+  } finally { URL.revokeObjectURL(url); }
+}
+async function photoPair(file, { thumb: thumbDim = 420 } = {}) {
   if (!file || !/^image\//.test(file.type || 'image/')) throw new Error('That file isn’t an image.');
   const { img, url } = await loadImage(file);
   try {
     let dim = 1400, q = 0.8, full = toJpeg(img, dim, q);
     while (full.length > 650000 && dim > 500) { dim = Math.round(dim * 0.82); q = Math.max(0.55, q - 0.05); full = toJpeg(img, dim, q); }
-    return { full, thumb: toJpeg(img, 420, 0.72) };
+    return { full, thumb: toJpeg(img, thumbDim, 0.72) };
   } finally { URL.revokeObjectURL(url); }
 }
 async function uploadLocationPhoto(id, file) {
@@ -1634,7 +1693,7 @@ function tabsHTML() {
   const isOn = v => S.view === v || (v === 'stock' && S.view === 'locations');
   const t = (v, label, count = 0, hot = false) => `<button class="tab ${isOn(v) ? 'on' : ''}" data-act="nav" data-view="${v}" ${isOn(v) ? 'aria-current="page"' : ''}>${label}${count ? `<span class="count ${hot ? 'hot' : ''}">${count}</span>` : ''}</button>`;
   return t('inventory', 'Inventory') + t('request', 'New request', cart, true) + t('mine', 'My requests', active) + t('events', 'Events', live, true)
-    + (S.isAdmin ? `<span class="tab-group"><span class="tab-group-label">Core team</span>${t('queue', 'Queue', pend, true)}${t('stock', 'Stock')}${t('admins', 'Admins')}</span>` : '');
+    + (S.isAdmin ? `<span class="tab-group"><span class="tab-group-label">Core team</span>${t('queue', 'Queue', pend, true)}${t('stock', 'Stock')}${t('website', 'Website')}${t('admins', 'Admins')}</span>` : '');
 }
 function meHTML() {
   const u = S.user, name = (S.profile && S.profile.name) || u.email;
@@ -1648,7 +1707,7 @@ function bottomNavHTML() {
   const ask = `<button class="bn ${S.chat.open ? 'on' : ''}" data-act="chat-open">${ICON_CHAT}<span>Ask</span></button>`;
   const live = S.events.filter(e => e.attendanceOpen).length;
   if (!S.isAdmin) return b('inventory', 'Parts', ICON_BOX) + b('request', 'Request', ICON_PLUS, cart) + ask + b('mine', 'Mine', ICON_LIST, active) + b('events', 'Events', ICON_CAL, live);
-  const moreOn = ['request', 'mine', 'stock', 'locations', 'admins'].includes(S.view) && !S.chat.open;
+  const moreOn = ['request', 'mine', 'stock', 'locations', 'website', 'admins'].includes(S.view) && !S.chat.open;
   return b('queue', 'Queue', ICON_INBOX, pend) + b('inventory', 'Parts', ICON_BOX) + ask + b('events', 'Events', ICON_CAL, live)
     + `<button class="bn ${moreOn ? 'on' : ''}" data-act="more">${ICON_MORE}<span>More</span>${cart ? `<i class="bn-n">${cart}</i>` : ''}</button>`;
 }
@@ -1657,7 +1716,7 @@ function moreSheet() {
   const item = (v, label, sub) => `<button type="button" class="sheet-item ${S.view === v ? 'on' : ''}" data-act="nav" data-view="${v}"><b>${label}</b><small>${sub}</small></button>`;
   openDialog({
     title: 'More', confirm: null, dismiss: 'Close',
-    body: `<div class="sheet">${item('request', S.editing ? 'Edit request' : 'New request', cart ? `${plural(cart, 'part')} waiting` : 'Borrow parts or ask for help')}${item('mine', 'My requests', 'What you’ve asked for')}${item('stock', 'Stock', 'Add, edit and import parts')}${item('locations', 'Locations', 'Cabinet and shelf photos')}${item('admins', 'Admins', 'Who runs the inventory')}
+    body: `<div class="sheet">${item('request', S.editing ? 'Edit request' : 'New request', cart ? `${plural(cart, 'part')} waiting` : 'Borrow parts or ask for help')}${item('mine', 'My requests', 'What you’ve asked for')}${item('stock', 'Stock', 'Add, edit and import parts')}${item('locations', 'Locations', 'Cabinet and shelf photos')}${item('website', 'Website', 'Team, projects, gallery, visibility')}${item('admins', 'Admins', 'Who runs the inventory')}
       <button type="button" class="sheet-item" data-act="profile-edit"><b>Your details</b><small>${esc(S.profile ? S.profile.name : '')}, sign out</small></button></div>`,
   });
 }
@@ -1669,7 +1728,7 @@ function cartBarHTML() {
 }
 function mainHTML() {
   if (ADMIN_VIEWS.includes(S.view) && !S.isAdmin) S.view = 'inventory';
-  return { inventory: inventoryView, request: requestView, mine: mineView, queue: queueView, stock: stockView, locations: locationsView, admins: adminsView, events: () => (S.isAdmin ? adminEventsView() : memberEventsView()) }[S.view]();
+  return { inventory: inventoryView, request: requestView, mine: mineView, queue: queueView, stock: stockView, locations: locationsView, admins: adminsView, website: websiteView, events: () => (S.isAdmin ? adminEventsView() : memberEventsView()) }[S.view]();
 }
 
 // Re-rendering replaces the DOM; keep the caret where it was.
@@ -1748,7 +1807,7 @@ function openDialog({ title, body, confirm = 'Confirm', dismiss = 'Cancel', dang
     const err = form.querySelector('.dlg-err');
     form.querySelectorAll('footer .btn').forEach(b => { b.disabled = true; });
     err.hidden = true;
-    try { await fn(new FormData(form), form); dlg.close(); }
+    try { const r = await fn(new FormData(form), form); if (r !== KEEP_OPEN) dlg.close(); }
     catch (x) { err.textContent = friendly(x); err.hidden = false; err.scrollIntoView({ block: 'nearest' }); }
     finally { form.querySelectorAll('footer .btn').forEach(b => { b.disabled = false; }); }
   };
@@ -2220,6 +2279,256 @@ async function submitRequest() {
     S.busy = false; render();
     toast(friendly(e), 'err');
   }
+}
+
+/* =====================================================================
+   Website dashboard: team, projects, gallery and site text, all saved straight to the
+   database the public website reads. No code changes, no redeploys.
+   ===================================================================== */
+const SITE_GROUPS = [['leads', 'Convenors'], ['core', 'Core team'], ['extended', 'Extended core'], ['faculty', 'Faculty advisors']];
+const groupOf = role => (/convenor/i.test(role) ? 'leads' : /extended/i.test(role) ? 'extended' : /faculty|professor|advisor|mentor/i.test(role) ? 'faculty' : 'core');
+const siteSettings = () => (S.site.settings || {});
+const byOrder = (a, b) => (a.order ?? 999) - (b.order ?? 999) || String(a.name || a.title || '').localeCompare(String(b.name || b.title || ''));
+const KEEP_OPEN = Symbol('keep dialog open');
+const urlOk = u => !u || /^https?:\/\/\S+\.\S+/i.test(u);
+
+function websiteView() {
+  const st = siteSettings();
+  const tab = S.siteTab;
+  const b = (k, label) => `<button class="${tab === k ? 'on' : ''}" data-act="site-tab" data-tab="${k}" ${tab === k ? 'aria-current="page"' : ''}>${label}</button>`;
+  const body = { team: siteTeamView, projects: siteProjectsView, gallery: siteGalleryView, settings: siteSettingsView }[tab]();
+  return `<section class="view">
+    <div class="view-head"><div><h1 class="title">Website</h1><p class="sub">Everything on the club website. Saved changes show up there within seconds; nothing needs a redeploy.</p></div>
+      <div class="head-actions"><a class="btn sm" href="/" target="_blank" rel="noopener">Open website</a><button class="btn ghost sm" data-act="site-preview">Get preview link</button></div></div>
+    <div class="site-status ${st.public ? 'live' : ''}">
+      <div><b>${st.public ? 'The website is public' : 'The website is hidden'}</b>
+        <span>${st.public ? 'Anyone can see it.' : 'Visitors see a “coming soon” page. The inventory and event check-in work either way. Use a preview link to check the site first.'}</span></div>
+      <button class="btn sm ${st.public ? 'ghost' : 'primary'}" data-act="site-toggle">${st.public ? 'Hide website' : 'Publish website'}</button>
+    </div>
+    <nav class="subnav" aria-label="Website sections">${b('team', 'Team')}${b('projects', 'Projects')}${b('gallery', 'Gallery')}${b('settings', 'Text and links')}</nav>
+    ${body}
+  </section>`;
+}
+const hiddenTag = item => (item.published ? '' : '<span class="tag off">Hidden</span>');
+
+/* ---------- team ---------- */
+function siteTeamView() {
+  const all = S.site.team;
+  const card = (m, i, list) => `<article class="pcard">
+      <div class="pc-photo">${m.photo ? `<img src="${m.photo}" alt="">` : `<span>${esc(initials(m.name, ''))}</span>`}</div>
+      <div class="pc-body"><b>${esc(m.name)}</b><small>${esc(m.role || '')}</small>${hiddenTag(m)}${m.photo ? '' : '<span class="tag off">No photo</span>'}</div>
+      <div class="pc-actions">
+        <button class="icon-btn" data-act="team-move" data-id="${esc(m.id)}" data-d="-1" ${i === 0 ? 'disabled' : ''} aria-label="Move ${esc(m.name)} up">↑</button>
+        <button class="icon-btn" data-act="team-move" data-id="${esc(m.id)}" data-d="1" ${i === list.length - 1 ? 'disabled' : ''} aria-label="Move ${esc(m.name)} down">↓</button>
+        <button class="btn ghost sm" data-act="team-edit" data-id="${esc(m.id)}">Edit</button></div></article>`;
+  const groups = SITE_GROUPS.map(([k, label]) => {
+    const list = all.filter(m => (m.group || 'core') === k).sort(byOrder);
+    return list.length ? `<h2 class="section-h">${label}</h2><div class="pcards">${list.map(card).join('')}</div>` : '';
+  }).join('');
+  return `<div class="row-head"><p class="muted">${plural(all.length, 'person', 'people')}. Arrows change the order within a group.</p>
+      <div class="head-actions"><button class="btn primary sm" data-act="team-edit">Add person</button><button class="btn sm" data-act="team-paste">Add several</button></div></div>
+    ${groups || emptyState('No one listed yet.', 'Use “Add several” and paste one person per line, like “Shyam Bhuva, Convenor”.')}`;
+}
+function teamDialog(id) {
+  const m = id ? S.site.team.find(x => x.id === id) : null;
+  openDialog({
+    title: m ? 'Edit person' : 'Add person', confirm: m ? 'Save' : 'Add', wide: true,
+    alt: m ? { label: 'Delete', onConfirm: () => { confirmDelete('team', m.id, m.name); return KEEP_OPEN; } } : null,
+    body: `<div class="row2"><div class="field"><label for="t-name">Name</label><input id="t-name" name="name" required maxlength="60" value="${esc(m ? m.name : '')}"></div>
+        <div class="field"><label for="t-role">Role</label><input id="t-role" name="role" maxlength="60" value="${esc(m ? m.role || '' : '')}" placeholder="e.g. Core member"></div></div>
+      <div class="row2"><div class="field"><label for="t-group">Shown under</label><select id="t-group" name="group">${SITE_GROUPS.map(([k, l]) => `<option value="${k}" ${(m ? m.group || 'core' : 'core') === k ? 'selected' : ''}>${l}</option>`).join('')}</select></div>
+        <div class="field"><label for="t-photo">Photo${m && m.photo ? ' (replace)' : ''}</label><input id="t-photo" name="photo" type="file" accept="image/*"><small>Cropped to a square around the centre.</small></div></div>
+      ${m && m.photo ? `<div class="photo-now"><img src="${m.photo}" alt=""><label class="check-line"><input type="checkbox" name="nophoto"> Remove photo</label></div>` : ''}
+      <div class="row3"><div class="field"><label for="t-li">LinkedIn URL</label><input id="t-li" name="linkedin" type="url" value="${esc(m ? m.linkedin || '' : '')}" placeholder="https://linkedin.com/in/…"></div>
+        <div class="field"><label for="t-gh">GitHub URL</label><input id="t-gh" name="github" type="url" value="${esc(m ? m.github || '' : '')}"></div>
+        <div class="field"><label for="t-em">Email</label><input id="t-em" name="email" type="email" value="${esc(m ? m.email || '' : '')}"></div></div>
+      <label class="check-line"><input type="checkbox" name="published" ${!m || m.published ? 'checked' : ''}> Show on the website</label>`,
+    onConfirm: async fd => {
+      const name = String(fd.get('name') || '').trim();
+      if (!name) throw new Error('Enter a name.');
+      const links = ['linkedin', 'github'].map(k => String(fd.get(k) || '').trim());
+      if (!links.every(urlOk)) throw new Error('Links must start with https://');
+      const group = String(fd.get('group'));
+      const data = { name, role: String(fd.get('role') || '').trim(), group, linkedin: links[0], github: links[1], email: String(fd.get('email') || '').trim(), published: !!fd.get('published'), updatedAt: SERVER_TIME };
+      const file = fd.get('photo');
+      if (file && file.size) data.photo = await photoSquare(file, 480);
+      else if (fd.get('nophoto')) data.photo = '';
+      if (m) await B.setPath(`team/${m.id}`, data, true);
+      else await B.addPath('team', { ...data, photo: data.photo || '', order: nextOrder(S.site.team.filter(x => (x.group || 'core') === group)), createdAt: SERVER_TIME });
+      toast(m ? 'Saved.' : `${name} added.`);
+    },
+  });
+}
+const nextOrder = list => list.reduce((a, x) => Math.max(a, Number(x.order) || 0), 0) + 1;
+function teamPasteDialog() {
+  openDialog({
+    title: 'Add several people', confirm: 'Add them', wide: true,
+    body: `<p>One person per line: name, then role. People are grouped by their role: convenors first, then core, then extended core. Add photos afterwards from each person’s Edit.</p>
+      <div class="field"><label for="t-paste">People</label><textarea id="t-paste" name="list" rows="9" placeholder="Shyam Bhuva, Convenor&#10;Vyom Patel, Deputy Convenor&#10;Jeet Patel, Core member&#10;Preet Patel, Extended core member"></textarea></div>`,
+    onConfirm: async fd => {
+      const lines = String(fd.get('list') || '').split('\n').map(l => l.trim()).filter(Boolean);
+      if (!lines.length) throw new Error('Paste at least one line.');
+      const have = new Set(S.site.team.map(m => m.name.trim().toLowerCase()));
+      const counters = Object.fromEntries(SITE_GROUPS.map(([k]) => [k, nextOrder(S.site.team.filter(x => (x.group || 'core') === k))]));
+      const ops = [], skipped = [];
+      for (const line of lines) {
+        const [name, ...rest] = line.split(/[,\t]/).map(x => x.trim());
+        if (!name) continue;
+        if (have.has(name.toLowerCase())) { skipped.push(name); continue; }
+        have.add(name.toLowerCase());
+        const role = rest.join(', ') || 'Core member', group = groupOf(role);
+        const id = 'm' + Math.random().toString(36).slice(2, 12);
+        ops.push({ op: 'set', path: `team/${id}`, data: { name, role, group, order: counters[group]++, photo: '', linkedin: '', github: '', email: '', published: true, createdAt: SERVER_TIME, updatedAt: SERVER_TIME } });
+      }
+      if (!ops.length) throw new Error(skipped.length ? 'Everyone on the list is already there.' : 'Nothing to add.');
+      await B.batchWrite(ops);
+      toast(`Added ${plural(ops.length, 'person', 'people')}.${skipped.length ? ` Skipped ${skipped.length} already listed.` : ''}`);
+    },
+  });
+}
+async function moveMember(id, d) {
+  const m = S.site.team.find(x => x.id === id);
+  if (!m) return;
+  const list = S.site.team.filter(x => (x.group || 'core') === (m.group || 'core')).sort(byOrder);
+  const i = list.indexOf(m), j = i + Number(d);
+  if (j < 0 || j >= list.length) return;
+  [list[i], list[j]] = [list[j], list[i]];
+  // Renumber the whole group so missing or duplicate numbers never cause a jump.
+  await B.batchWrite(list.map((x, k) => ({ op: 'set', path: `team/${x.id}`, data: { order: k + 1 }, merge: true })));
+}
+
+/* ---------- projects ---------- */
+function siteProjectsView() {
+  const list = [...S.site.projects].sort((a, b) => Number(!!b.featured) - Number(!!a.featured) || byOrder(a, b));
+  return `<div class="row-head"><p class="muted">${plural(list.length, 'project')}. Projects marked “On home page” appear first and on the home page.</p>
+      <div class="head-actions"><button class="btn primary sm" data-act="proj-edit">Add project</button></div></div>
+    ${list.length ? `<div class="tiles">${list.map(p => `<button class="ptile" data-act="proj-edit" data-id="${esc(p.id)}">
+        <span class="pt-img">${p.image ? `<img src="${p.image}" alt="">` : `<span>${esc(initials(p.title, ''))}</span>`}</span>
+        <span class="pt-body"><b>${esc(p.title)}</b><small>${esc(p.summary || '')}</small>
+          <span class="pt-tags">${p.featured ? '<span class="tag">On home page</span>' : ''}${p.status === 'ongoing' ? '<span class="tag off">Ongoing</span>' : ''}${hiddenTag(p)}</span></span></button>`).join('')}</div>`
+      : emptyState('No projects yet.', 'Add the club’s builds with a photo and a line about each. Mark the best three for the home page.')}`;
+}
+function projectDialog(id) {
+  const p = id ? S.site.projects.find(x => x.id === id) : null;
+  openDialog({
+    title: p ? 'Edit project' : 'Add project', confirm: p ? 'Save' : 'Add', wide: true,
+    alt: p ? { label: 'Delete', onConfirm: () => { confirmDelete('projects', p.id, p.title); return KEEP_OPEN; } } : null,
+    body: `<div class="field"><label for="p-title">Title</label><input id="p-title" name="title" required maxlength="80" value="${esc(p ? p.title : '')}" placeholder="e.g. Line maze solving robot"></div>
+      <div class="field"><label for="p-sum">One-line summary</label><input id="p-sum" name="summary" maxlength="140" value="${esc(p ? p.summary || '' : '')}" placeholder="Shown on the card"></div>
+      <div class="field"><label for="p-desc">Description (optional)</label><textarea id="p-desc" name="description" rows="4" maxlength="2000">${esc(p ? p.description || '' : '')}</textarea></div>
+      <div class="row3"><div class="field"><label for="p-status">Status</label><select id="p-status" name="status"><option value="completed" ${p && p.status === 'completed' ? 'selected' : ''}>Completed</option><option value="ongoing" ${p && p.status === 'ongoing' ? 'selected' : ''}>Ongoing</option></select></div>
+        <div class="field"><label for="p-year">Year</label><input id="p-year" name="year" maxlength="9" value="${esc(p ? p.year || '' : String(new Date().getFullYear()))}"></div>
+        <div class="field"><label for="p-team">Built by</label><input id="p-team" name="team" maxlength="120" value="${esc(p ? p.team || '' : '')}"></div></div>
+      <div class="row2"><div class="field"><label for="p-tags">Tags</label><input id="p-tags" name="tags" maxlength="120" value="${esc(p ? (p.tags || []).join(', ') : '')}" placeholder="e.g. robotics, ESP32"></div>
+        <div class="field"><label for="p-link">Link (optional)</label><input id="p-link" name="link" type="url" value="${esc(p ? p.link || '' : '')}" placeholder="GitHub, video or write-up"></div></div>
+      <div class="field"><label for="p-img">Photo${p && p.image ? ' (replace)' : ''}</label><input id="p-img" name="image" type="file" accept="image/*"></div>
+      ${p && p.image ? `<div class="photo-now wide"><img src="${p.image}" alt=""></div>` : ''}
+      <label class="check-line"><input type="checkbox" name="featured" ${p && p.featured ? 'checked' : ''}> On the home page</label>
+      <label class="check-line"><input type="checkbox" name="published" ${!p || p.published ? 'checked' : ''}> Show on the website</label>`,
+    onConfirm: async fd => {
+      const title = String(fd.get('title') || '').trim();
+      if (!title) throw new Error('Give the project a title.');
+      const link = String(fd.get('link') || '').trim();
+      if (!urlOk(link)) throw new Error('The link must start with https://');
+      const data = { title, summary: String(fd.get('summary') || '').trim(), description: String(fd.get('description') || '').trim(), status: String(fd.get('status')), year: String(fd.get('year') || '').trim(), team: String(fd.get('team') || '').trim(), tags: normTags(fd.get('tags')), link, featured: !!fd.get('featured'), published: !!fd.get('published'), updatedAt: SERVER_TIME };
+      const file = fd.get('image');
+      const pid = p ? p.id : await B.addPath('projects', { ...data, image: '', order: nextOrder(S.site.projects), createdAt: SERVER_TIME });
+      if (p) await B.setPath(`projects/${pid}`, data, true);
+      if (file && file.size) {
+        const { full, thumb } = await photoPair(file, { thumb: 720 });
+        await B.batchWrite([{ op: 'set', path: `photos/project_${pid}`, data: { data: full, updatedAt: SERVER_TIME } }, { op: 'set', path: `projects/${pid}`, data: { image: thumb }, merge: true }]);
+      }
+      toast(p ? 'Saved.' : 'Project added.');
+    },
+  });
+}
+
+/* ---------- gallery ---------- */
+function siteGalleryView() {
+  const list = [...S.site.gallery].sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+  return `<div class="row-head"><p class="muted">${plural(list.length, 'photo')}. Newest first, by the date on each photo. Click one to add a caption or hide it.</p>
+      <div class="head-actions"><label class="btn primary sm filebtn"><input type="file" accept="image/*" multiple data-gallery-add>Add photos</label></div></div>
+    ${S.galleryUpload ? `<p class="upload-note">Uploading ${S.galleryUpload.done} of ${S.galleryUpload.total}… keep this tab open.</p>` : ''}
+    ${list.length ? `<div class="gtiles">${list.map(g => `<button class="gtile ${g.published ? '' : 'off'}" data-act="gal-edit" data-id="${esc(g.id)}" aria-label="Edit photo${g.caption ? `: ${esc(g.caption)}` : ''}">
+        <img src="${g.image}" alt="" loading="lazy" decoding="async"><span>${esc(g.caption || '')}${g.published ? '' : ' (hidden)'}</span></button>`).join('')}</div>`
+      : emptyState('No photos yet.', 'Pick several at once with Add photos. They’re resized on your device before upload.')}`;
+}
+async function uploadGallery(files) {
+  const list = [...files].filter(f => /^image\//.test(f.type));
+  if (!list.length) return;
+  S.galleryUpload = { done: 0, total: list.length }; render();
+  let failed = 0;
+  for (const f of list) {
+    try {
+      const { full, thumb } = await photoPair(f, { thumb: 560 });
+      const date = localDate(new Date(f.lastModified || Date.now())); // usually when the photo was taken
+      const gid = await B.addPath('gallery', { caption: '', date, event: '', image: thumb, published: true, createdAt: SERVER_TIME, updatedAt: SERVER_TIME });
+      await B.setPath(`photos/gallery_${gid}`, { data: full, updatedAt: SERVER_TIME });
+    } catch { failed++; }
+    S.galleryUpload.done++; render();
+  }
+  S.galleryUpload = null; render();
+  toast(failed ? `Added ${list.length - failed} photos. ${failed} couldn’t be read.` : `Added ${plural(list.length, 'photo')}.`, failed ? 'err' : 'ok');
+}
+function galleryDialog(id) {
+  const g = S.site.gallery.find(x => x.id === id);
+  if (!g) return;
+  const events = [...new Set(S.events.map(e => e.title))];
+  openDialog({
+    title: 'Photo', confirm: 'Save', wide: true,
+    alt: { label: 'Delete', onConfirm: () => { confirmDelete('gallery', g.id, g.caption || 'this photo'); return KEEP_OPEN; } },
+    body: `<div class="photo-now wide"><img src="${g.image}" alt=""></div>
+      <div class="field"><label for="g-cap">Caption</label><input id="g-cap" name="caption" maxlength="140" value="${esc(g.caption || '')}" placeholder="e.g. Final round, RoboRace 2026"></div>
+      <div class="row2"><div class="field"><label for="g-date">Date</label><input id="g-date" name="date" type="date" value="${esc(g.date || '')}"></div>
+        <div class="field"><label for="g-ev">Event (optional)</label><input id="g-ev" name="event" list="g-evs" maxlength="100" value="${esc(g.event || '')}"><datalist id="g-evs">${events.map(t => `<option value="${esc(t)}">`).join('')}</datalist></div></div>
+      <label class="check-line"><input type="checkbox" name="published" ${g.published ? 'checked' : ''}> Show on the website</label>`,
+    onConfirm: async fd => {
+      await B.setPath(`gallery/${g.id}`, { caption: String(fd.get('caption') || '').trim(), date: String(fd.get('date') || ''), event: String(fd.get('event') || '').trim(), published: !!fd.get('published'), updatedAt: SERVER_TIME }, true);
+      toast('Saved.');
+    },
+  });
+}
+
+/* ---------- text and links ---------- */
+function siteSettingsView() {
+  const s = siteSettings();
+  return `<form class="site-form" data-form="site-settings" novalidate>
+    <div class="field"><label for="s-tag">Headline on the home page</label><input id="s-tag" name="tagline" maxlength="60" value="${esc(s.tagline || '')}" placeholder="We build things that move"><small>Short and punchy; it’s shown very large. Leave empty for the default.</small></div>
+    <div class="field"><label for="s-about">About the club</label><textarea id="s-about" name="about" rows="5" maxlength="900">${esc(s.about || '')}</textarea><small>One paragraph on the home page. Leave empty for the default.</small></div>
+    <div class="row2"><div class="field"><label for="s-email">Contact email</label><input id="s-email" name="email" type="email" value="${esc(s.email || 'ehc@dau.ac.in')}"></div>
+      <div class="field"><label for="s-ig">Instagram URL</label><input id="s-ig" name="instagram" type="url" value="${esc(s.instagram || '')}" placeholder="https://instagram.com/…"></div></div>
+    <div class="row2"><div class="field"><label for="s-li">LinkedIn URL</label><input id="s-li" name="linkedin" type="url" value="${esc(s.linkedin || '')}"></div>
+      <div class="field"><label for="s-gh">GitHub URL</label><input id="s-gh" name="github" type="url" value="${esc(s.github || '')}" placeholder="https://github.com/…"></div></div>
+    <div class="form-actions"><button class="btn primary" type="submit">Save text and links</button></div>
+  </form>`;
+}
+
+/* ---------- shared ---------- */
+function confirmDelete(col, id, label) {
+  const photo = col === 'projects' ? `photos/project_${id}` : col === 'gallery' ? `photos/gallery_${id}` : '';
+  openDialog({
+    title: 'Delete', confirm: 'Delete', danger: true,
+    body: `<p>Delete <b>${esc(label)}</b> from the website? This can’t be undone.</p>`,
+    onConfirm: async () => {
+      await B.batchWrite([{ op: 'delete', path: `${col}/${id}` }, ...(photo ? [{ op: 'delete', path: photo }] : [])]);
+      toast('Deleted.');
+    },
+  });
+}
+async function previewLink() {
+  let key = (S.site.admin || {}).previewKey;
+  if (!key) {
+    key = Array.from(crypto.getRandomValues(new Uint8Array(18)), b => 'abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b % 56]).join('');
+    await B.batchWrite([{ op: 'set', path: `sitePreview/${key}`, data: { createdBy: S.user.email, createdAt: SERVER_TIME } }, { op: 'set', path: 'site/admin', data: { previewKey: key }, merge: true }]);
+  }
+  const url = `${location.origin}/?preview=${key}`;
+  openDialog({
+    title: 'Preview link', confirm: null, dismiss: 'Close',
+    body: `<p>Anyone with this link can see the website while it’s hidden. Share it only with the core team.</p>
+      <div class="field"><label for="pv-url">Link</label><input id="pv-url" value="${esc(url)}" readonly></div>
+      <div class="form-actions"><a class="btn primary sm" href="${esc(url)}" target="_blank" rel="noopener">Open preview</a><button type="button" class="btn sm" data-copy-preview>Copy link</button></div>`,
+  });
+  $('#dlg [data-copy-preview]').onclick = async () => { try { await navigator.clipboard.writeText(url); } catch { $('#pv-url').select(); document.execCommand('copy'); } toast('Link copied.'); };
 }
 
 /* =====================================================================
@@ -2888,6 +3197,22 @@ function openChat() {
 }
 
 const ACTIONS = {
+  'site-tab': el => { S.siteTab = el.dataset.tab; render(); },
+  'site-toggle': () => {
+    const pub = !!siteSettings().public;
+    openDialog({
+      title: pub ? 'Hide the website' : 'Publish the website', confirm: pub ? 'Hide website' : 'Publish website', danger: pub,
+      body: pub ? '<p>Visitors will see the “coming soon” page instead. The inventory and event check-in keep working.</p>'
+        : `<p>Everyone will be able to see the website. Check it first with a preview link.</p><p class="muted small">Right now: ${plural(S.site.team.filter(m => m.published).length, 'person', 'people')}, ${plural(S.site.projects.filter(x => x.published).length, 'project')}, ${plural(S.site.gallery.filter(x => x.published).length, 'photo')} and ${plural(S.events.filter(x => x.published).length, 'event')} will show.</p>`,
+      onConfirm: async () => { await B.setPath('site/settings', { public: !pub, updatedAt: SERVER_TIME }, true); toast(pub ? 'The website is hidden.' : 'The website is public.'); },
+    });
+  },
+  'site-preview': () => previewLink().catch(e => toast(friendly(e), 'err')),
+  'team-edit': el => teamDialog(el.dataset.id),
+  'team-paste': () => teamPasteDialog(),
+  'team-move': el => moveMember(el.dataset.id, el.dataset.d).catch(e => toast(friendly(e), 'err')),
+  'proj-edit': el => projectDialog(el.dataset.id),
+  'gal-edit': el => galleryDialog(el.dataset.id),
   nav: el => { if (el.dataset.view === 'events' && S.eventView) closeEventView(); go(el.dataset.view); },
   'ev-new': () => eventDialog(),
   'ev-open': el => openEvent(el.dataset.id),
@@ -2986,6 +3311,15 @@ const ACTIONS = {
   },
 };
 const FORMS = {
+  'site-settings': async f => {
+    const fd = new FormData(f), v = k => String(fd.get(k) || '').trim();
+    const links = ['instagram', 'linkedin', 'github'].map(v);
+    if (!links.every(urlOk)) { toast('Links must start with https://', 'err'); return; }
+    try {
+      await B.setPath('site/settings', { tagline: v('tagline'), about: v('about'), email: v('email'), instagram: links[0], linkedin: links[1], github: links[2], updatedAt: SERVER_TIME }, true);
+      toast('Saved. The website shows it right away.');
+    } catch (e) { toast(friendly(e), 'err'); }
+  },
   'checkin-code': async f => {
     const btn = f.querySelector('[type=submit]');
     btn.disabled = true;
@@ -3039,6 +3373,7 @@ document.addEventListener('keydown', e => {
 });
 document.addEventListener('input', e => { if (e.target.id === 'chat-in') { e.target.style.height = ''; e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px'; } });
 document.addEventListener('change', e => {
+  if (e.target.matches && e.target.matches('input[data-gallery-add]')) { const files = [...e.target.files]; e.target.value = ''; uploadGallery(files); return; }
   const inp = e.target.closest && e.target.closest('input[data-photo-for]');
   if (inp && inp.files && inp.files[0]) { uploadLocationPhoto(inp.dataset.photoFor, inp.files[0]); inp.value = ''; }
 });
@@ -3055,6 +3390,7 @@ async function handleAuth(u) {
   unsubs.forEach(f => f()); unsubs = [];
   S.authReady = true;
   stopDisplay(); closeEventView();
+  S.site = { settings: null, admin: null, team: [], projects: [], gallery: [] };
   Object.assign(S, { user: null, isAdmin: false, profile: null, needsProfile: false, components: [], myRequests: [], allRequests: [], admins: [], users: {}, locations: [], priv: {}, reqPriv: {}, events: [], myAtt: {} });
   if (!u) { render(); return; }
   if (!emailAllowed(u.email) || u.verified === false) {
@@ -3082,6 +3418,8 @@ async function handleAuth(u) {
     unsubs.push(B.watchLocations(list => { S.locations = list; render(); }));
     unsubs.push(B.watchPath('componentPrivate', list => { S.priv = Object.fromEntries(list.map(d => [d.id, d])); render(); }));
     unsubs.push(B.watchPath('requestPrivate', list => { S.reqPriv = Object.fromEntries(list.map(d => [d.id, d])); render(); }));
+    unsubs.push(B.watchPath('site', list => { S.site.settings = list.find(d => d.id === 'settings') || {}; S.site.admin = list.find(d => d.id === 'admin') || {}; render(); }));
+    for (const col of ['team', 'projects', 'gallery']) unsubs.push(B.watchPath(col, list => { S.site[col] = list; render(); }));
   }
   // Members only see events marked for the website; the core team sees drafts too.
   unsubs.push(B.watchPath('events', list => { S.events = list; render(); paintDisplay(); if (!S.isAdmin) loadMyAttendance(); }, S.isAdmin ? null : ['published', '==', true]));
