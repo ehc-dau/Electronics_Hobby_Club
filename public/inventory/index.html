@@ -411,6 +411,7 @@ body.has-cart .chat-fab{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   .tbl td[data-label]{display:inline-block;width:auto;margin-right:14px}
   .tbl td[data-label]::before{content:attr(data-label) "  ";color:var(--muted);font-weight:400}
   .tbl .row-actions{justify-content:flex-start;margin-top:8px}
+  .tbl.att{min-width:0}
 }
 /* fingers need bigger targets than mouse pointers */
 @media (pointer:coarse){
@@ -420,6 +421,96 @@ body.has-cart .chat-fab{bottom:calc(88px + env(safe-area-inset-bottom,0px))}
   .tagchip{line-height:2.1}
   .chip{padding:8px 13px}
 }
+
+
+/* ---------- request review, remarks ---------- */
+.note.internal{background:var(--surface-2);border-left:3px solid var(--ink)}
+.note.quiet{background:var(--surface-2);color:var(--ink-2)}
+.items-label{margin:10px 0 -4px;font:600 13px/1.2 var(--display);color:var(--muted)}
+.req-items.asked li{background:transparent;border:1px dashed var(--line);color:var(--ink-2)}
+.pill.reviewing{background:var(--info-tint);color:var(--info)}
+.req.reviewing{border-left-color:var(--info)}
+.allot{border:1px solid var(--line);margin:0 0 16px}
+.al-row{display:grid;grid-template-columns:1fr 92px;gap:10px;align-items:center;padding:8px 10px;border-bottom:1px solid var(--line)}
+.al-row.off .al-name{color:var(--muted);text-decoration:line-through}
+.al-row.over .al-qty{border-color:var(--bad);color:var(--bad)}
+.al-row.gone{grid-template-columns:1fr;color:var(--muted)}
+.al-pick{display:flex;gap:10px;align-items:flex-start;cursor:pointer}
+.al-pick input{width:20px;height:20px;min-height:0;margin:2px 0 0;accent-color:var(--brand);flex:none}
+.al-name{font-weight:600;font-size:14.5px}
+.al-name small{display:block;font-weight:400;color:var(--muted);font-size:12.5px}
+.al-qty{min-height:38px;text-align:center}
+.al-add{padding:8px 10px;border-bottom:1px solid var(--line)}
+.al-add select{min-height:38px}
+.al-sum{margin:0!important;padding:8px 10px;font-size:13.5px;background:var(--surface-2)}
+.private-box{border:1.5px dashed var(--line);padding:12px 12px 0;margin:4px 0 16px}
+.private-h{margin:0 0 10px!important;font:600 13px/1.2 var(--display);color:var(--ink)!important}
+.tbl small.remark{color:var(--ink-2);border-left:2px solid var(--line);padding-left:6px;margin-top:3px}
+.check-line{display:flex;gap:10px;align-items:flex-start;font-size:14px;margin:4px 0 12px;cursor:pointer}
+.check-line input{width:18px;height:18px;min-height:0;margin:2px 0 0;accent-color:var(--brand);flex:none}
+.alert.ok{background:var(--brand-tint);color:var(--brand)}
+.subnav{display:inline-flex;border:1.5px solid var(--ink);margin:0 0 18px;background:var(--surface)}
+.subnav button{border:0;background:none;padding:8px 16px;font:600 14px/1 var(--display);cursor:pointer}
+.subnav button+button{border-left:1.5px solid var(--ink)}
+.subnav button.on{background:var(--ink);color:var(--surface)}
+.row3{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:0 12px}
+@media (max-width:560px){.row3{grid-template-columns:1fr 1fr}.row3 .field:first-child{grid-column:1/-1}}
+
+/* ---------- events ---------- */
+.section-h{margin:28px 0 12px;font:italic 700 20px/1.1 var(--display);text-transform:uppercase}
+.ev{display:grid;grid-template-columns:62px 1fr;gap:14px;background:var(--surface);border:1px solid var(--line);border-top:3px solid var(--ink);padding:14px 16px}
+.ev.clickable{cursor:pointer}
+.ev.clickable:hover,.ev.clickable:focus-visible{border-top-color:var(--brand)}
+.ev-date{display:grid;justify-items:center;align-content:start;background:var(--ink);color:var(--surface);padding:8px 0 7px;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+.ev-date b{font:italic 700 26px/1 var(--display)}
+.ev-date span{font:600 12px/1.3 var(--display);text-transform:uppercase;color:var(--brand)}
+:root:not([data-theme="light"]) .ev-date span{color:var(--brand)}
+.ev-body h3{margin:0;font:600 18px/1.25 var(--display)}
+.ev-meta{margin:3px 0 0;font-size:14px;color:var(--ink-2)}
+.ev-desc{margin:8px 0 0;font-size:14px;color:var(--ink-2);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.ev-badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tag.off{background:var(--surface-2);color:var(--ink-2)}
+.tag.live{background:var(--brand);color:var(--on-brand)}
+.ev-ok{display:flex;align-items:center;gap:8px;margin:10px 0 0;font-weight:600;color:var(--brand)}
+.ev-open{margin:10px 0 8px;font-size:14px}
+.ev-code-row{display:flex;gap:8px;max-width:320px}
+.ev-code-row input{text-transform:uppercase;letter-spacing:.2em;font-weight:600;text-align:center}
+.back{display:inline-block;margin-bottom:14px}
+.back::before{content:"← "}
+.att-count{margin:0 0 14px;font-size:15px;display:flex;align-items:center;gap:10px}
+.att-count b{font:italic 700 30px/1 var(--display)}
+@media (min-width:721px){.tbl.att{min-width:640px}}
+.m-res{display:grid;gap:6px;margin:-6px 0 14px}
+.m-hit{display:flex;justify-content:space-between;gap:10px;padding:9px 12px;border:1.5px solid var(--line);background:var(--surface);cursor:pointer;text-align:left;color:var(--ink)}
+.m-hit:hover{border-color:var(--ink)}
+.m-hit span{color:var(--muted)}
+.ci-ok{display:flex;align-items:center;gap:14px;padding:14px;background:var(--brand-tint);margin-bottom:12px}
+.ci-ok .tick{width:38px;height:38px;color:var(--brand);flex:none}
+.ci-ok b{display:block;font:600 18px/1.2 var(--display)}
+.ci-ok span{color:var(--ink-2)}
+.ci-bad{padding:12px;background:var(--bad-tint);color:var(--bad)!important}
+
+/* the projector screen: always dark, whatever the device theme */
+.display{position:fixed;inset:0;z-index:80;display:flex;flex-direction:column;background:#0b0e0c;color:#f1f4f2;padding:calc(18px + env(safe-area-inset-top,0px)) 28px calc(18px + env(safe-area-inset-bottom,0px));overflow:auto}
+body.displaying{overflow:hidden}
+.disp-top{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.disp-logo{height:48px;width:auto}
+.disp-actions{display:flex;gap:8px;flex-wrap:wrap}
+.display .btn{--b:#f1f4f2;--f:#000}
+.disp-main{flex:1;display:grid;grid-template-columns:minmax(260px,min(62vh,46vw)) 1fr;gap:5vw;align-items:center;max-width:1300px;width:100%;margin:0 auto}
+.disp-qr{background:#fff;padding:16px;clip-path:polygon(16px 0,100% 0,100% calc(100% - 16px),calc(100% - 16px) 100%,0 100%,0 16px)}
+.disp-qr .qr{display:block;width:100%;height:auto}
+.disp-qr p{color:#000;text-align:center;margin:40% 0}
+.disp-bar{height:6px;background:#e7ece9;margin-top:10px;overflow:hidden}
+.disp-bar i{display:block;height:100%;background:#14663b;transform-origin:left;transition:transform 1s linear}
+.disp-kicker{margin:0;font:600 18px/1 var(--display);color:#33a564;text-transform:uppercase;letter-spacing:.08em}
+.disp-info h1{margin:10px 0 18px;font:italic 700 clamp(32px,5vw,68px)/1.02 var(--display);text-transform:uppercase}
+.disp-how{font-size:clamp(17px,1.6vw,22px);color:#c3cbc6;max-width:30ch;margin:0 0 28px}
+.disp-code-l{margin:0;color:#8d9791;font-size:15px}
+.disp-code{margin:4px 0 26px;font:700 clamp(40px,5vw,72px)/1 var(--display);letter-spacing:.14em;color:#fff}
+.disp-count{margin:0;font-size:20px;color:#c3cbc6}
+.disp-count b{font:italic 700 44px/1 var(--display);color:#33a564;margin-right:6px}
+@media (max-width:760px){.disp-main{grid-template-columns:1fr;gap:20px;padding-top:12px}.disp-qr{max-width:420px;margin:0 auto;width:100%}.disp-how{display:none}}
 
 /* logo swap for dark mode (kept last so it wins) */
 .logo-dark{display:none}
@@ -546,11 +637,42 @@ function planComponentEdit(cur, next) {
 
 /*
   Request lifecycle
-    parts:            pending → approved (stock reserved) → issued (due date) → closed (returned)
+    parts:            pending → reviewing (optional) → approved (stock reserved) → issued (due date) → closed (returned)
                       consumable-only requests close straight from "issued"
     help / guidance:  pending → approved ("accepted") → closed
-    any time before hand-over: rejected / cancelled (reserved stock is released)
+    rejected / cancelled any time before hand-over; reserved stock is released.
+  The requester can edit or cancel only while "pending". Once the core team marks it "reviewing",
+  or approves it, only the core team can change it.
 */
+const OPEN_STATES = ['pending', 'reviewing'];
+
+// An item list, merged by part and checked against the inventory. Names and kinds always come
+// from the inventory: request documents are written by requesters, so their copies can't be trusted.
+function cleanLines(lines, comps) {
+  const merged = new Map();
+  for (const it of lines || []) {
+    if (!it || !it.componentId) continue;
+    const e = merged.get(it.componentId) || { qty: 0, name: it.name };
+    e.qty += Number(it.qty);
+    merged.set(it.componentId, e);
+  }
+  return [...merged].map(([id, e]) => {
+    const c = comps[id];
+    if (!c) throw new Error(`“${e.name || 'A part'}” isn’t in the inventory any more.`);
+    if (!Number.isInteger(e.qty) || e.qty < 1 || e.qty > 1000) throw new Error(`Invalid quantity for ${c.name}.`);
+    return { componentId: id, name: c.name, qty: e.qty, kind: c.kind === 'consumable' ? 'consumable' : 'returnable' };
+  });
+}
+const lineKey = lines => JSON.stringify((lines || []).map(l => [l.componentId, Number(l.qty)]).sort());
+// "3→2 × ESP32; removed Raspberry Pi; added 1 × Arduino Uno"
+function describeChange(before, after) {
+  const b = new Map((before || []).map(l => [l.componentId, l])), a = new Map((after || []).map(l => [l.componentId, l]));
+  const out = [];
+  for (const [id, l] of a) { const o = b.get(id); if (!o) out.push(`added ${l.qty} × ${l.name}`); else if (Number(o.qty) !== l.qty) out.push(`${o.qty}→${l.qty} × ${l.name}`); }
+  for (const [id, o] of b) if (!a.has(id)) out.push(`removed ${o.name}`);
+  return out.join('; ');
+}
+
 function planTransition(r, comps, action, extra = {}, actor = '') {
   const at = nowISO();
   const isParts = r.type === 'component';
@@ -559,41 +681,72 @@ function planTransition(r, comps, action, extra = {}, actor = '') {
   const cur = (id, k) => (patches[id] && patches[id][k] !== undefined ? patches[id][k] : comps[id][k]);
   const setP = (id, p) => { patches[id] = { ...(patches[id] || {}), ...p }; };
   const reqPatch = {};
-  let status;
+  let status, change = '';
+
+  // Moves stock from what is reserved now (before) to what should be reserved (after).
+  const reserve = (before, after) => {
+    const diff = {};
+    for (const l of before) diff[l.componentId] = (diff[l.componentId] || 0) - Number(l.qty);
+    for (const l of after) diff[l.componentId] = (diff[l.componentId] || 0) + Number(l.qty);
+    for (const [id, d] of Object.entries(diff)) {
+      if (!d || !comps[id]) continue; // a deleted part has nothing to give back
+      const left = cur(id, 'availableQty');
+      if (d > 0) need(left >= d, `Only ${left} × ${comps[id].name} available; this needs ${d} more.`);
+      setP(id, { availableQty: Math.min(cur(id, 'totalQty'), left - d) });
+    }
+  };
+  // Records the new item list, keeping the requester's original ask the first time it changes.
+  const setItems = lines => {
+    if (lineKey(lines) !== lineKey(r.items)) {
+      change = describeChange(r.items, lines);
+      if (!r.requestedItems) reqPatch.requestedItems = r.items || [];
+    }
+    reqPatch.items = lines;
+  };
+  const edited = () => cleanLines(extra.items || r.items, comps);
 
   switch (action) {
+    case 'review': {
+      need(r.status === 'pending', 'Only pending requests can be put under review.');
+      status = 'reviewing';
+      break;
+    }
+    case 'revise': {
+      need(isParts, 'Only parts requests have items to change.');
+      need([...OPEN_STATES, 'approved'].includes(r.status), 'This request can’t be changed any more.');
+      const lines = edited();
+      need(lines.length, 'Keep at least one part, or reject the request.');
+      if (r.status === 'approved') reserve(r.items || [], lines);
+      setItems(lines);
+      status = r.status === 'approved' ? 'approved' : 'reviewing';
+      break;
+    }
     case 'approve': {
-      need(r.status === 'pending', 'Only pending requests can be approved.');
+      need(OPEN_STATES.includes(r.status), 'Only pending requests can be approved.');
       if (isParts) {
-        // Merge duplicate lines and re-read name/kind from inventory: the request
-        // document was written by the requester, so its copies can’t be trusted.
-        const merged = {};
-        for (const it of r.items || []) merged[it.componentId] = (merged[it.componentId] || 0) + Number(it.qty);
-        const ids = Object.keys(merged);
-        need(ids.length > 0, 'This request has no parts in it.');
-        reqPatch.items = ids.map(id => {
-          const c = comps[id];
-          const qty = merged[id];
-          const label = ((r.items || []).find(i => i.componentId === id) || {}).name || 'A part';
-          need(c, `“${label}” isn’t in the inventory any more.`);
-          need(Number.isInteger(qty) && qty > 0 && qty <= 1000, `Invalid quantity for ${c.name}.`);
-          const left = cur(id, 'availableQty');
-          need(left >= qty, `Only ${left} × ${c.name} available; this request needs ${qty}.`);
-          setP(id, { availableQty: left - qty });
-          return { componentId: id, name: c.name, qty, kind: c.kind === 'consumable' ? 'consumable' : 'returnable' };
-        });
+        const lines = edited();
+        need(lines.length, 'Select at least one part, or reject the request.');
+        reserve([], lines);
+        setItems(lines);
       }
       status = 'approved';
       break;
     }
     case 'reject': {
-      need(r.status === 'pending', 'Only pending requests can be rejected.');
+      need(OPEN_STATES.includes(r.status), 'Only pending requests can be rejected.');
       status = 'rejected';
       break;
     }
     case 'issue': {
       need(isParts && r.status === 'approved', 'Only approved parts requests can be handed over.');
-      const returnable = (r.items || []).some(i => i.kind !== 'consumable');
+      let lines = r.items || [];
+      if (extra.items) {
+        lines = cleanLines(extra.items, comps);
+        need(lines.length, 'Hand over at least one part, or cancel the request.');
+        reserve(r.items || [], lines);
+        setItems(lines);
+      }
+      const returnable = lines.some(i => i.kind !== 'consumable');
       if (returnable) {
         need(/^\d{4}-\d{2}-\d{2}$/.test(extra.dueDate || ''), 'Pick a return date.');
         reqPatch.dueDate = extra.dueDate;
@@ -620,13 +773,8 @@ function planTransition(r, comps, action, extra = {}, actor = '') {
       break;
     }
     case 'cancel': {
-      need(r.status === 'pending' || r.status === 'approved', 'Only requests that haven’t been handed over can be cancelled.');
-      if (isParts && r.status === 'approved') {
-        for (const it of r.items || []) {
-          if (!comps[it.componentId]) continue;
-          setP(it.componentId, { availableQty: Math.min(cur(it.componentId, 'totalQty'), cur(it.componentId, 'availableQty') + it.qty) });
-        }
-      }
+      need([...OPEN_STATES, 'approved'].includes(r.status), 'Only requests that haven’t been handed over can be cancelled.');
+      if (isParts && r.status === 'approved') reserve(r.items || [], []);
       status = 'cancelled';
       break;
     }
@@ -644,10 +792,13 @@ function planTransition(r, comps, action, extra = {}, actor = '') {
   reqPatch.status = status;
   reqPatch.updatedAt = at;
   reqPatch.handledBy = actor;
-  reqPatch.history = [...(r.history || []), { status, by: actor, at, ...(note ? { note } : {}) }];
+  reqPatch.history = [...(r.history || []), { status, by: actor, at, ...(note ? { note } : {}), ...(change ? { change } : {}) }];
   return { reqPatch, compPatches: patches };
 }
 // </domain>
+
+// Fields set to SERVER_TIME are stamped by the server (Firebase) or the browser clock (preview).
+const SERVER_TIME = '__server_time__';
 
 /* =====================================================================
    Back end 1: Firebase (Google sign-in + Firestore). Used when CONFIG.firebase is filled.
@@ -667,6 +818,8 @@ async function makeFirebaseBackend() {
   const col = n => collection(db, n);
   const rows = snap => snap.docs.map(d => ({ id: d.id, ...d.data() }));
   const onErr = e => toast(friendly(e), 'err');
+  const withTime = data => Object.fromEntries(Object.entries(data).map(([k, v]) => [k, v === SERVER_TIME ? fs.serverTimestamp() : v]));
+  const plainDoc = d => { const o = { id: d.id }; for (const [k, v] of Object.entries(d.data())) o[k] = v && typeof v.toDate === 'function' ? v.toDate().toISOString() : v; return o; };
 
   return {
     demo: false,
@@ -685,7 +838,7 @@ async function makeFirebaseBackend() {
     },
     watchComponents(cb) { return onSnapshot(col('components'), s => cb(rows(s)), onErr); },
     async saveComponent(data, id) {
-      if (!id) { await addDoc(col('components'), newComponent(data)); return; }
+      if (!id) return (await addDoc(col('components'), newComponent(data))).id;
       await runTransaction(db, async tx => {
         const ref = doc(db, 'components', id);
         const s = await tx.get(ref);
@@ -695,11 +848,13 @@ async function makeFirebaseBackend() {
     },
     async deleteComponent(id) { await deleteDoc(doc(db, 'components', id)); },
     async bulkAddComponents(list) {
+      const ids = [];
       for (let i = 0; i < list.length; i += 400) {
         const b = writeBatch(db);
-        list.slice(i, i + 400).forEach(r => b.set(doc(col('components')), newComponent(r)));
+        list.slice(i, i + 400).forEach(r => { const ref = doc(col('components')); ids.push(ref.id); b.set(ref, newComponent(r)); });
         await b.commit();
       }
+      return ids;
     },
     watchMyRequests(email, cb) { return onSnapshot(query(col('requests'), where('requesterEmail', '==', email)), s => cb(rows(s)), onErr); },
     watchAllRequests(cb) { return onSnapshot(query(col('requests'), orderBy('createdAt', 'desc'), limit(500)), s => cb(rows(s)), onErr); },
@@ -714,7 +869,7 @@ async function makeFirebaseBackend() {
         if (!rs.exists()) throw new Error('That request no longer exists.');
         const r = rs.data();
         const comps = {};
-        for (const cid of [...new Set((r.items || []).map(i => i.componentId))]) {
+        for (const cid of [...new Set([...(r.items || []), ...((extra && extra.items) || [])].map(i => i.componentId).filter(Boolean))]) {
           const cs = await tx.get(doc(db, 'components', cid));
           if (cs.exists()) comps[cid] = cs.data();
         }
@@ -726,6 +881,24 @@ async function makeFirebaseBackend() {
     watchAdmins(cb) { return onSnapshot(col('admins'), s => cb(s.docs.map(d => ({ email: d.id, ...d.data() }))), onErr); },
     async addAdmin(email, actor) { await setDoc(doc(db, 'admins', email), { addedBy: actor, addedAt: nowISO() }); },
     async removeAdmin(email) { await deleteDoc(doc(db, 'admins', email)); },
+
+    // Generic helpers used by events, attendance, private remarks and site content.
+    // Timestamps come back as ISO strings so the rest of the app never sees Firestore types.
+    watchPath(path, cb, filter) {
+      const ref = collection(db, path);
+      return onSnapshot(filter ? query(ref, fs.where(filter[0], filter[1], filter[2])) : ref, s => cb(s.docs.map(plainDoc)), onErr);
+    },
+    async getPath(path) { const s = await getDoc(doc(db, path)); return s.exists() ? plainDoc(s) : null; },
+    async setPath(path, data, merge = false) { await setDoc(doc(db, path), withTime(data), { merge }); },
+    async addPath(path, data) { return (await addDoc(collection(db, path), withTime(data))).id; },
+    async delPath(path) { await deleteDoc(doc(db, path)); },
+    async batchWrite(ops) {
+      for (let i = 0; i < ops.length; i += 400) {
+        const b = writeBatch(db);
+        ops.slice(i, i + 400).forEach(o => (o.op === 'delete' ? b.delete(doc(db, o.path)) : b.set(doc(db, o.path), withTime(o.data), { merge: !!o.merge })));
+        await b.commit();
+      }
+    },
 
     // people: users/{email} holds the name and phone each person registers once
     async getProfile(email) { const s = await getDoc(doc(db, 'users', email)); return s.exists() ? s.data() : null; },
@@ -826,20 +999,43 @@ function seedData() {
     '202502210@dau.ac.in': { name: 'Kabir Desai (sample)', phone: '90000 00002', updatedAt: ago(24 * 30) },
     '202301077@dau.ac.in': { name: 'Ananya Iyer (sample)', phone: '', updatedAt: ago(24 * 40) },
   };
-  return { components, requests, admins, users, locations, locationPhotos: {} };
+  const att = (email, name, h, method = 'qr') => ({ name, studentId: email.split('@')[0], email, at: ago(h), method });
+  const x = {
+    'events/ev_workshop': { title: 'Arduino basics workshop', date: addDays(0), start: '18:00', end: '20:00', venue: 'LT-2', description: 'Blink to sensors in two hours. Bring a laptop with the Arduino IDE installed; boards are provided.', published: true, attendanceOpen: false, poster: '', attendeeCount: 0, createdAt: ago(24 * 6) },
+    'events/ev_drone': { title: 'Drone build night', date: addDays(7), start: '19:00', end: '22:00', venue: 'EHC lab', description: 'Assemble and tune the club quad with the SpeedyBee stack. Limited seats.', published: true, attendanceOpen: false, poster: '', attendeeCount: 0, createdAt: ago(24 * 3) },
+    'events/ev_meet': { title: 'Core team planning meet', date: addDays(2), start: '17:30', end: '', venue: 'EHC lab', description: '', published: false, attendanceOpen: false, poster: '', attendeeCount: 0, createdAt: ago(24) },
+    'events/ev_orient': { title: 'EHC orientation 2026', date: addDays(-60), start: '17:00', end: '18:30', venue: 'CEP auditorium', description: 'Meet the club, see past projects, sign up for teams.', published: true, attendanceOpen: false, poster: '', attendeeCount: 3, createdAt: ago(24 * 70) },
+    'events/ev_orient/attendance/202403322@dau.ac.in': att('202403322@dau.ac.in', 'Riya Shah (sample)', 24 * 60),
+    'events/ev_orient/attendance/202502210@dau.ac.in': att('202502210@dau.ac.in', 'Kabir Desai (sample)', 24 * 60 - 0.05),
+    'events/ev_orient/attendance/202301077@dau.ac.in': att('202301077@dau.ac.in', 'Ananya Iyer (sample)', 24 * 60 - 0.1, 'manual'),
+    'componentPrivate/c_uno': { remarks: 'Clones. Two have loose USB ports. Age at the stock count: 1 to 2.5 years.', rate: 170 },
+    'componentPrivate/c_rpi': { remarks: 'Pi 4 Model B, 4 GB. Locker key is with the convenor.', rate: 3500 },
+    'componentPrivate/c_a4988': { remarks: 'All four are out with the robotic arm team.', rate: 120 },
+    'componentPrivate/c_18650': { remarks: 'Store at 3.7 V. One cell swells slightly; keep an eye on it.', rate: 250 },
+    'requestPrivate/v6Jq1MsT9': { remark: 'Promised to return after the midsems. Has a spare Uno at home.' },
+  };
+  return { components, requests, admins, users, locations, locationPhotos: {}, x };
 }
 function makeDemoBackend() {
-  const KEY = 'ehc-inventory-preview-v3';
+  const KEY = 'ehc-inventory-preview-v4';
   const load = () => { try { const s = localStorage.getItem(KEY); return s ? JSON.parse(s) : null; } catch { return null; } };
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(db)); } catch { /* storage unavailable: preview still works in memory */ } };
   let db = load() || seedData();
   let user = null, authCb = () => {};
   const subs = new Set();
+  // Another preview tab changed the sample data (e.g. the check-in screen and a member tab): pick it up.
+  window.addEventListener('storage', e => { if (e.key === KEY && e.newValue) { try { db = JSON.parse(e.newValue); subs.forEach(f => f()); } catch { /* ignore a partial write */ } } });
   const clone = v => JSON.parse(JSON.stringify(v));
   const emit = () => { save(); subs.forEach(f => f()); };
   const watch = fn => { subs.add(fn); fn(); return () => subs.delete(fn); };
   const uid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
   const reqList = () => Object.entries(db.requests).map(([id, r]) => ({ id, ...clone(r) }));
+  const X = () => (db.x = db.x || {});
+  const parentOf = p => p.split('/').slice(0, -1).join('/');
+  const idOf = p => p.split('/').pop();
+  const stamp = data => Object.fromEntries(Object.entries(clone(data)).map(([k, v]) => [k, v === SERVER_TIME ? nowISO() : v]));
+  const putX = (path, data, merge) => { X()[path] = merge && X()[path] ? { ...X()[path], ...stamp(data) } : stamp(data); };
+  const matchFilter = (d, [k, op, v]) => (op === '==' ? d[k] === v : op === 'in' ? v.includes(d[k]) : true);
   return {
     demo: true,
     onAuth(cb) { authCb = cb; cb(user); },
@@ -852,11 +1048,12 @@ function makeDemoBackend() {
         const cur = db.components[id];
         if (!cur) throw new Error('That part no longer exists.');
         db.components[id] = { ...cur, ...planComponentEdit(cur, data) };
-      } else db.components[uid()] = newComponent(data);
+      } else { id = uid(); db.components[id] = newComponent(data); }
       emit();
+      return id;
     },
     async deleteComponent(id) { delete db.components[id]; emit(); },
-    async bulkAddComponents(list) { list.forEach(r => { db.components[uid()] = newComponent(r); }); emit(); },
+    async bulkAddComponents(list) { const ids = list.map(r => { const id = uid(); db.components[id] = newComponent(r); return id; }); emit(); return ids; },
     watchMyRequests(email, cb) { return watch(() => cb(reqList().filter(r => r.requesterEmail === email))); },
     watchAllRequests(cb) { return watch(() => cb(reqList())); },
     async createRequest(req) { const id = uid(); db.requests[id] = clone(req); emit(); return id; },
@@ -875,7 +1072,7 @@ function makeDemoBackend() {
       const r = db.requests[id];
       if (!r) throw new Error('That request no longer exists.');
       const comps = {};
-      (r.items || []).forEach(i => { if (db.components[i.componentId]) comps[i.componentId] = clone(db.components[i.componentId]); });
+      [...(r.items || []), ...((extra && extra.items) || [])].forEach(i => { if (db.components[i.componentId]) comps[i.componentId] = clone(db.components[i.componentId]); });
       const { reqPatch, compPatches } = planTransition(clone(r), comps, action, extra, actor);
       Object.assign(r, reqPatch);
       for (const [cid, p] of Object.entries(compPatches)) Object.assign(db.components[cid], p, { updatedAt: nowISO() });
@@ -884,6 +1081,14 @@ function makeDemoBackend() {
     watchAdmins(cb) { return watch(() => cb(Object.entries(db.admins).map(([email, a]) => ({ email, ...clone(a) })))); },
     async addAdmin(email, actor) { db.admins[email] = { addedBy: actor, addedAt: nowISO() }; emit(); },
     async removeAdmin(email) { delete db.admins[email]; emit(); },
+    watchPath(path, cb, filter) {
+      return watch(() => cb(Object.entries(X()).filter(([p, d]) => parentOf(p) === path && (!filter || matchFilter(d, filter))).map(([p, d]) => ({ id: idOf(p), ...clone(d) }))));
+    },
+    async getPath(path) { const d = X()[path]; return d ? { id: idOf(path), ...clone(d) } : null; },
+    async setPath(path, data, merge = false) { putX(path, data, merge); emit(); },
+    async addPath(path, data) { const id = uid(); putX(`${path}/${id}`, data, false); emit(); return id; },
+    async delPath(path) { delete X()[path]; emit(); },
+    async batchWrite(ops) { ops.forEach(o => (o.op === 'delete' ? delete X()[o.path] : putX(o.path, o.data, !!o.merge))); emit(); },
     async getProfile(email) { return db.users[email] ? clone(db.users[email]) : null; },
     async saveProfile(email, p) { db.users[email] = { name: p.name, phone: p.phone || '', updatedAt: nowISO() }; emit(); },
     watchUsers(cb) { return watch(() => cb(clone(db.users))); },
@@ -905,6 +1110,80 @@ function makeDemoBackend() {
 }
 
 /* =====================================================================
+   Small libraries kept inside this file so event check-in works even on poor venue Wi-Fi.
+   ===================================================================== */
+// QR code generator: qrcode-generator 1.4.4 by Kazuhiko Arase, MIT licence (see the comment inside).
+const qrcodeLib = (function () {
+  const define = undefined, module = undefined, exports = undefined; // keep its UMD wrapper quiet
+// Copyright (c) 2009 Kazuhiko Arase
+// Licensed under the MIT license:
+var qrcode=function(){var t=function(t,r){var e=t,n=g[r],o=null,i=0,a=null,u=[],f={},c=function(t,r){o=function(t){for(var r=new Array(t),e=0;e<t;e+=1){r[e]=new Array(t);for(var n=0;n<t;n+=1)r[e][n]=null}return r}(i=4*e+17),l(0,0),l(i-7,0),l(0,i-7),s(),h(),d(t,r),e>=7&&v(t),null==a&&(a=p(e,n,u)),w(a,r)},l=function(t,r){for(var e=-1;e<=7;e+=1)if(!(t+e<=-1||i<=t+e))for(var n=-1;n<=7;n+=1)r+n<=-1||i<=r+n||(o[t+e][r+n]=0<=e&&e<=6&&(0==n||6==n)||0<=n&&n<=6&&(0==e||6==e)||2<=e&&e<=4&&2<=n&&n<=4)},h=function(){for(var t=8;t<i-8;t+=1)null==o[t][6]&&(o[t][6]=t%2==0);for(var r=8;r<i-8;r+=1)null==o[6][r]&&(o[6][r]=r%2==0)},s=function(){for(var t=B.getPatternPosition(e),r=0;r<t.length;r+=1)for(var n=0;n<t.length;n+=1){var i=t[r],a=t[n];if(null==o[i][a])for(var u=-2;u<=2;u+=1)for(var f=-2;f<=2;f+=1)o[i+u][a+f]=-2==u||2==u||-2==f||2==f||0==u&&0==f}},v=function(t){for(var r=B.getBCHTypeNumber(e),n=0;n<18;n+=1){var a=!t&&1==(r>>n&1);o[Math.floor(n/3)][n%3+i-8-3]=a}for(n=0;n<18;n+=1){a=!t&&1==(r>>n&1);o[n%3+i-8-3][Math.floor(n/3)]=a}},d=function(t,r){for(var e=n<<3|r,a=B.getBCHTypeInfo(e),u=0;u<15;u+=1){var f=!t&&1==(a>>u&1);u<6?o[u][8]=f:u<8?o[u+1][8]=f:o[i-15+u][8]=f}for(u=0;u<15;u+=1){f=!t&&1==(a>>u&1);u<8?o[8][i-u-1]=f:u<9?o[8][15-u-1+1]=f:o[8][15-u-1]=f}o[i-8][8]=!t},w=function(t,r){for(var e=-1,n=i-1,a=7,u=0,f=B.getMaskFunction(r),c=i-1;c>0;c-=2)for(6==c&&(c-=1);;){for(var g=0;g<2;g+=1)if(null==o[n][c-g]){var l=!1;u<t.length&&(l=1==(t[u]>>>a&1)),f(n,c-g)&&(l=!l),o[n][c-g]=l,-1==(a-=1)&&(u+=1,a=7)}if((n+=e)<0||i<=n){n-=e,e=-e;break}}},p=function(t,r,e){for(var n=A.getRSBlocks(t,r),o=b(),i=0;i<e.length;i+=1){var a=e[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var u=0;for(i=0;i<n.length;i+=1)u+=n[i].dataCount;if(o.getLengthInBits()>8*u)throw"code length overflow. ("+o.getLengthInBits()+">"+8*u+")";for(o.getLengthInBits()+4<=8*u&&o.put(0,4);o.getLengthInBits()%8!=0;)o.putBit(!1);for(;!(o.getLengthInBits()>=8*u||(o.put(236,8),o.getLengthInBits()>=8*u));)o.put(17,8);return function(t,r){for(var e=0,n=0,o=0,i=new Array(r.length),a=new Array(r.length),u=0;u<r.length;u+=1){var f=r[u].dataCount,c=r[u].totalCount-f;n=Math.max(n,f),o=Math.max(o,c),i[u]=new Array(f);for(var g=0;g<i[u].length;g+=1)i[u][g]=255&t.getBuffer()[g+e];e+=f;var l=B.getErrorCorrectPolynomial(c),h=k(i[u],l.getLength()-1).mod(l);for(a[u]=new Array(l.getLength()-1),g=0;g<a[u].length;g+=1){var s=g+h.getLength()-a[u].length;a[u][g]=s>=0?h.getAt(s):0}}var v=0;for(g=0;g<r.length;g+=1)v+=r[g].totalCount;var d=new Array(v),w=0;for(g=0;g<n;g+=1)for(u=0;u<r.length;u+=1)g<i[u].length&&(d[w]=i[u][g],w+=1);for(g=0;g<o;g+=1)for(u=0;u<r.length;u+=1)g<a[u].length&&(d[w]=a[u][g],w+=1);return d}(o,n)};f.addData=function(t,r){var e=null;switch(r=r||"Byte"){case"Numeric":e=M(t);break;case"Alphanumeric":e=x(t);break;case"Byte":e=m(t);break;case"Kanji":e=L(t);break;default:throw"mode:"+r}u.push(e),a=null},f.isDark=function(t,r){if(t<0||i<=t||r<0||i<=r)throw t+","+r;return o[t][r]},f.getModuleCount=function(){return i},f.make=function(){if(e<1){for(var t=1;t<40;t++){for(var r=A.getRSBlocks(t,n),o=b(),i=0;i<u.length;i++){var a=u[i];o.put(a.getMode(),4),o.put(a.getLength(),B.getLengthInBits(a.getMode(),t)),a.write(o)}var g=0;for(i=0;i<r.length;i++)g+=r[i].dataCount;if(o.getLengthInBits()<=8*g)break}e=t}c(!1,function(){for(var t=0,r=0,e=0;e<8;e+=1){c(!0,e);var n=B.getLostPoint(f);(0==e||t>n)&&(t=n,r=e)}return r}())},f.createTableTag=function(t,r){t=t||2;var e="";e+='<table style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: "+(r=void 0===r?4*t:r)+"px;",e+='">',e+="<tbody>";for(var n=0;n<f.getModuleCount();n+=1){e+="<tr>";for(var o=0;o<f.getModuleCount();o+=1)e+='<td style="',e+=" border-width: 0px; border-style: none;",e+=" border-collapse: collapse;",e+=" padding: 0px; margin: 0px;",e+=" width: "+t+"px;",e+=" height: "+t+"px;",e+=" background-color: ",e+=f.isDark(n,o)?"#000000":"#ffffff",e+=";",e+='"/>';e+="</tr>"}return e+="</tbody>",e+="</table>"},f.createSvgTag=function(t,r,e,n){var o={};"object"==typeof arguments[0]&&(t=(o=arguments[0]).cellSize,r=o.margin,e=o.alt,n=o.title),t=t||2,r=void 0===r?4*t:r,(e="string"==typeof e?{text:e}:e||{}).text=e.text||null,e.id=e.text?e.id||"qrcode-description":null,(n="string"==typeof n?{text:n}:n||{}).text=n.text||null,n.id=n.text?n.id||"qrcode-title":null;var i,a,u,c,g=f.getModuleCount()*t+2*r,l="";for(c="l"+t+",0 0,"+t+" -"+t+",0 0,-"+t+"z ",l+='<svg version="1.1" xmlns="http://www.w3.org/2000/svg"',l+=o.scalable?"":' width="'+g+'px" height="'+g+'px"',l+=' viewBox="0 0 '+g+" "+g+'" ',l+=' preserveAspectRatio="xMinYMin meet"',l+=n.text||e.text?' role="img" aria-labelledby="'+y([n.id,e.id].join(" ").trim())+'"':"",l+=">",l+=n.text?'<title id="'+y(n.id)+'">'+y(n.text)+"</title>":"",l+=e.text?'<description id="'+y(e.id)+'">'+y(e.text)+"</description>":"",l+='<rect width="100%" height="100%" fill="white" cx="0" cy="0"/>',l+='<path d="',a=0;a<f.getModuleCount();a+=1)for(u=a*t+r,i=0;i<f.getModuleCount();i+=1)f.isDark(a,i)&&(l+="M"+(i*t+r)+","+u+c);return l+='" stroke="transparent" fill="black"/>',l+="</svg>"},f.createDataURL=function(t,r){t=t||2,r=void 0===r?4*t:r;var e=f.getModuleCount()*t+2*r,n=r,o=e-r;return I(e,e,(function(r,e){if(n<=r&&r<o&&n<=e&&e<o){var i=Math.floor((r-n)/t),a=Math.floor((e-n)/t);return f.isDark(a,i)?0:1}return 1}))},f.createImgTag=function(t,r,e){t=t||2,r=void 0===r?4*t:r;var n=f.getModuleCount()*t+2*r,o="";return o+="<img",o+=' src="',o+=f.createDataURL(t,r),o+='"',o+=' width="',o+=n,o+='"',o+=' height="',o+=n,o+='"',e&&(o+=' alt="',o+=y(e),o+='"'),o+="/>"};var y=function(t){for(var r="",e=0;e<t.length;e+=1){var n=t.charAt(e);switch(n){case"<":r+="&lt;";break;case">":r+="&gt;";break;case"&":r+="&amp;";break;case'"':r+="&quot;";break;default:r+=n}}return r};return f.createASCII=function(t,r){if((t=t||1)<2)return function(t){t=void 0===t?2:t;var r,e,n,o,i,a=1*f.getModuleCount()+2*t,u=t,c=a-t,g={"██":"█","█ ":"▀"," █":"▄","  ":" "},l={"██":"▀","█ ":"▀"," █":" ","  ":" "},h="";for(r=0;r<a;r+=2){for(n=Math.floor((r-u)/1),o=Math.floor((r+1-u)/1),e=0;e<a;e+=1)i="█",u<=e&&e<c&&u<=r&&r<c&&f.isDark(n,Math.floor((e-u)/1))&&(i=" "),u<=e&&e<c&&u<=r+1&&r+1<c&&f.isDark(o,Math.floor((e-u)/1))?i+=" ":i+="█",h+=t<1&&r+1>=c?l[i]:g[i];h+="\n"}return a%2&&t>0?h.substring(0,h.length-a-1)+Array(a+1).join("▀"):h.substring(0,h.length-1)}(r);t-=1,r=void 0===r?2*t:r;var e,n,o,i,a=f.getModuleCount()*t+2*r,u=r,c=a-r,g=Array(t+1).join("██"),l=Array(t+1).join("  "),h="",s="";for(e=0;e<a;e+=1){for(o=Math.floor((e-u)/t),s="",n=0;n<a;n+=1)i=1,u<=n&&n<c&&u<=e&&e<c&&f.isDark(o,Math.floor((n-u)/t))&&(i=0),s+=i?g:l;for(o=0;o<t;o+=1)h+=s+"\n"}return h.substring(0,h.length-1)},f.renderTo2dContext=function(t,r){r=r||2;for(var e=f.getModuleCount(),n=0;n<e;n++)for(var o=0;o<e;o++)t.fillStyle=f.isDark(n,o)?"black":"white",t.fillRect(n*r,o*r,r,r)},f};t.stringToBytes=(t.stringToBytesFuncs={default:function(t){for(var r=[],e=0;e<t.length;e+=1){var n=t.charCodeAt(e);r.push(255&n)}return r}}).default,t.createStringToBytes=function(t,r){var e=function(){for(var e=S(t),n=function(){var t=e.read();if(-1==t)throw"eof";return t},o=0,i={};;){var a=e.read();if(-1==a)break;var u=n(),f=n()<<8|n();i[String.fromCharCode(a<<8|u)]=f,o+=1}if(o!=r)throw o+" != "+r;return i}(),n="?".charCodeAt(0);return function(t){for(var r=[],o=0;o<t.length;o+=1){var i=t.charCodeAt(o);if(i<128)r.push(i);else{var a=e[t.charAt(o)];"number"==typeof a?(255&a)==a?r.push(a):(r.push(a>>>8),r.push(255&a)):r.push(n)}}return r}};var r,e,n,o,i,a=1,u=2,f=4,c=8,g={L:1,M:0,Q:3,H:2},l=0,h=1,s=2,v=3,d=4,w=5,p=6,y=7,B=(r=[[],[6,18],[6,22],[6,26],[6,30],[6,34],[6,22,38],[6,24,42],[6,26,46],[6,28,50],[6,30,54],[6,32,58],[6,34,62],[6,26,46,66],[6,26,48,70],[6,26,50,74],[6,30,54,78],[6,30,56,82],[6,30,58,86],[6,34,62,90],[6,28,50,72,94],[6,26,50,74,98],[6,30,54,78,102],[6,28,54,80,106],[6,32,58,84,110],[6,30,58,86,114],[6,34,62,90,118],[6,26,50,74,98,122],[6,30,54,78,102,126],[6,26,52,78,104,130],[6,30,56,82,108,134],[6,34,60,86,112,138],[6,30,58,86,114,142],[6,34,62,90,118,146],[6,30,54,78,102,126,150],[6,24,50,76,102,128,154],[6,28,54,80,106,132,158],[6,32,58,84,110,136,162],[6,26,54,82,110,138,166],[6,30,58,86,114,142,170]],e=1335,n=7973,i=function(t){for(var r=0;0!=t;)r+=1,t>>>=1;return r},(o={}).getBCHTypeInfo=function(t){for(var r=t<<10;i(r)-i(e)>=0;)r^=e<<i(r)-i(e);return 21522^(t<<10|r)},o.getBCHTypeNumber=function(t){for(var r=t<<12;i(r)-i(n)>=0;)r^=n<<i(r)-i(n);return t<<12|r},o.getPatternPosition=function(t){return r[t-1]},o.getMaskFunction=function(t){switch(t){case l:return function(t,r){return(t+r)%2==0};case h:return function(t,r){return t%2==0};case s:return function(t,r){return r%3==0};case v:return function(t,r){return(t+r)%3==0};case d:return function(t,r){return(Math.floor(t/2)+Math.floor(r/3))%2==0};case w:return function(t,r){return t*r%2+t*r%3==0};case p:return function(t,r){return(t*r%2+t*r%3)%2==0};case y:return function(t,r){return(t*r%3+(t+r)%2)%2==0};default:throw"bad maskPattern:"+t}},o.getErrorCorrectPolynomial=function(t){for(var r=k([1],0),e=0;e<t;e+=1)r=r.multiply(k([1,C.gexp(e)],0));return r},o.getLengthInBits=function(t,r){if(1<=r&&r<10)switch(t){case a:return 10;case u:return 9;case f:case c:return 8;default:throw"mode:"+t}else if(r<27)switch(t){case a:return 12;case u:return 11;case f:return 16;case c:return 10;default:throw"mode:"+t}else{if(!(r<41))throw"type:"+r;switch(t){case a:return 14;case u:return 13;case f:return 16;case c:return 12;default:throw"mode:"+t}}},o.getLostPoint=function(t){for(var r=t.getModuleCount(),e=0,n=0;n<r;n+=1)for(var o=0;o<r;o+=1){for(var i=0,a=t.isDark(n,o),u=-1;u<=1;u+=1)if(!(n+u<0||r<=n+u))for(var f=-1;f<=1;f+=1)o+f<0||r<=o+f||0==u&&0==f||a==t.isDark(n+u,o+f)&&(i+=1);i>5&&(e+=3+i-5)}for(n=0;n<r-1;n+=1)for(o=0;o<r-1;o+=1){var c=0;t.isDark(n,o)&&(c+=1),t.isDark(n+1,o)&&(c+=1),t.isDark(n,o+1)&&(c+=1),t.isDark(n+1,o+1)&&(c+=1),0!=c&&4!=c||(e+=3)}for(n=0;n<r;n+=1)for(o=0;o<r-6;o+=1)t.isDark(n,o)&&!t.isDark(n,o+1)&&t.isDark(n,o+2)&&t.isDark(n,o+3)&&t.isDark(n,o+4)&&!t.isDark(n,o+5)&&t.isDark(n,o+6)&&(e+=40);for(o=0;o<r;o+=1)for(n=0;n<r-6;n+=1)t.isDark(n,o)&&!t.isDark(n+1,o)&&t.isDark(n+2,o)&&t.isDark(n+3,o)&&t.isDark(n+4,o)&&!t.isDark(n+5,o)&&t.isDark(n+6,o)&&(e+=40);var g=0;for(o=0;o<r;o+=1)for(n=0;n<r;n+=1)t.isDark(n,o)&&(g+=1);return e+=Math.abs(100*g/r/r-50)/5*10},o),C=function(){for(var t=new Array(256),r=new Array(256),e=0;e<8;e+=1)t[e]=1<<e;for(e=8;e<256;e+=1)t[e]=t[e-4]^t[e-5]^t[e-6]^t[e-8];for(e=0;e<255;e+=1)r[t[e]]=e;var n={glog:function(t){if(t<1)throw"glog("+t+")";return r[t]},gexp:function(r){for(;r<0;)r+=255;for(;r>=256;)r-=255;return t[r]}};return n}();function k(t,r){if(void 0===t.length)throw t.length+"/"+r;var e=function(){for(var e=0;e<t.length&&0==t[e];)e+=1;for(var n=new Array(t.length-e+r),o=0;o<t.length-e;o+=1)n[o]=t[o+e];return n}(),n={getAt:function(t){return e[t]},getLength:function(){return e.length},multiply:function(t){for(var r=new Array(n.getLength()+t.getLength()-1),e=0;e<n.getLength();e+=1)for(var o=0;o<t.getLength();o+=1)r[e+o]^=C.gexp(C.glog(n.getAt(e))+C.glog(t.getAt(o)));return k(r,0)},mod:function(t){if(n.getLength()-t.getLength()<0)return n;for(var r=C.glog(n.getAt(0))-C.glog(t.getAt(0)),e=new Array(n.getLength()),o=0;o<n.getLength();o+=1)e[o]=n.getAt(o);for(o=0;o<t.getLength();o+=1)e[o]^=C.gexp(C.glog(t.getAt(o))+r);return k(e,0).mod(t)}};return n}var A=function(){var t=[[1,26,19],[1,26,16],[1,26,13],[1,26,9],[1,44,34],[1,44,28],[1,44,22],[1,44,16],[1,70,55],[1,70,44],[2,35,17],[2,35,13],[1,100,80],[2,50,32],[2,50,24],[4,25,9],[1,134,108],[2,67,43],[2,33,15,2,34,16],[2,33,11,2,34,12],[2,86,68],[4,43,27],[4,43,19],[4,43,15],[2,98,78],[4,49,31],[2,32,14,4,33,15],[4,39,13,1,40,14],[2,121,97],[2,60,38,2,61,39],[4,40,18,2,41,19],[4,40,14,2,41,15],[2,146,116],[3,58,36,2,59,37],[4,36,16,4,37,17],[4,36,12,4,37,13],[2,86,68,2,87,69],[4,69,43,1,70,44],[6,43,19,2,44,20],[6,43,15,2,44,16],[4,101,81],[1,80,50,4,81,51],[4,50,22,4,51,23],[3,36,12,8,37,13],[2,116,92,2,117,93],[6,58,36,2,59,37],[4,46,20,6,47,21],[7,42,14,4,43,15],[4,133,107],[8,59,37,1,60,38],[8,44,20,4,45,21],[12,33,11,4,34,12],[3,145,115,1,146,116],[4,64,40,5,65,41],[11,36,16,5,37,17],[11,36,12,5,37,13],[5,109,87,1,110,88],[5,65,41,5,66,42],[5,54,24,7,55,25],[11,36,12,7,37,13],[5,122,98,1,123,99],[7,73,45,3,74,46],[15,43,19,2,44,20],[3,45,15,13,46,16],[1,135,107,5,136,108],[10,74,46,1,75,47],[1,50,22,15,51,23],[2,42,14,17,43,15],[5,150,120,1,151,121],[9,69,43,4,70,44],[17,50,22,1,51,23],[2,42,14,19,43,15],[3,141,113,4,142,114],[3,70,44,11,71,45],[17,47,21,4,48,22],[9,39,13,16,40,14],[3,135,107,5,136,108],[3,67,41,13,68,42],[15,54,24,5,55,25],[15,43,15,10,44,16],[4,144,116,4,145,117],[17,68,42],[17,50,22,6,51,23],[19,46,16,6,47,17],[2,139,111,7,140,112],[17,74,46],[7,54,24,16,55,25],[34,37,13],[4,151,121,5,152,122],[4,75,47,14,76,48],[11,54,24,14,55,25],[16,45,15,14,46,16],[6,147,117,4,148,118],[6,73,45,14,74,46],[11,54,24,16,55,25],[30,46,16,2,47,17],[8,132,106,4,133,107],[8,75,47,13,76,48],[7,54,24,22,55,25],[22,45,15,13,46,16],[10,142,114,2,143,115],[19,74,46,4,75,47],[28,50,22,6,51,23],[33,46,16,4,47,17],[8,152,122,4,153,123],[22,73,45,3,74,46],[8,53,23,26,54,24],[12,45,15,28,46,16],[3,147,117,10,148,118],[3,73,45,23,74,46],[4,54,24,31,55,25],[11,45,15,31,46,16],[7,146,116,7,147,117],[21,73,45,7,74,46],[1,53,23,37,54,24],[19,45,15,26,46,16],[5,145,115,10,146,116],[19,75,47,10,76,48],[15,54,24,25,55,25],[23,45,15,25,46,16],[13,145,115,3,146,116],[2,74,46,29,75,47],[42,54,24,1,55,25],[23,45,15,28,46,16],[17,145,115],[10,74,46,23,75,47],[10,54,24,35,55,25],[19,45,15,35,46,16],[17,145,115,1,146,116],[14,74,46,21,75,47],[29,54,24,19,55,25],[11,45,15,46,46,16],[13,145,115,6,146,116],[14,74,46,23,75,47],[44,54,24,7,55,25],[59,46,16,1,47,17],[12,151,121,7,152,122],[12,75,47,26,76,48],[39,54,24,14,55,25],[22,45,15,41,46,16],[6,151,121,14,152,122],[6,75,47,34,76,48],[46,54,24,10,55,25],[2,45,15,64,46,16],[17,152,122,4,153,123],[29,74,46,14,75,47],[49,54,24,10,55,25],[24,45,15,46,46,16],[4,152,122,18,153,123],[13,74,46,32,75,47],[48,54,24,14,55,25],[42,45,15,32,46,16],[20,147,117,4,148,118],[40,75,47,7,76,48],[43,54,24,22,55,25],[10,45,15,67,46,16],[19,148,118,6,149,119],[18,75,47,31,76,48],[34,54,24,34,55,25],[20,45,15,61,46,16]],r=function(t,r){var e={};return e.totalCount=t,e.dataCount=r,e},e={};return e.getRSBlocks=function(e,n){var o=function(r,e){switch(e){case g.L:return t[4*(r-1)+0];case g.M:return t[4*(r-1)+1];case g.Q:return t[4*(r-1)+2];case g.H:return t[4*(r-1)+3];default:return}}(e,n);if(void 0===o)throw"bad rs block @ typeNumber:"+e+"/errorCorrectionLevel:"+n;for(var i=o.length/3,a=[],u=0;u<i;u+=1)for(var f=o[3*u+0],c=o[3*u+1],l=o[3*u+2],h=0;h<f;h+=1)a.push(r(c,l));return a},e}(),b=function(){var t=[],r=0,e={getBuffer:function(){return t},getAt:function(r){var e=Math.floor(r/8);return 1==(t[e]>>>7-r%8&1)},put:function(t,r){for(var n=0;n<r;n+=1)e.putBit(1==(t>>>r-n-1&1))},getLengthInBits:function(){return r},putBit:function(e){var n=Math.floor(r/8);t.length<=n&&t.push(0),e&&(t[n]|=128>>>r%8),r+=1}};return e},M=function(t){var r=a,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+2<r.length;)t.put(o(r.substring(n,n+3)),10),n+=3;n<r.length&&(r.length-n==1?t.put(o(r.substring(n,n+1)),4):r.length-n==2&&t.put(o(r.substring(n,n+2)),7))}},o=function(t){for(var r=0,e=0;e<t.length;e+=1)r=10*r+i(t.charAt(e));return r},i=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);throw"illegal char :"+t};return n},x=function(t){var r=u,e=t,n={getMode:function(){return r},getLength:function(t){return e.length},write:function(t){for(var r=e,n=0;n+1<r.length;)t.put(45*o(r.charAt(n))+o(r.charAt(n+1)),11),n+=2;n<r.length&&t.put(o(r.charAt(n)),6)}},o=function(t){if("0"<=t&&t<="9")return t.charCodeAt(0)-"0".charCodeAt(0);if("A"<=t&&t<="Z")return t.charCodeAt(0)-"A".charCodeAt(0)+10;switch(t){case" ":return 36;case"$":return 37;case"%":return 38;case"*":return 39;case"+":return 40;case"-":return 41;case".":return 42;case"/":return 43;case":":return 44;default:throw"illegal char :"+t}};return n},m=function(r){var e=f,n=t.stringToBytes(r),o={getMode:function(){return e},getLength:function(t){return n.length},write:function(t){for(var r=0;r<n.length;r+=1)t.put(n[r],8)}};return o},L=function(r){var e=c,n=t.stringToBytesFuncs.SJIS;if(!n)throw"sjis not supported.";!function(t,r){var e=n("友");if(2!=e.length||38726!=(e[0]<<8|e[1]))throw"sjis not supported."}();var o=n(r),i={getMode:function(){return e},getLength:function(t){return~~(o.length/2)},write:function(t){for(var r=o,e=0;e+1<r.length;){var n=(255&r[e])<<8|255&r[e+1];if(33088<=n&&n<=40956)n-=33088;else{if(!(57408<=n&&n<=60351))throw"illegal char at "+(e+1)+"/"+n;n-=49472}n=192*(n>>>8&255)+(255&n),t.put(n,13),e+=2}if(e<r.length)throw"illegal char at "+(e+1)}};return i},D=function(){var t=[],r={writeByte:function(r){t.push(255&r)},writeShort:function(t){r.writeByte(t),r.writeByte(t>>>8)},writeBytes:function(t,e,n){e=e||0,n=n||t.length;for(var o=0;o<n;o+=1)r.writeByte(t[o+e])},writeString:function(t){for(var e=0;e<t.length;e+=1)r.writeByte(t.charCodeAt(e))},toByteArray:function(){return t},toString:function(){var r="";r+="[";for(var e=0;e<t.length;e+=1)e>0&&(r+=","),r+=t[e];return r+="]"}};return r},S=function(t){var r=t,e=0,n=0,o=0,i={read:function(){for(;o<8;){if(e>=r.length){if(0==o)return-1;throw"unexpected end of file./"+o}var t=r.charAt(e);if(e+=1,"="==t)return o=0,-1;t.match(/^\s$/)||(n=n<<6|a(t.charCodeAt(0)),o+=6)}var i=n>>>o-8&255;return o-=8,i}},a=function(t){if(65<=t&&t<=90)return t-65;if(97<=t&&t<=122)return t-97+26;if(48<=t&&t<=57)return t-48+52;if(43==t)return 62;if(47==t)return 63;throw"c:"+t};return i},I=function(t,r,e){for(var n=function(t,r){var e=t,n=r,o=new Array(t*r),i={setPixel:function(t,r,n){o[r*e+t]=n},write:function(t){t.writeString("GIF87a"),t.writeShort(e),t.writeShort(n),t.writeByte(128),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(0),t.writeByte(255),t.writeByte(255),t.writeByte(255),t.writeString(","),t.writeShort(0),t.writeShort(0),t.writeShort(e),t.writeShort(n),t.writeByte(0);var r=a(2);t.writeByte(2);for(var o=0;r.length-o>255;)t.writeByte(255),t.writeBytes(r,o,255),o+=255;t.writeByte(r.length-o),t.writeBytes(r,o,r.length-o),t.writeByte(0),t.writeString(";")}},a=function(t){for(var r=1<<t,e=1+(1<<t),n=t+1,i=u(),a=0;a<r;a+=1)i.add(String.fromCharCode(a));i.add(String.fromCharCode(r)),i.add(String.fromCharCode(e));var f,c,g,l=D(),h=(f=l,c=0,g=0,{write:function(t,r){if(t>>>r!=0)throw"length over";for(;c+r>=8;)f.writeByte(255&(t<<c|g)),r-=8-c,t>>>=8-c,g=0,c=0;g|=t<<c,c+=r},flush:function(){c>0&&f.writeByte(g)}});h.write(r,n);var s=0,v=String.fromCharCode(o[s]);for(s+=1;s<o.length;){var d=String.fromCharCode(o[s]);s+=1,i.contains(v+d)?v+=d:(h.write(i.indexOf(v),n),i.size()<4095&&(i.size()==1<<n&&(n+=1),i.add(v+d)),v=d)}return h.write(i.indexOf(v),n),h.write(e,n),h.flush(),l.toByteArray()},u=function(){var t={},r=0,e={add:function(n){if(e.contains(n))throw"dup key:"+n;t[n]=r,r+=1},size:function(){return r},indexOf:function(r){return t[r]},contains:function(r){return void 0!==t[r]}};return e};return i}(t,r),o=0;o<r;o+=1)for(var i=0;i<t;i+=1)n.setPixel(i,o,e(i,o));var a=D();n.write(a);for(var u=function(){var t=0,r=0,e=0,n="",o={},i=function(t){n+=String.fromCharCode(a(63&t))},a=function(t){if(t<0);else{if(t<26)return 65+t;if(t<52)return t-26+97;if(t<62)return t-52+48;if(62==t)return 43;if(63==t)return 47}throw"n:"+t};return o.writeByte=function(n){for(t=t<<8|255&n,r+=8,e+=1;r>=6;)i(t>>>r-6),r-=6},o.flush=function(){if(r>0&&(i(t<<6-r),t=0,r=0),e%3!=0)for(var o=3-e%3,a=0;a<o;a+=1)n+="="},o.toString=function(){return n},o}(),f=a.toByteArray(),c=0;c<f.length;c+=1)u.writeByte(f[c]);return u.flush(),"data:image/gif;base64,"+u};return t}();qrcode.stringToBytesFuncs["UTF-8"]=function(t){return function(t){for(var r=[],e=0;e<t.length;e++){var n=t.charCodeAt(e);n<128?r.push(n):n<2048?r.push(192|n>>6,128|63&n):n<55296||n>=57344?r.push(224|n>>12,128|n>>6&63,128|63&n):(e++,n=65536+((1023&n)<<10|1023&t.charCodeAt(e)),r.push(240|n>>18,128|n>>12&63,128|n>>6&63,128|63&n))}return r}(t)},function(t){"function"==typeof define&&define.amd?define([],t):"object"==typeof exports&&(module.exports=t())}((function(){return qrcode}));
+  return qrcode;
+})();
+// A QR code as crisp SVG (black squares on white), sized by CSS.
+function qrSVG(text) {
+  const q = qrcodeLib(0, 'M');
+  q.addData(text);
+  q.make();
+  const n = q.getModuleCount(), m = 4;
+  let d = '';
+  for (let r = 0; r < n; r++) for (let c = 0; c < n; c++) if (q.isDark(r, c)) d += `M${c + m} ${r + m}h1v1h-1z`;
+  return `<svg class="qr" viewBox="0 0 ${n + 2 * m} ${n + 2 * m}" shape-rendering="crispEdges" role="img" aria-label="Check-in QR code"><rect width="100%" height="100%" fill="#fff"/><path d="${d}" fill="#000"/></svg>`;
+}
+
+// Minimal Excel (.xlsx) writer: one sheet, bold header row, frozen header, sized columns.
+// An .xlsx is a zip of XML files; this stores them uncompressed, which Excel, Sheets and LibreOffice all open.
+const CRC_TABLE = (() => { const t = new Uint32Array(256); for (let n = 0; n < 256; n++) { let c = n; for (let k = 0; k < 8; k++) c = c & 1 ? 0xEDB88320 ^ (c >>> 1) : c >>> 1; t[n] = c >>> 0; } return t; })();
+function crc32(data) { let c = 0xFFFFFFFF; for (let i = 0; i < data.length; i++) c = CRC_TABLE[(c ^ data[i]) & 0xFF] ^ (c >>> 8); return (c ^ 0xFFFFFFFF) >>> 0; }
+function zipStored(files) {
+  const enc = new TextEncoder(), parts = [], central = [];
+  let offset = 0;
+  for (const f of files) {
+    const name = enc.encode(f.name), data = enc.encode(f.text), crc = crc32(data);
+    const head = new DataView(new ArrayBuffer(30));
+    [[0, 0x04034b50, 4], [4, 20, 2], [6, 0x0800, 2], [8, 0, 2], [10, 0, 2], [12, 0x21, 2], [14, crc, 4], [18, data.length, 4], [22, data.length, 4], [26, name.length, 2], [28, 0, 2]]
+      .forEach(([o, v, w]) => (w === 4 ? head.setUint32(o, v, true) : head.setUint16(o, v, true)));
+    parts.push(new Uint8Array(head.buffer), name, data);
+    const cen = new DataView(new ArrayBuffer(46));
+    [[0, 0x02014b50, 4], [4, 20, 2], [6, 20, 2], [8, 0x0800, 2], [10, 0, 2], [12, 0, 2], [14, 0x21, 2], [16, crc, 4], [20, data.length, 4], [24, data.length, 4], [28, name.length, 2], [30, 0, 2], [32, 0, 2], [34, 0, 2], [36, 0, 2], [38, 0, 4], [42, offset, 4]]
+      .forEach(([o, v, w]) => (w === 4 ? cen.setUint32(o, v, true) : cen.setUint16(o, v, true)));
+    central.push(new Uint8Array(cen.buffer), name);
+    offset += 30 + name.length + data.length;
+  }
+  const size = central.reduce((a, b) => a + b.length, 0);
+  const end = new DataView(new ArrayBuffer(22));
+  [[0, 0x06054b50, 4], [8, files.length, 2], [10, files.length, 2], [12, size, 4], [16, offset, 4]].forEach(([o, v, w]) => (w === 4 ? end.setUint32(o, v, true) : end.setUint16(o, v, true)));
+  return new Blob([...parts, ...central, new Uint8Array(end.buffer)], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+}
+function xlsxBlob(sheetName, rows) {
+  const x = v => String(v ?? '').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g, '').replace(/[&<>"]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[ch]));
+  const colName = n => { let s = ''; for (n += 1; n; n = Math.floor((n - 1) / 26)) s = String.fromCharCode(65 + ((n - 1) % 26)) + s; return s; };
+  const cell = (v, r, c) => {
+    const ref = colName(c) + (r + 1), style = r === 0 ? ' s="1"' : '';
+    return typeof v === 'number' && Number.isFinite(v) ? `<c r="${ref}"${style}><v>${v}</v></c>` : `<c r="${ref}" t="inlineStr"${style}><is><t xml:space="preserve">${x(v)}</t></is></c>`;
+  };
+  const body = rows.map((row, r) => `<row r="${r + 1}">${row.map((v, c) => cell(v, r, c)).join('')}</row>`).join('');
+  const widths = (rows[0] || []).map((_, c) => Math.min(60, Math.max(8, ...rows.map(row => String(row[c] ?? '').length + 2))));
+  const safeName = (String(sheetName).replace(/[\[\]:*?/\\]/g, ' ').trim() || 'Sheet1').slice(0, 31);
+  const XML = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>';
+  const NS = 'http://schemas.openxmlformats.org';
+  return zipStored([
+    { name: '[Content_Types].xml', text: `${XML}<Types xmlns="${NS}/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/><Override PartName="/xl/worksheets/sheet1.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/><Override PartName="/xl/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.styles+xml"/></Types>` },
+    { name: '_rels/.rels', text: `${XML}<Relationships xmlns="${NS}/package/2006/relationships"><Relationship Id="rId1" Type="${NS}/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>` },
+    { name: 'xl/workbook.xml', text: `${XML}<workbook xmlns="${NS}/spreadsheetml/2006/main" xmlns:r="${NS}/officeDocument/2006/relationships"><sheets><sheet name="${x(safeName)}" sheetId="1" r:id="rId1"/></sheets></workbook>` },
+    { name: 'xl/_rels/workbook.xml.rels', text: `${XML}<Relationships xmlns="${NS}/package/2006/relationships"><Relationship Id="rId1" Type="${NS}/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet1.xml"/><Relationship Id="rId2" Type="${NS}/officeDocument/2006/relationships/styles" Target="styles.xml"/></Relationships>` },
+    { name: 'xl/styles.xml', text: `${XML}<styleSheet xmlns="${NS}/spreadsheetml/2006/main"><fonts count="2"><font><sz val="11"/><name val="Calibri"/></font><font><b/><sz val="11"/><name val="Calibri"/></font></fonts><fills count="2"><fill><patternFill patternType="none"/></fill><fill><patternFill patternType="gray125"/></fill></fills><borders count="1"><border><left/><right/><top/><bottom/><diagonal/></border></borders><cellStyleXfs count="1"><xf numFmtId="0" fontId="0" fillId="0" borderId="0"/></cellStyleXfs><cellXfs count="2"><xf numFmtId="0" fontId="0" fillId="0" borderId="0" xfId="0"/><xf numFmtId="0" fontId="1" fillId="0" borderId="0" xfId="0" applyFont="1"/></cellXfs><cellStyles count="1"><cellStyle name="Normal" xfId="0" builtinId="0"/></cellStyles></styleSheet>` },
+    { name: 'xl/worksheets/sheet1.xml', text: `${XML}<worksheet xmlns="${NS}/spreadsheetml/2006/main"><sheetViews><sheetView workbookViewId="0"><pane ySplit="1" topLeftCell="A2" activePane="bottomLeft" state="frozen"/></sheetView></sheetViews><cols>${widths.map((w, c) => `<col min="${c + 1}" max="${c + 1}" width="${w}" customWidth="1"/>`).join('')}</cols><sheetData>${body}</sheetData></worksheet>` },
+  ]);
+}
+function downloadBlob(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), { href: url, download: filename });
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 4000);
+}
+
+/* =====================================================================
    App state + rendering
    ===================================================================== */
 let B = null;
@@ -916,6 +1195,8 @@ const S = {
   cart: {}, filters: { q: '', cat: 'All', tag: '' }, queueFilter: 'pending',
   reqType: 'component', draft: { title: '', message: '', neededBy: '' }, busy: false,
   editing: null, stash: null, // editing = { id } of a pending request loaded into the form
+  priv: {}, reqPriv: {},       // core-team-only remarks on parts and requests
+  events: [], eventView: null, att: [], attUnsub: null, myAtt: {}, display: null, pendingCheckin: null,
   chat: { open: false, msgs: [], card: null, busy: false, mode: CONFIG.chatEndpoint ? 'ai' : 'basic' },
 };
 const username = email => String(email || '').split('@')[0];
@@ -974,6 +1255,8 @@ const ICON_CHAT = svgI('<path d="M4 4h16v12H9l-5 4z"/><path d="M8 9h8M8 12.5h5"/
 const ICON_LIST = svgI('<path d="M9 6h11M9 12h11M9 18h11"/><path d="M4 6h1M4 12h1M4 18h1"/>');
 const ICON_INBOX = svgI('<path d="M3 13h5l1.5 3h5L16 13h5"/><path d="M5 5h14l2 8v6H3v-6z"/>');
 const ICON_MORE = svgI('<circle cx="5" cy="12" r="1.3"/><circle cx="12" cy="12" r="1.3"/><circle cx="19" cy="12" r="1.3"/>');
+const ICON_TICK = '<svg class="tick" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m4 12.5 5 5L20 6.5"/></svg>';
+const ICON_CAL = svgI('<rect x="3.5" y="5" width="17" height="15.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/>');
 const ICON_SEARCH = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>';
 const ICON_G = '<svg width="20" height="20" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="m6.3 14.7 6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-7.9l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg>';
 
@@ -1053,7 +1336,7 @@ function statusOf(r) {
   if (isOverdue(r)) return ['overdue', 'Overdue'];
   if (r.status === 'approved') return ['approved', r.type === 'component' ? 'Approved, awaiting pickup' : 'Accepted'];
   if (r.status === 'issued') return ['issued', 'Out on loan'];
-  return [r.status, { pending: 'Pending', closed: 'Closed', rejected: 'Rejected', cancelled: 'Cancelled' }[r.status] || r.status];
+  return [r.status, { pending: 'Pending', reviewing: 'Under review', closed: 'Closed', rejected: 'Rejected', cancelled: 'Cancelled' }[r.status] || r.status];
 }
 function messageFor(r) {
   const name = personName(r.requesterEmail, r.requesterName);
@@ -1100,20 +1383,29 @@ function requestCard(r, admin) {
     const label = unregistered ? '' : ' ' + esc(firstName(who));
     const mail = `<a class="btn ghost sm" href="${esc(mailtoHref(r))}">Email${label}</a>`
       + (phone ? `<a class="btn ghost sm" href="${esc(waHref(phone, messageFor(r).body))}" target="_blank" rel="noopener">WhatsApp${label}</a>` : '');
-    if (r.status === 'pending') actions = a('approve', r.type === 'component' ? 'Approve and reserve' : 'Accept', 'primary') + a('reject', 'Reject', 'ghost') + mail;
-    else if (r.status === 'approved') actions = (r.type === 'component' ? a('issue', 'Hand over', 'primary') + a('cancel', 'Cancel and release', 'ghost') : a('close', 'Mark resolved', 'primary') + a('cancel', 'Cancel', 'ghost')) + mail;
-    else if (r.status === 'issued') actions = a('return', 'Mark returned', 'primary') + mail;
-    else actions = mail;
+    const remark = `<button class="btn ghost sm" data-act="req-remark" data-id="${esc(r.id)}">${S.reqPriv[r.id] && S.reqPriv[r.id].remark ? 'Edit remark' : 'Add remark'}</button>`;
+    const parts = r.type === 'component';
+    if (OPEN_STATES.includes(r.status)) actions = (parts ? a('approve', 'Review and approve', 'primary') + a('revise', 'Edit parts') : a('approve', 'Accept', 'primary'))
+      + (r.status === 'pending' ? a('review', 'Mark under review') : '') + a('reject', 'Reject', 'ghost') + mail + remark;
+    else if (r.status === 'approved') actions = (parts ? a('issue', 'Hand over', 'primary') + a('revise', 'Edit allotment') + a('cancel', 'Cancel and release', 'ghost') : a('close', 'Mark resolved', 'primary') + a('cancel', 'Cancel', 'ghost')) + mail + remark;
+    else if (r.status === 'issued') actions = a('return', 'Mark returned', 'primary') + mail + remark;
+    else actions = mail + remark;
   } else if (r.status === 'pending') {
     actions = `<button class="btn sm" data-act="edit-own" data-id="${esc(r.id)}">Edit</button><button class="btn ghost sm" data-act="cancel-own" data-id="${esc(r.id)}">Cancel request</button>`;
   }
+  const lineList = list => list.map(i => `<li><b>${Number(i.qty) || 0}×</b>${esc(i.name)}${i.kind === 'consumable' ? ' <span class="muted">(consumable)</span>' : ''}</li>`).join('');
+  const changed = r.requestedItems && lineKey(r.requestedItems) !== lineKey(items);
+  const priv = admin && S.reqPriv[r.id] && S.reqPriv[r.id].remark;
   return `<article class="req ${cls}">
     <header class="req-head"><span class="pill ${cls}">${label}</span><span>${TYPE_LABEL[r.type] || r.type}</span><span>#${shortId(r.id)}</span><span title="${esc(new Date(r.createdAt).toLocaleString('en-IN'))}">${relTime(r.createdAt)}</span></header>
     <h3 class="req-title">${esc(r.title || '(no title)')}</h3>
     ${admin ? `<p class="req-who"><b>${esc(unregistered ? 'Not registered yet' : who)}</b> <a href="${esc(mailtoHref(r))}">${esc(r.requesterEmail)}</a>${phone ? ` <a href="${esc(telHref(phone))}">${esc(phone)}</a>` : ''}</p>` : ''}
     ${r.message ? `<p class="req-msg">${esc(r.message)}</p>` : ''}
-    ${items.length ? `<ul class="req-items">${items.map(i => `<li><b>${Number(i.qty) || 0}×</b>${esc(i.name)}${i.kind === 'consumable' ? ' <span class="muted">(consumable)</span>' : ''}</li>`).join('')}</ul>` : ''}
+    ${changed ? `<p class="items-label">Asked for</p><ul class="req-items asked">${lineList(r.requestedItems)}</ul><p class="items-label">${['issued', 'closed'].includes(r.status) ? 'Given' : 'Allotted'}</p>` : ''}
+    ${items.length ? `<ul class="req-items">${lineList(items)}</ul>` : ''}
     ${meta ? `<div class="req-meta">${meta}</div>` : ''}
+    ${!admin && r.status === 'reviewing' ? '<div class="note quiet">The core team is reviewing this, so it can’t be edited or cancelled from here. Message them if something needs to change.</div>' : ''}
+    ${priv ? `<div class="note internal"><b>Core team only:</b> ${esc(priv)}</div>` : ''}
     ${r.adminNote ? `<div class="note"><b>${admin ? 'Note to requester:' : 'From the EHC core team:'}</b> ${esc(r.adminNote)}</div>` : ''}
     ${r.lossNote ? `<div class="note warn"><b>Not returned:</b> ${esc(r.lossNote)}</div>` : ''}
     ${actions ? `<div class="req-actions">${actions}</div>` : ''}
@@ -1209,7 +1501,7 @@ function mineView() {
 }
 
 const QUEUE_FILTERS = [
-  ['pending', 'Pending', r => r.status === 'pending'],
+  ['pending', 'Pending', r => OPEN_STATES.includes(r.status)],
   ['approved', 'Awaiting pickup', r => r.status === 'approved'],
   ['issued', 'Out on loan', r => r.status === 'issued'],
   ['overdue', 'Overdue', r => isOverdue(r)],
@@ -1233,24 +1525,30 @@ function stockView() {
   const q = S.filters.q.trim().toLowerCase();
   const list = S.components.filter(c => !q || `${c.name} ${c.category} ${(locOf(c) || {}).name || ''} ${c.notes || ''} ${(c.tags || []).join(' ')}`.toLowerCase().includes(q));
   const outUnits = S.components.reduce((a, c) => a + (c.totalQty - c.availableQty), 0);
+  const stockValue = S.components.reduce((a, c) => a + (Number((S.priv[c.id] || {}).rate) || 0) * (c.totalQty || 0), 0);
   const rows = list.map(c => {
     const out = c.totalQty - c.availableQty;
+    const pv = S.priv[c.id] || {};
     return `<tr>
-      <td><div class="tbl-name">${esc(c.name)}</div>${c.notes ? `<small>${esc(c.notes)}</small>` : ''}${tagChips(c, false)}</td>
+      <td><div class="tbl-name">${esc(c.name)}</div>${c.notes ? `<small>${esc(c.notes)}</small>` : ''}${pv.remarks ? `<small class="remark">${esc(pv.remarks)}</small>` : ''}${tagChips(c, false)}</td>
       <td class="cat-cell">${esc(c.category)}</td><td data-label="At">${locLink(c, '<span class="muted">Not set</span>')}</td><td>${kindTag(c.kind)}</td>
-      <td class="num ${c.availableQty <= 0 ? 'zero' : ''}" data-label="Available">${c.availableQty}</td><td class="num" data-label="Total">${c.totalQty}</td><td class="num ${out ? 'out' : ''}" data-label="Out">${out}</td>
+      <td class="num ${c.availableQty <= 0 ? 'zero' : ''}" data-label="Available">${c.availableQty}</td><td class="num" data-label="Total">${c.totalQty}</td><td class="num ${out ? 'out' : ''}" data-label="Out">${out}</td><td class="num" data-label="Rate">${pv.rate != null && pv.rate !== '' ? '₹' + Number(pv.rate).toLocaleString('en-IN') : '<span class="muted">–</span>'}</td>
       <td><div class="row-actions"><button class="btn ghost sm" data-act="comp-edit" data-id="${esc(c.id)}">Edit</button><button class="btn ghost sm" data-act="comp-del" data-id="${esc(c.id)}" aria-label="Delete ${esc(c.name)}">Delete</button></div></td>
     </tr>`;
   }).join('');
-  return `<section class="view">
-    <div class="view-head"><div><h1 class="title">Stock</h1><p class="sub">${plural(S.components.length, 'part type')}, ${plural(outUnits, 'unit')} out or set aside. Members see everything here except the location.</p></div>
+  return `<section class="view">${stockSubnav()}
+    <div class="view-head"><div><h1 class="title">Stock</h1><p class="sub">${plural(S.components.length, 'part type')}, ${plural(outUnits, 'unit')} out or set aside. Members see everything here except location, remarks and rate${stockValue ? `. Stock value at recorded rates: ₹${stockValue.toLocaleString('en-IN')}` : ''}.</p></div>
       <div class="head-actions"><button class="btn primary sm" data-act="comp-new">Add a part</button><button class="btn sm" data-act="bulk-import">Bulk import</button><button class="btn ghost sm" data-act="export" data-what="inventory">Export inventory</button></div></div>
     <div class="toolbar"><div class="search">${ICON_SEARCH}<input id="q2" type="search" placeholder="Filter by name, category, location or tag" value="${esc(S.filters.q)}" data-bind="q" autocomplete="off" aria-label="Filter stock"></div></div>
-    ${S.components.length ? `<div class="table-wrap"><table class="tbl"><thead><tr><th>Part</th><th>Category</th><th>Location</th><th>Type</th><th class="num">Available</th><th class="num">Total</th><th class="num">Out</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="8" class="muted">No parts match that filter.</td></tr>`}</tbody></table></div>`
+    ${S.components.length ? `<div class="table-wrap"><table class="tbl"><thead><tr><th>Part</th><th>Category</th><th>Location</th><th>Type</th><th class="num">Available</th><th class="num">Total</th><th class="num">Out</th><th class="num">Rate</th><th></th></tr></thead><tbody>${rows || `<tr><td colspan="9" class="muted">No parts match that filter.</td></tr>`}</tbody></table></div>`
       : emptyState('No parts yet.', 'Start with Bulk import: paste a CSV or copy cells from a spreadsheet. One form per part is how these projects stall.')}
   </section>`;
 }
 
+function stockSubnav() {
+  const b = (v, label) => `<button class="${S.view === v ? 'on' : ''}" data-act="nav" data-view="${v}" ${S.view === v ? 'aria-current="page"' : ''}>${label}</button>`;
+  return `<nav class="subnav" aria-label="Stock sections">${b('stock', 'Parts')}${b('locations', 'Locations')}</nav>`;
+}
 function locationsView() {
   const list = [...S.locations].sort(byName);
   const unplaced = S.components.filter(c => !locOf(c)).length;
@@ -1267,7 +1565,7 @@ function locationsView() {
         <div class="lo-actions">${l.thumb ? `<label class="btn ghost sm filebtn"><input type="file" accept="image/*" data-photo-for="${esc(l.id)}">Replace photo</label>` : ''}<button class="btn ghost sm" data-act="loc-edit" data-id="${esc(l.id)}">Edit</button><button class="btn ghost sm" data-act="loc-del" data-id="${esc(l.id)}">Delete</button></div>
       </div></article>`;
   };
-  return `<section class="view">
+  return `<section class="view">${stockSubnav()}
     <div class="view-head"><div><h1 class="title">Locations</h1><p class="sub">A photo of each cabinet, shelf or drawer, so anyone on the core team can find a part without asking. Only the core team sees these.</p></div>
       <div class="head-actions"><button class="btn primary sm" data-act="loc-new">Add a location</button></div></div>
     ${unplaced ? `<p class="warnline">${plural(unplaced, 'part type')} ${unplaced === 1 ? 'has' : 'have'} no location yet. Set it from Stock, Edit.</p>` : ''}
@@ -1295,7 +1593,7 @@ function signInView() {
   return `${DEMO ? demoBar() : ''}<main class="signin"><div class="signin-card">
     <img class="logo-hero logo-light" src="${LOGO_LIGHT}" alt="EHC, Electronics Hobby Club">
     <img class="logo-hero logo-dark" src="${LOGO_DARK}" alt="EHC, Electronics Hobby Club">
-    <p class="lede">Borrow parts from the club, or ask the core team for help and guidance with your build.</p>
+    ${S.pendingCheckin ? '<p class="alert ok">Sign in with your college Google account to check in to the event.</p>' : '<p class="lede">Borrow parts from the club, or ask the core team for help and guidance with your build.</p>'}
     ${actions}
     <p class="fine">Open to ${esc(domainsText())} Google accounts.</p>
     ${S.authError ? `<p class="alert" role="alert">${esc(S.authError)}</p>` : ''}
@@ -1332,9 +1630,11 @@ function tabsHTML() {
   const cart = Object.keys(S.cart).length;
   const active = S.myRequests.filter(r => ['pending', 'approved', 'issued'].includes(r.status)).length;
   const pend = S.allRequests.filter(r => r.status === 'pending').length;
-  const t = (v, label, count = 0, hot = false) => `<button class="tab ${S.view === v ? 'on' : ''}" data-act="nav" data-view="${v}" ${S.view === v ? 'aria-current="page"' : ''}>${label}${count ? `<span class="count ${hot ? 'hot' : ''}">${count}</span>` : ''}</button>`;
-  return t('inventory', 'Inventory') + t('request', 'New request', cart, true) + t('mine', 'My requests', active)
-    + (S.isAdmin ? `<span class="tab-group"><span class="tab-group-label">Core team</span>${t('queue', 'Queue', pend, true)}${t('stock', 'Stock')}${t('locations', 'Locations')}${t('admins', 'Admins')}</span>` : '');
+  const live = S.events.filter(e => e.attendanceOpen).length;
+  const isOn = v => S.view === v || (v === 'stock' && S.view === 'locations');
+  const t = (v, label, count = 0, hot = false) => `<button class="tab ${isOn(v) ? 'on' : ''}" data-act="nav" data-view="${v}" ${isOn(v) ? 'aria-current="page"' : ''}>${label}${count ? `<span class="count ${hot ? 'hot' : ''}">${count}</span>` : ''}</button>`;
+  return t('inventory', 'Inventory') + t('request', 'New request', cart, true) + t('mine', 'My requests', active) + t('events', 'Events', live, true)
+    + (S.isAdmin ? `<span class="tab-group"><span class="tab-group-label">Core team</span>${t('queue', 'Queue', pend, true)}${t('stock', 'Stock')}${t('admins', 'Admins')}</span>` : '');
 }
 function meHTML() {
   const u = S.user, name = (S.profile && S.profile.name) || u.email;
@@ -1346,9 +1646,10 @@ function bottomNavHTML() {
   const pend = S.allRequests.filter(r => r.status === 'pending').length;
   const b = (v, label, icon, n = 0) => `<button class="bn ${S.view === v && !S.chat.open ? 'on' : ''}" data-act="nav" data-view="${v}" ${S.view === v ? 'aria-current="page"' : ''}>${icon}<span>${label}</span>${n ? `<i class="bn-n">${n}</i>` : ''}</button>`;
   const ask = `<button class="bn ${S.chat.open ? 'on' : ''}" data-act="chat-open">${ICON_CHAT}<span>Ask</span></button>`;
-  if (!S.isAdmin) return b('inventory', 'Parts', ICON_BOX) + b('request', 'Request', ICON_PLUS, cart) + ask + b('mine', 'Mine', ICON_LIST, active);
-  const moreOn = ['request', 'stock', 'locations', 'admins'].includes(S.view) && !S.chat.open;
-  return b('queue', 'Queue', ICON_INBOX, pend) + b('inventory', 'Parts', ICON_BOX) + ask + b('mine', 'Mine', ICON_LIST, active)
+  const live = S.events.filter(e => e.attendanceOpen).length;
+  if (!S.isAdmin) return b('inventory', 'Parts', ICON_BOX) + b('request', 'Request', ICON_PLUS, cart) + ask + b('mine', 'Mine', ICON_LIST, active) + b('events', 'Events', ICON_CAL, live);
+  const moreOn = ['request', 'mine', 'stock', 'locations', 'admins'].includes(S.view) && !S.chat.open;
+  return b('queue', 'Queue', ICON_INBOX, pend) + b('inventory', 'Parts', ICON_BOX) + ask + b('events', 'Events', ICON_CAL, live)
     + `<button class="bn ${moreOn ? 'on' : ''}" data-act="more">${ICON_MORE}<span>More</span>${cart ? `<i class="bn-n">${cart}</i>` : ''}</button>`;
 }
 function moreSheet() {
@@ -1356,7 +1657,7 @@ function moreSheet() {
   const item = (v, label, sub) => `<button type="button" class="sheet-item ${S.view === v ? 'on' : ''}" data-act="nav" data-view="${v}"><b>${label}</b><small>${sub}</small></button>`;
   openDialog({
     title: 'More', confirm: null, dismiss: 'Close',
-    body: `<div class="sheet">${item('request', S.editing ? 'Edit request' : 'New request', cart ? `${plural(cart, 'part')} waiting` : 'Borrow parts or ask for help')}${item('stock', 'Stock', 'Add, edit and import parts')}${item('locations', 'Locations', 'Cabinet and shelf photos')}${item('admins', 'Admins', 'Who runs the inventory')}
+    body: `<div class="sheet">${item('request', S.editing ? 'Edit request' : 'New request', cart ? `${plural(cart, 'part')} waiting` : 'Borrow parts or ask for help')}${item('mine', 'My requests', 'What you’ve asked for')}${item('stock', 'Stock', 'Add, edit and import parts')}${item('locations', 'Locations', 'Cabinet and shelf photos')}${item('admins', 'Admins', 'Who runs the inventory')}
       <button type="button" class="sheet-item" data-act="profile-edit"><b>Your details</b><small>${esc(S.profile ? S.profile.name : '')}, sign out</small></button></div>`,
   });
 }
@@ -1368,7 +1669,7 @@ function cartBarHTML() {
 }
 function mainHTML() {
   if (ADMIN_VIEWS.includes(S.view) && !S.isAdmin) S.view = 'inventory';
-  return { inventory: inventoryView, request: requestView, mine: mineView, queue: queueView, stock: stockView, locations: locationsView, admins: adminsView }[S.view]();
+  return { inventory: inventoryView, request: requestView, mine: mineView, queue: queueView, stock: stockView, locations: locationsView, admins: adminsView, events: () => (S.isAdmin ? adminEventsView() : memberEventsView()) }[S.view]();
 }
 
 // Re-rendering replaces the DOM; keep the caret where it was.
@@ -1432,27 +1733,27 @@ function go(view) {
 }
 
 /* ---------- dialog ---------- */
-function openDialog({ title, body, confirm = 'Confirm', dismiss = 'Cancel', danger = false, wide = false, onConfirm }) {
+function openDialog({ title, body, confirm = 'Confirm', dismiss = 'Cancel', danger = false, wide = false, onConfirm, alt = null }) {
   const dlg = $('#dlg');
   dlg.className = wide ? 'wide' : '';
   dlg.innerHTML = `<form class="dlg" novalidate>
     <header><h2>${esc(title)}</h2><button type="button" class="x" data-close aria-label="Close">×</button></header>
     <div class="dlg-body">${body}</div>
     <p class="dlg-err" role="alert" hidden></p>
-    <footer><button type="button" class="btn ghost" data-close>${esc(dismiss)}</button>${confirm ? `<button type="submit" class="btn ${danger ? 'danger' : 'primary'}">${esc(confirm)}</button>` : ''}</footer>
+    <footer><button type="button" class="btn ghost" data-close>${esc(dismiss)}</button>${alt ? `<button type="button" class="btn" data-alt>${esc(alt.label)}</button>` : ''}${confirm ? `<button type="submit" class="btn ${danger ? 'danger' : 'primary'}">${esc(confirm)}</button>` : ''}</footer>
   </form>`;
   const form = dlg.querySelector('form');
   dlg.querySelectorAll('[data-close]').forEach(b => { b.onclick = () => dlg.close(); });
-  form.onsubmit = async e => {
-    e.preventDefault();
-    const btn = form.querySelector('[type=submit]');
-    if (!btn) return;
+  const runWith = async (fn, btn) => {
     const err = form.querySelector('.dlg-err');
-    btn.disabled = true; err.hidden = true;
-    try { await onConfirm(new FormData(form), form); dlg.close(); }
-    catch (x) { err.textContent = friendly(x); err.hidden = false; }
-    finally { btn.disabled = false; }
+    form.querySelectorAll('footer .btn').forEach(b => { b.disabled = true; });
+    err.hidden = true;
+    try { await fn(new FormData(form), form); dlg.close(); }
+    catch (x) { err.textContent = friendly(x); err.hidden = false; err.scrollIntoView({ block: 'nearest' }); }
+    finally { form.querySelectorAll('footer .btn').forEach(b => { b.disabled = false; }); }
   };
+  form.onsubmit = e => { e.preventDefault(); if (form.querySelector('[type=submit]')) runWith(onConfirm); };
+  if (alt) form.querySelector('[data-alt]').onclick = () => runWith(alt.onConfirm);
   if (!dlg.open) dlg.showModal();
   const first = dlg.querySelector('.dlg-body input:not([type=hidden]), .dlg-body textarea, .dlg-body select');
   if (first) first.focus();
@@ -1461,49 +1762,108 @@ function openDialog({ title, body, confirm = 'Confirm', dismiss = 'Cancel', dang
 function noteField(label, { required = false, placeholder = '' } = {}) {
   return `<div class="field"><label for="d-note">${label}</label><textarea id="d-note" name="note" rows="3" maxlength="1000" ${required ? 'required' : ''} placeholder="${esc(placeholder)}"></textarea><small>The requester sees this.</small></div>`;
 }
-function availabilityCheck(r) {
-  const merged = {};
-  (r.items || []).forEach(i => { merged[i.componentId] = merged[i.componentId] || { name: i.name, qty: 0 }; merged[i.componentId].qty += Number(i.qty) || 0; });
-  return `<ul class="check">${Object.entries(merged).map(([id, i]) => {
-    const c = compById(id);
-    const ok = c && c.availableQty >= i.qty;
-    const where = c && locOf(c) ? `<small class="where">${locLink(c)}</small>` : '';
-    return `<li class="${ok ? '' : 'bad'}"><span><b>${i.qty}×</b> ${esc(c ? c.name : i.name)}${where}</span><span class="avail">${c ? `${c.availableQty} available` : 'No longer in inventory'}</span></li>`;
-  }).join('')}</ul>`;
+function remarkField(id) {
+  const cur = (S.reqPriv[id] && S.reqPriv[id].remark) || '';
+  return `<div class="field"><label for="d-remark">Remark (core team only, optional)</label><textarea id="d-remark" name="remark" rows="2" maxlength="1000" placeholder="e.g. Gave the older units; check the servo horns on return">${esc(cur)}</textarea><small>The requester never sees this.</small></div>`;
 }
-// For hand-over: what to pull and where it is.
-function pickList(r) {
-  return `<ul class="check">${(r.items || []).map(i => {
-    const c = compById(i.componentId);
-    return `<li><span><b>${i.qty}×</b> ${esc(i.name)}</span><span class="avail">${c ? locLink(c, 'Location not set') : 'No longer in inventory'}</span></li>`;
-  }).join('')}</ul>`;
+async function saveRemark(id, fd) {
+  if (!fd.has('remark')) return;
+  const next = String(fd.get('remark') || '').trim();
+  const prev = (S.reqPriv[id] && S.reqPriv[id].remark) || '';
+  if (next !== prev) await B.setPath(`requestPrivate/${id}`, { remark: next, by: S.user.email, updatedAt: SERVER_TIME }, true);
 }
+
+/* ---------- allotment editor: tick which parts to give, change quantities, add parts ---------- */
+// lines: [{ componentId, qty, on }]. For an approved request, its own reservation counts as available.
+function allotEditor(r) {
+  const reserved = {};
+  if (r.status === 'approved') (r.items || []).forEach(i => { reserved[i.componentId] = (reserved[i.componentId] || 0) + Number(i.qty); });
+  const merged = new Map();
+  (r.items || []).forEach(i => merged.set(i.componentId, (merged.get(i.componentId) || 0) + Number(i.qty)));
+  const ed = { reserved, lines: [...merged].map(([componentId, qty]) => ({ componentId, qty, on: !!compById(componentId) })) };
+  ed.max = id => { const c = compById(id); return c ? c.availableQty + (reserved[id] || 0) : 0; };
+  ed.items = () => ed.lines.filter(l => l.on && compById(l.componentId)).map(l => ({ componentId: l.componentId, qty: Number(l.qty) }));
+  ed.check = () => {
+    const on = ed.lines.filter(l => l.on);
+    if (!on.length) return 'Tick at least one part.';
+    const bad = on.find(l => !Number.isInteger(Number(l.qty)) || Number(l.qty) < 1);
+    if (bad) return `Enter a quantity of 1 or more for ${compById(bad.componentId).name}.`;
+    const over = on.find(l => Number(l.qty) > ed.max(l.componentId));
+    if (over) return `Only ${ed.max(over.componentId)} × ${compById(over.componentId).name} available.`;
+    return '';
+  };
+  return ed;
+}
+function allotHTML(ed) {
+  const rows = ed.lines.map((l, i) => {
+    const c = compById(l.componentId);
+    if (!c) return `<div class="al-row gone"><span class="al-name">A part that was deleted<small>Can’t be given</small></span></div>`;
+    const max = ed.max(l.componentId), over = l.on && Number(l.qty) > max;
+    const where = locOf(c) ? ` <span class="al-loc">${locLink(c)}</span>` : '';
+    return `<div class="al-row ${l.on ? '' : 'off'} ${over ? 'over' : ''}">
+      <label class="al-pick"><input type="checkbox" data-al="on" data-i="${i}" ${l.on ? 'checked' : ''}><span class="al-name">${esc(c.name)}<small>${max} available${where}</small></span></label>
+      <input class="al-qty" type="number" min="1" max="${max}" step="1" value="${l.qty}" data-al="qty" data-i="${i}" aria-label="Quantity of ${esc(c.name)}" ${l.on ? '' : 'disabled'}></div>`;
+  }).join('');
+  const inList = new Set(ed.lines.map(l => l.componentId));
+  const addable = [...S.components].sort(byName).filter(c => !inList.has(c.id) && c.availableQty > 0);
+  const on = ed.lines.filter(l => l.on && compById(l.componentId));
+  const units = on.reduce((a, l) => a + (Number(l.qty) || 0), 0);
+  return `<div class="allot">${rows}
+    ${addable.length ? `<div class="al-add"><select data-al="add" aria-label="Add a part"><option value="">+ Add a part…</option>${addable.map(c => `<option value="${esc(c.id)}">${esc(c.name)} (${c.availableQty} available)</option>`).join('')}</select></div>` : ''}
+    <p class="al-sum">${on.length ? `${plural(on.length, 'part')} ticked, ${plural(units, 'unit')}${on.length < ed.lines.length ? `. ${plural(ed.lines.length - on.length, 'part')} left out` : ''}.` : 'Nothing ticked.'}</p></div>`;
+}
+function wireAllot(ed) {
+  const box = $('#allot-box');
+  const paint = () => withFocus(() => { box.innerHTML = allotHTML(ed); });
+  box.onchange = e => {
+    const t = e.target, i = Number(t.dataset.i);
+    if (t.dataset.al === 'on') { ed.lines[i].on = t.checked; paint(); }
+    if (t.dataset.al === 'add' && t.value) { ed.lines.push({ componentId: t.value, qty: 1, on: true }); paint(); }
+  };
+  box.oninput = e => { if (e.target.dataset.al === 'qty') { ed.lines[Number(e.target.dataset.i)].qty = e.target.value; const s = box.querySelector('.al-sum'); if (s) s.outerHTML = allotHTML(ed).match(/<p class="al-sum">[\s\S]*?<\/p>/)[0]; } };
+  // Repaint after the blur finishes; replacing the input during its own blur event throws.
+  box.addEventListener('focusout', e => { if (e.target.dataset.al === 'qty') setTimeout(() => { if (box.isConnected) paint(); }, 0); });
+  paint();
+}
+
 function openActionDialog(id, action) {
   const r = S.allRequests.find(x => x.id === id);
   if (!r) return;
   const parts = r.type === 'component';
   const who = personName(r.requesterEmail, r.requesterName);
   const first = esc(looksLikeId(who) ? 'the requester' : firstName(who));
-  let title, body, confirm, danger = false, dismissLabel = 'Cancel', extra = () => ({});
+  let title, body, confirm, danger = false, dismissLabel = 'Cancel', alt = null, ed = null, extra = () => ({});
+  const editorBox = '<div id="allot-box"></div>';
   switch (action) {
     case 'approve':
-      title = parts ? 'Approve and reserve' : 'Accept request';
-      body = parts
-        ? `<p>These come off the available count now and stay set aside until you hand them over or cancel.</p>${availabilityCheck(r)}${noteField('Note (optional)', { placeholder: 'e.g. Pick up from the lab after 5 pm' })}`
-        : `<p>Tell ${first} who’s taking this and how to reach them.</p>${noteField('Note (optional)', { placeholder: 'e.g. Meet at the lab, Thursday 6 pm' })}`;
-      confirm = parts ? 'Approve and reserve' : 'Accept';
+      if (parts) {
+        ed = allotEditor(r);
+        title = 'Review and approve';
+        body = `<p>Untick anything you won’t give, change quantities, or add a part. Approving sets the ticked parts aside straight away; ${first} sees what was asked for and what was allotted.</p>${editorBox}${noteField('Note to requester (optional)', { placeholder: 'e.g. Only 2 ESP32 free this week. Pick up after 5 pm.' })}${remarkField(id)}`;
+        confirm = 'Approve ticked parts';
+        alt = { label: 'Save changes, decide later', action: 'revise' };
+      } else {
+        title = 'Accept request';
+        body = `<p>Tell ${first} who’s taking this and how to reach them.</p>${noteField('Note (optional)', { placeholder: 'e.g. Meet at the lab, Thursday 6 pm' })}${remarkField(id)}`;
+        confirm = 'Accept';
+      }
+      break;
+    case 'revise':
+      ed = allotEditor(r);
+      title = r.status === 'approved' ? 'Edit allotment' : 'Edit parts';
+      body = `<p>${r.status === 'approved' ? 'Stock moves as soon as you save: extra parts are set aside, removed ones go back on the shelf.' : `Saving marks the request as under review, so ${first} can’t change it any more. Nothing is set aside until you approve.`}</p>${editorBox}${noteField('Note to requester (optional)')}${remarkField(id)}`;
+      confirm = 'Save changes';
       break;
     case 'reject':
       title = 'Reject request';
-      body = noteField('Reason', { required: true, placeholder: 'e.g. We don’t stock that. The ECE lab might.' });
+      body = noteField('Reason', { required: true, placeholder: 'e.g. We don’t stock that. The ECE lab might.' }) + remarkField(id);
       confirm = 'Reject'; danger = true;
       break;
     case 'issue': {
-      const returnable = (r.items || []).some(i => i.kind !== 'consumable');
+      ed = allotEditor(r);
       title = 'Hand over parts';
-      body = `<p>Pull these from the shelf:</p>${pickList(r)}` + (returnable
-        ? `<p>Set when they’re due back. Anything still out after this date shows as overdue.</p><div class="field short"><label for="d-due">Return by</label><input id="d-due" name="due" type="date" min="${localDate()}" value="${addDays(CONFIG.defaultLoanDays)}" required></div>`
-        : '<p>Everything in this request is consumable, so nothing comes back. Handing over closes the request.</p>') + noteField('Note (optional)');
+      body = `<p>Change anything that’s different from what you’re actually handing over.</p>${editorBox}
+        <div class="field short"><label for="d-due">Return by</label><input id="d-due" name="due" type="date" min="${localDate()}" value="${addDays(CONFIG.defaultLoanDays)}"><small>Only used if something returnable goes out.</small></div>${noteField('Note (optional)')}${remarkField(id)}`;
       confirm = 'Hand over';
       extra = fd => ({ dueDate: fd.get('due') || '' });
       break;
@@ -1513,31 +1873,46 @@ function openActionDialog(id, action) {
       title = 'Mark returned';
       body = `<p>Enter what actually came back. Anything missing is written off the total stock and noted on the request.</p>
         ${ret.map(i => `<label class="ret-row"><span>${esc(i.name)}</span><span class="ret-in"><input type="number" name="ret_${esc(i.componentId)}" min="0" max="${i.qty}" value="${i.qty}" inputmode="numeric" aria-label="Returned ${esc(i.name)}"><span class="muted">of ${i.qty}</span></span></label>`).join('')}
-        <div style="height:14px"></div>${noteField('Note (optional)', { placeholder: 'e.g. One servo came back burnt' })}`;
+        <div style="height:14px"></div>${noteField('Note (optional)', { placeholder: 'e.g. One servo came back burnt' })}${remarkField(id)}`;
       confirm = 'Confirm return';
       extra = fd => ({ returned: Object.fromEntries(ret.map(i => [i.componentId, Number(fd.get('ret_' + i.componentId))])) });
       break;
     }
     case 'cancel':
       title = 'Cancel request';
-      body = (parts && r.status === 'approved' ? '<p>The reserved parts go back on the shelf.</p>' : '') + noteField('Note (optional)');
+      body = (parts && r.status === 'approved' ? '<p>The reserved parts go back on the shelf.</p>' : '') + noteField('Note (optional)') + remarkField(id);
       confirm = 'Cancel request'; danger = true; dismissLabel = 'Keep request';
       break;
     case 'close':
       title = 'Mark resolved';
-      body = noteField('Note (optional)', { placeholder: 'e.g. Fixed the wiring together at the lab' });
+      body = noteField('Note (optional)', { placeholder: 'e.g. Fixed the wiring together at the lab' }) + remarkField(id);
       confirm = 'Mark resolved';
       break;
     default: return;
   }
+  const run = act => async fd => {
+    const note = String(fd.get('note') || '').trim();
+    if (act === 'reject' && !note) throw new Error('Add a reason. The requester sees it.');
+    let x = extra(fd);
+    if (ed) {
+      const err = ed.check();
+      if (err) throw new Error(err);
+      const items = ed.items();
+      // Only send a list when it differs, so plain hand-overs don't rewrite the request.
+      if (act !== 'issue' || lineKey(items) !== lineKey(r.items)) x = { ...x, items };
+    }
+    await B.transition(id, act, { note, ...x }, S.user.email);
+    await saveRemark(id, fd);
+    toast(`Request #${shortId(id)} updated.`);
+  };
+  openDialog({ title, body, confirm, danger, dismiss: dismissLabel, wide: !!ed, onConfirm: run(action), alt: alt && { label: alt.label, onConfirm: run(alt.action) } });
+  if (ed) wireAllot(ed);
+}
+function remarkDialog(id) {
   openDialog({
-    title, body, confirm, danger, dismiss: dismissLabel,
-    onConfirm: async fd => {
-      const note = String(fd.get('note') || '').trim();
-      if (action === 'reject' && !note) throw new Error('Add a reason. The requester sees it.');
-      await B.transition(id, action, { note, ...extra(fd) }, S.user.email);
-      toast(`Request #${shortId(id)} updated.`);
-    },
+    title: 'Core team remark', confirm: 'Save remark',
+    body: `<p>Private to the core team. Useful for things like which units went out or how the requester can be reached.</p>${remarkField(id)}`,
+    onConfirm: async fd => { await saveRemark(id, fd); toast('Remark saved.'); },
   });
 }
 
@@ -1546,6 +1921,7 @@ function compDialog(id) {
   const out = c ? c.totalQty - c.availableQty : 0;
   const cats = [...new Set(S.components.map(x => x.category).filter(Boolean))].sort();
   const allTags = popularTags();
+  const priv = (id && S.priv[id]) || {};
   // Older parts may only have free-text location; offer it as a new location with the same name.
   const legacy = c && !c.locationId ? (c.location || '') : '';
   const match = legacy && S.locations.find(l => l.name.trim().toLowerCase() === legacy.toLowerCase());
@@ -1565,7 +1941,12 @@ function compDialog(id) {
         <div class="field"><label for="d-kind">Type</label><select id="d-kind" name="kind"><option value="returnable">Returnable, comes back</option><option value="consumable" ${c && c.kind === 'consumable' ? 'selected' : ''}>Consumable, gets used up</option></select></div>
         <div class="field"><label for="d-total">Total quantity</label><input id="d-total" name="totalQty" type="number" min="${out}" step="1" required value="${c ? c.totalQty : 1}" inputmode="numeric">${out ? `<small>${plural(out, 'unit')} out or set aside right now.</small>` : ''}</div>
       </div>
-      <div class="field"><label for="d-notes">Short note for members (optional)</label><input id="d-notes" name="notes" maxlength="160" value="${esc(c ? c.notes : '')}" placeholder="e.g. 3.3 V logic, headers soldered"></div>
+      <div class="field"><label for="d-notes">Note, shown to everyone (optional)</label><input id="d-notes" name="notes" maxlength="160" value="${esc(c ? c.notes : '')}" placeholder="e.g. 3.3 V logic, headers soldered"></div>
+      <div class="private-box">
+        <p class="private-h">Core team only</p>
+        <div class="field"><label for="d-remarks">Remarks</label><textarea id="d-remarks" name="remarks" rows="2" maxlength="1000" placeholder="e.g. Two units have loose USB ports. Bought from Robu, Aug 2025.">${esc(priv.remarks || '')}</textarea></div>
+        <div class="field short"><label for="d-rate">Rate per unit, ₹ (optional)</label><input id="d-rate" name="rate" type="number" min="0" step="1" inputmode="numeric" value="${priv.rate ?? ''}"></div>
+      </div>
       <div class="field"><label for="d-tags">Tags (optional)</label><input id="d-tags" name="tags" maxlength="200" value="${esc(c ? (c.tags || []).join(', ') : '')}" placeholder="e.g. I2C, 3.3V, line follower" autocomplete="off">
         <small>Separate with commas. Members can search and filter by these.</small>
         ${allTags.length ? `<div class="tags">${allTags.map(t => `<button type="button" class="tagchip" data-addtag="${esc(t)}">+ ${esc(t)}</button>`).join('')}</div>` : ''}</div>`,
@@ -1577,7 +1958,10 @@ function compDialog(id) {
       data.locationId = await resolveLocation(data.locationId, data.locationNew);
       data.location = data.locationId ? locName(data.locationId, data.locationNew) : '';
       delete data.locationNew;
-      await B.saveComponent(data, id);
+      const remarks = String(data.remarks || '').trim(), rate = data.rate === '' || data.rate === undefined ? null : Math.max(0, Number(data.rate));
+      delete data.remarks; delete data.rate;
+      const cid = await B.saveComponent(data, id) || id;
+      if (remarks !== (priv.remarks || '') || rate !== (priv.rate ?? null)) await B.setPath(`componentPrivate/${cid}`, { remarks, rate, updatedAt: SERVER_TIME }, true);
       toast(c ? 'Changes saved.' : 'Part added.');
     },
   });
@@ -1659,7 +2043,7 @@ function compDelete(id) {
   openDialog({
     title: 'Delete part', confirm: 'Delete part', danger: true,
     body: `<p>Delete <b>${esc(c.name)}</b> from the inventory?</p>${warn ? `<p class="warnline">${warn}</p>` : ''}`,
-    onConfirm: async () => { await B.deleteComponent(id); delete S.cart[id]; toast('Part deleted.'); },
+    onConfirm: async () => { await B.deleteComponent(id); await B.delPath(`componentPrivate/${id}`).catch(() => {}); delete S.cart[id]; toast('Part deleted.'); },
   });
 }
 
@@ -1683,34 +2067,58 @@ function parseCSV(text) {
 function bulkDialog() {
   openDialog({
     title: 'Bulk import', confirm: 'Import parts', wide: true,
-    body: `<p>One part per line, columns in this order: <code>name</code>, <code>category</code>, <code>quantity</code>, <code>type</code>, <code>location</code>, <code>notes</code>, <code>tags</code>. Only name and quantity are required. Separate tags with semicolons, e.g. <code>I2C; 3.3V</code>. New location names are created for you; add their photos from Locations. Type is <code>returnable</code> (the default) or <code>consumable</code>. A header row is fine, and you can paste cells copied straight from Google Sheets or Excel.</p>
-      <div class="field"><label for="d-csv">Parts</label><textarea id="d-csv" class="code" name="csv" rows="10" placeholder="Arduino Uno R3, Microcontrollers, 12, returnable, Cabinet A, Comes with cable, 5V; beginner&#10;Jumper wires M-M (40 pack), Prototyping, 30, consumable, Open shelf"></textarea>
-      <small>A part whose name already exists is skipped, not merged. Edit those by hand.</small></div>`,
+    body: `<p>Paste a CSV, or cells copied straight from Excel or Google Sheets. With a header row, columns are matched by name; without one, the order is <code>name</code>, <code>category</code>, <code>quantity</code>, <code>type</code>, <code>location</code>, <code>notes</code>, <code>tags</code>, <code>remarks</code>, <code>rate</code>.</p>
+      <p>Only name and quantity are required. Type is <code>returnable</code> (the default) or <code>consumable</code>. Separate tags with semicolons. <b>Notes</b> are shown to everyone; <b>remarks</b> and <b>rate</b> only to the core team. Columns called <code>age</code> or <code>name_on_sheet</code> are added to the remarks. New location names are created for you.</p>
+      <div class="field"><label for="d-csv">Parts</label><textarea id="d-csv" class="code" name="csv" rows="9" placeholder="name,category,quantity,type,location,notes,tags,remarks,rate&#10;Arduino Uno,Microcontrollers,15,returnable,Cabinet A,,Arduino; beginner,Clones; 2 have loose USB,170"></textarea></div>
+      <label class="check-line"><input type="checkbox" name="fill" checked> For parts that already exist, fill in their remarks and rate. Quantities and everything else stay as they are.</label>`,
     onConfirm: async fd => {
       const rows = parseCSV(String(fd.get('csv') || ''));
-      if (rows.length && /^name$/i.test(rows[0][0])) rows.shift();
-      const seen = new Set(S.components.map(c => c.name.trim().toLowerCase()));
-      const good = [], bad = [], dup = [];
+      if (!rows.length) throw new Error('Paste at least one line.');
+      // Header row → match columns by name; otherwise use the fixed order.
+      const ALIAS = { name: 'name', part: 'name', item: 'name', category: 'category', quantity: 'quantity', qty: 'quantity', type: 'type', location: 'location', notes: 'notes', note: 'notes', tags: 'tags', remarks: 'remarks', remark: 'remarks', rate: 'rate', rate_inr: 'rate', price: 'rate', age: 'age', age_years: 'age', name_on_sheet: 'sheetName' };
+      let cols = ['name', 'category', 'quantity', 'type', 'location', 'notes', 'tags', 'remarks', 'rate'];
+      const head = rows[0].map(h => ALIAS[h.trim().toLowerCase().replace(/[\s-]+/g, '_')]);
+      if (head.includes('name')) { cols = head; rows.shift(); }
+      const byName = new Map(S.components.map(c => [c.name.trim().toLowerCase(), c]));
+      const seen = new Set(), good = [], bad = [], dupes = [], fills = [];
       rows.forEach((r, i) => {
-        const [name, category, qty, type, location, notes, tags] = r;
-        const n = Number(qty);
-        if (!name || qty === undefined || qty === '' || !Number.isInteger(n) || n < 0) { bad.push(i + 1); return; }
-        const key = name.toLowerCase();
-        if (seen.has(key)) { dup.push(name); return; }
+        const v = {};
+        cols.forEach((k, j) => { if (k && v[k] === undefined) v[k] = (r[j] || '').trim(); });
+        const n = Number(v.quantity);
+        const remarks = [v.remarks, v.age ? `Age at the stock count: ${v.age} years` : '', v.sheetName && v.sheetName.toLowerCase() !== (v.name || '').toLowerCase() ? `Listed on the sheet as “${v.sheetName}”` : ''].filter(Boolean).join('. ');
+        const rateN = Number(String(v.rate || '').replace(/[₹,\s]/g, ''));
+        const priv = { remarks, rate: v.rate && Number.isFinite(rateN) ? rateN : null };
+        if (!v.name) { bad.push(i + 1); return; }
+        const key = v.name.toLowerCase();
+        if (byName.has(key)) { dupes.push(v.name); if (remarks || priv.rate != null) fills.push({ id: byName.get(key).id, priv }); return; }
+        if (seen.has(key)) { dupes.push(v.name); return; }
+        if (v.quantity === '' || !Number.isInteger(n) || n < 0) { bad.push(i + 1); return; }
         seen.add(key);
-        good.push({ name, category, totalQty: n, kind: /^c/i.test(type || '') ? 'consumable' : 'returnable', location: location || '', notes, tags });
+        good.push({ part: { name: v.name, category: v.category, totalQty: n, kind: /^c/i.test(v.type || '') ? 'consumable' : 'returnable', location: v.location || '', notes: v.notes, tags: v.tags }, priv });
       });
-      if (!good.length) throw new Error(rows.length ? `Nothing to import. ${dup.length ? `${plural(dup.length, 'duplicate name')}. ` : ''}${bad.length ? `Lines with a missing name or a quantity that isn’t a whole number: ${bad.slice(0, 8).join(', ')}.` : ''}` : 'Paste at least one line.');
+      const filling = fd.get('fill') ? fills : [];
+      if (!good.length && !filling.length) throw new Error(`Nothing to import. ${dupes.length ? `${plural(dupes.length, 'name')} already exist${dupes.length === 1 ? 's' : ''}. ` : ''}${bad.length ? `Lines with a missing name or a quantity that isn’t a whole number: ${bad.slice(0, 8).join(', ')}.` : ''}`);
       const locIdx = new Map(S.locations.map(l => [l.name.trim().toLowerCase(), l.id]));
       let newLocs = 0;
-      for (const g of good) {
-        const ln = g.location.trim();
+      for (const { part } of good) {
+        const ln = part.location.trim();
         if (!ln) continue;
         if (!locIdx.has(ln.toLowerCase())) { locIdx.set(ln.toLowerCase(), await B.saveLocation({ name: ln })); newLocs++; }
-        g.locationId = locIdx.get(ln.toLowerCase());
+        part.locationId = locIdx.get(ln.toLowerCase());
       }
-      await B.bulkAddComponents(good);
-      toast(`Imported ${plural(good.length, 'part')}.${newLocs ? ` Created ${plural(newLocs, 'location')}.` : ''}${dup.length ? ` Skipped ${plural(dup.length, 'duplicate')}.` : ''}${bad.length ? ` Skipped ${plural(bad.length, 'invalid line')}.` : ''}`);
+      const ids = good.length ? await B.bulkAddComponents(good.map(g => g.part)) : [];
+      const privOps = [
+        ...good.map((g, i) => ({ id: ids[i], priv: g.priv })).filter(x => x.id && (x.priv.remarks || x.priv.rate != null)),
+        ...filling,
+      ].map(x => ({ op: 'set', path: `componentPrivate/${x.id}`, data: { ...x.priv, updatedAt: SERVER_TIME }, merge: true }));
+      if (privOps.length) await B.batchWrite(privOps);
+      toast([
+        good.length ? `Imported ${plural(good.length, 'part')}.` : '',
+        newLocs ? `Created ${plural(newLocs, 'location')}.` : '',
+        filling.length ? `Filled remarks and rate on ${plural(filling.length, 'existing part')}.` : '',
+        dupes.length - filling.length > 0 ? `Skipped ${plural(dupes.length - filling.length, 'duplicate')}.` : '',
+        bad.length ? `Skipped ${plural(bad.length, 'invalid line')}.` : '',
+      ].filter(Boolean).join(' '));
     },
   });
 }
@@ -1721,10 +2129,10 @@ function toCSV(rows) {
 function exportDialog(what) {
   let csv, file, blurb;
   if (what === 'inventory') {
-    csv = toCSV([['name', 'category', 'quantity', 'type', 'location', 'notes', 'tags', 'available', 'out'],
-      ...S.components.map(c => [c.name, c.category, c.totalQty, c.kind, (locOf(c) || {}).name || '', c.notes, (c.tags || []).join('; '), c.availableQty, c.totalQty - c.availableQty])]);
+    csv = toCSV([['name', 'category', 'quantity', 'type', 'location', 'notes', 'tags', 'remarks', 'rate', 'available', 'out'],
+      ...S.components.map(c => { const pv = S.priv[c.id] || {}; return [c.name, c.category, c.totalQty, c.kind, (locOf(c) || {}).name || '', c.notes, (c.tags || []).join('; '), pv.remarks || '', pv.rate ?? '', c.availableQty, c.totalQty - c.availableQty]; })]);
     file = `ehc-inventory-${localDate()}.csv`;
-    blurb = 'The first seven columns match Bulk import, so this doubles as a backup you can paste back in.';
+    blurb = 'The first nine columns match Bulk import, including the core-team remarks and rate. Keep this file private, so this doubles as a backup you can paste back in.';
   } else {
     csv = toCSV([['id', 'created', 'type', 'status', 'requester', 'email', 'title', 'items', 'needed_by', 'due', 'returned', 'last_updated_by', 'note', 'not_returned'],
       ...S.allRequests.map(r => [r.id, r.createdAt, r.type, isOverdue(r) ? 'overdue' : r.status, personName(r.requesterEmail, r.requesterName), r.requesterEmail, r.title, (r.items || []).map(i => `${i.qty}x ${i.name}`).join('; '), r.neededBy, r.dueDate, r.returnedAt, r.handledBy, r.adminNote, r.lossNote])]);
@@ -1812,6 +2220,311 @@ async function submitRequest() {
     S.busy = false; render();
     toast(friendly(e), 'err');
   }
+}
+
+/* =====================================================================
+   Events and QR check-in
+   One QR on the venue screen; everyone scans it with their own phone camera. The code in it
+   changes every 30 seconds and the database only accepts the current or previous code, so a
+   photo forwarded to someone outside stops working within a minute. Name and student ID come
+   from the person's registration, not from anything they type.
+   ===================================================================== */
+const ROTATE_S = 30;
+const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'; // no 0/O, 1/I/L
+const newCode = () => Array.from(crypto.getRandomValues(new Uint32Array(6)), n => CODE_CHARS[n % CODE_CHARS.length]).join('');
+const HOW = { qr: 'Scanned QR', code: 'Typed code', manual: 'Added by core team' };
+const fmtTime = t => (t ? (() => { const [h, m] = t.split(':').map(Number); return new Date(2000, 0, 1, h, m).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' }); })() : '');
+const fmtStamp = iso => (iso ? new Date(iso).toLocaleString('en-IN', { day: 'numeric', month: 'short', year: 'numeric', hour: 'numeric', minute: '2-digit' }) : '');
+const evById = id => S.events.find(e => e.id === id);
+function evWhen(ev) {
+  const day = ev.date ? parseDay(ev.date).toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' }) : 'Date not set';
+  const time = ev.start ? `${fmtTime(ev.start)}${ev.end ? ` to ${fmtTime(ev.end)}` : ''}` : '';
+  return [day, time, ev.venue].filter(Boolean).join(', ');
+}
+const evDateBlock = ev => {
+  const d = ev.date ? parseDay(ev.date) : null;
+  return `<div class="ev-date" aria-hidden="true"><b>${d ? d.getDate() : '?'}</b><span>${d ? d.toLocaleDateString('en-IN', { month: 'short' }) : ''}</span></div>`;
+};
+const sortEvents = list => {
+  const today = localDate();
+  const up = list.filter(e => (e.date || '') >= today).sort((a, b) => `${a.date}${a.start}`.localeCompare(`${b.date}${b.start}`));
+  const past = list.filter(e => (e.date || '') < today).sort((a, b) => `${b.date}${b.start}`.localeCompare(`${a.date}${a.start}`));
+  return { up, past };
+};
+
+/* ---------- member side ---------- */
+async function loadMyAttendance() {
+  if (!S.user) return;
+  const want = S.events.filter(e => e.attendanceOpen || e.date >= addDays(-30)).filter(e => !(e.id in S.myAtt));
+  for (const e of want) {
+    try { S.myAtt[e.id] = await B.getPath(`events/${e.id}/attendance/${S.user.email}`); } catch { S.myAtt[e.id] = null; }
+  }
+  if (want.length) render();
+}
+function memberEventCard(ev) {
+  const mine = S.myAtt[ev.id];
+  let status = '';
+  if (mine) status = `<p class="ev-ok">${ICON_TICK} Checked in ${mine.at ? `at ${new Date(mine.at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}` : ''}</p>`;
+  else if (ev.attendanceOpen) status = `<form class="ev-code" data-form="checkin-code" data-id="${esc(ev.id)}" novalidate>
+      <p class="ev-open">Check-in is open. Scan the QR on the screen with your phone camera, or type the code shown under it.</p>
+      <div class="ev-code-row"><input name="code" maxlength="6" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Code" aria-label="Code shown on the screen"><button class="btn primary sm" type="submit">Check in</button></div></form>`;
+  else if (ev.date >= localDate()) status = '<p class="muted small">Check-in opens at the event.</p>';
+  return `<article class="ev">${evDateBlock(ev)}<div class="ev-body">
+    <h3>${esc(ev.title)}</h3><p class="ev-meta">${esc(evWhen(ev))}</p>
+    ${ev.description ? `<p class="ev-desc">${esc(ev.description)}</p>` : ''}${status}</div></article>`;
+}
+function memberEventsView() {
+  const { up, past } = sortEvents(S.events);
+  const recent = past.slice(0, 6);
+  return `<section class="view narrow">
+    <div class="view-head"><div><h1 class="title">Events</h1><p class="sub">Club events and workshops. At an event, scan the QR on the screen to mark your attendance; your name and student ID are filled in from your registration.</p></div></div>
+    ${up.length ? `<div class="stack">${up.map(memberEventCard).join('')}</div>` : emptyState('No upcoming events yet.', 'They’ll show up here as soon as the core team adds them.')}
+    ${recent.length ? `<h2 class="section-h">Recent</h2><div class="stack">${recent.map(memberEventCard).join('')}</div>` : ''}
+  </section>`;
+}
+async function doCheckIn(eventId, code, method) {
+  code = String(code || '').trim().toUpperCase();
+  const path = `events/${eventId}/attendance/${S.user.email}`;
+  const existing = await B.getPath(path).catch(() => null);
+  const ev = evById(eventId) || await B.getPath(`events/${eventId}`).catch(() => null);
+  if (existing) return { already: true, at: existing.at, ev };
+  if (!/^[A-Z0-9]{6}$/.test(code)) throw new Error('That code should be 6 letters and numbers, exactly as shown on the screen.');
+  if (B.demo) { // the database rules do these checks for real; the preview imitates them
+    const codes = await B.getPath(`eventCodes/${eventId}`);
+    if (!ev || !ev.attendanceOpen) throw new Error('Check-in for this event is closed. Ask the core team to add you.');
+    if (!codes || ![codes.current, codes.previous].includes(code)) throw new Error('That code has expired or isn’t right. Scan the screen again, or type the code showing now.');
+  }
+  try {
+    await B.setPath(path, { name: S.profile.name, studentId: username(S.user.email), email: S.user.email, at: SERVER_TIME, method, code });
+  } catch (e) {
+    if (String(e.code || '').includes('permission-denied')) throw new Error(ev && ev.attendanceOpen === false ? 'Check-in for this event is closed. Ask the core team to add you.' : 'That code has expired or isn’t right. Scan the screen again, or type the code showing now.');
+    throw e;
+  }
+  S.myAtt[eventId] = { at: nowISO() };
+  return { at: nowISO(), ev };
+}
+function checkinResult(res, err) {
+  const ev = res && res.ev;
+  openDialog({
+    title: err ? 'Not checked in' : res.already ? 'Already checked in' : 'You’re checked in',
+    confirm: null, dismiss: 'Done',
+    body: err
+      ? `<p class="ci-bad">${esc(err)}</p>`
+      : `<div class="ci-ok">${ICON_TICK}<div><b>${esc(S.profile.name)}</b><span>${esc(username(S.user.email))}</span></div></div>
+         <p>${esc(ev ? ev.title : 'Event')}${res.at ? `, ${new Date(res.at).toLocaleTimeString('en-IN', { hour: 'numeric', minute: '2-digit' })}` : ''}</p>`,
+  });
+}
+async function runPendingCheckin() {
+  const p = S.pendingCheckin;
+  if (!p || !S.user || S.needsProfile) return;
+  S.pendingCheckin = null;
+  S.view = 'events';
+  render();
+  try { checkinResult(await doCheckIn(p.eventId, p.code, 'qr')); } catch (e) { checkinResult(null, friendly(e)); }
+  render();
+}
+
+/* ---------- core team side ---------- */
+function adminEventRow(ev) {
+  const badges = [ev.published ? '<span class="tag">On website</span>' : '<span class="tag off">Hidden</span>', ev.attendanceOpen ? '<span class="tag live">Check-in open</span>' : '', ev.attendeeCount ? `<span class="tag off">${plural(ev.attendeeCount, 'attendee')}</span>` : ''].join('');
+  return `<article class="ev clickable" data-act="ev-open" data-id="${esc(ev.id)}" tabindex="0" role="button">${evDateBlock(ev)}<div class="ev-body">
+    <h3>${esc(ev.title)}</h3><p class="ev-meta">${esc(evWhen(ev))}</p><div class="ev-badges">${badges}</div></div></article>`;
+}
+function adminEventsView() {
+  if (S.eventView && evById(S.eventView)) return eventDetailView(evById(S.eventView));
+  const { up, past } = sortEvents(S.events);
+  return `<section class="view narrow">
+    <div class="view-head"><div><h1 class="title">Events</h1><p class="sub">Add an event, then open it at the venue to start the check-in screen. Events marked “On website” are listed publicly.</p></div>
+      <div class="head-actions"><button class="btn primary sm" data-act="ev-new">New event</button></div></div>
+    ${up.length ? `<div class="stack">${up.map(adminEventRow).join('')}</div>` : emptyState('No upcoming events.', 'Create one, then open it at the venue to run check-in.')}
+    ${past.length ? `<h2 class="section-h">Past</h2><div class="stack">${past.map(adminEventRow).join('')}</div>` : ''}
+  </section>`;
+}
+function eventDetailView(ev) {
+  const list = [...S.att].sort((a, b) => String(a.at).localeCompare(String(b.at)));
+  const rows = list.map((a, i) => `<tr><td class="num" data-label="#">${i + 1}</td><td><b>${esc(a.name)}</b></td><td data-label="ID">${esc(a.studentId)}</td><td data-label="At">${esc(fmtStamp(a.at))}</td><td data-label="How">${esc(HOW[a.method] || a.method || '')}</td>
+    <td><div class="row-actions"><button class="btn ghost sm" data-act="att-remove" data-email="${esc(a.id)}">Remove</button></div></td></tr>`).join('');
+  return `<section class="view">
+    <button class="link back" data-act="ev-back">All events</button>
+    <div class="view-head"><div><h1 class="title">${esc(ev.title)}</h1><p class="sub">${esc(evWhen(ev))}${ev.published ? '' : '. Not shown on the website'}</p></div>
+      <div class="head-actions">
+        <button class="btn primary sm" data-act="ev-display" data-id="${esc(ev.id)}">${ev.attendanceOpen ? 'Show check-in screen' : 'Start check-in'}</button>
+        ${ev.attendanceOpen ? `<button class="btn sm" data-act="ev-close" data-id="${esc(ev.id)}">Close check-in</button>` : ''}
+        <button class="btn sm" data-act="att-add" data-id="${esc(ev.id)}">Add attendee</button>
+        <button class="btn ghost sm" data-act="att-xlsx" data-id="${esc(ev.id)}" ${list.length ? '' : 'disabled'}>Download Excel</button>
+        <button class="btn ghost sm" data-act="ev-edit" data-id="${esc(ev.id)}">Edit</button>
+        <button class="btn ghost sm" data-act="ev-del" data-id="${esc(ev.id)}">Delete</button>
+      </div></div>
+    <p class="att-count"><b>${list.length}</b> checked in${ev.attendanceOpen ? ' <span class="tag live">Check-in open</span>' : ''}</p>
+    ${list.length ? `<div class="table-wrap"><table class="tbl att"><thead><tr><th class="num">#</th><th>Name</th><th>Student ID</th><th>Checked in</th><th>How</th><th></th></tr></thead><tbody>${rows}</tbody></table></div>`
+      : emptyState('Nobody has checked in yet.', ev.attendanceOpen ? 'Put the check-in screen on the projector; people scan it with their phone camera.' : 'Start check-in when the event begins.')}
+  </section>`;
+}
+function openEvent(id) {
+  if (S.attUnsub) S.attUnsub();
+  S.eventView = id; S.att = [];
+  S.attUnsub = B.watchPath(`events/${id}/attendance`, list => {
+    S.att = list;
+    const ev = evById(id);
+    // keep a count on the event so lists show it without reading every attendee
+    if (ev && ev.attendeeCount !== list.length) B.setPath(`events/${id}`, { attendeeCount: list.length }, true).catch(() => {});
+    render(); paintDisplay();
+  });
+  go('events');
+}
+function closeEventView() { if (S.attUnsub) S.attUnsub(); S.attUnsub = null; S.eventView = null; S.att = []; }
+
+function eventDialog(id) {
+  const ev = id ? evById(id) : null;
+  openDialog({
+    title: ev ? 'Edit event' : 'New event', confirm: ev ? 'Save changes' : 'Create event', wide: true,
+    body: `<div class="field"><label for="e-title">Title</label><input id="e-title" name="title" required maxlength="100" value="${esc(ev ? ev.title : '')}" placeholder="e.g. Arduino basics workshop"></div>
+      <div class="row3"><div class="field"><label for="e-date">Date</label><input id="e-date" name="date" type="date" required value="${esc(ev ? ev.date : localDate())}"></div>
+        <div class="field"><label for="e-start">Starts</label><input id="e-start" name="start" type="time" value="${esc(ev ? ev.start || '' : '')}"></div>
+        <div class="field"><label for="e-end">Ends</label><input id="e-end" name="end" type="time" value="${esc(ev ? ev.end || '' : '')}"></div></div>
+      <div class="field"><label for="e-venue">Venue</label><input id="e-venue" name="venue" maxlength="80" value="${esc(ev ? ev.venue || '' : '')}" placeholder="e.g. LT-2"></div>
+      <div class="field"><label for="e-desc">Description (optional)</label><textarea id="e-desc" name="description" rows="3" maxlength="1500">${esc(ev ? ev.description || '' : '')}</textarea></div>
+      <div class="field"><label for="e-poster">${ev && ev.poster ? 'Replace poster (optional)' : 'Poster (optional)'}</label><input id="e-poster" name="poster" type="file" accept="image/*"></div>
+      <label class="check-line"><input type="checkbox" name="published" ${!ev || ev.published ? 'checked' : ''}> Show on the club website and in members’ Events tab</label>`,
+    onConfirm: async fd => {
+      const title = String(fd.get('title') || '').trim(), date = String(fd.get('date') || '');
+      if (!title) throw new Error('Give the event a title.');
+      if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) throw new Error('Pick a date.');
+      const data = { title, date, start: String(fd.get('start') || ''), end: String(fd.get('end') || ''), venue: String(fd.get('venue') || '').trim(), description: String(fd.get('description') || '').trim(), published: !!fd.get('published'), updatedAt: SERVER_TIME };
+      const file = fd.get('poster');
+      let eid = id;
+      if (ev) await B.setPath(`events/${id}`, data, true);
+      else eid = await B.addPath('events', { ...data, attendanceOpen: false, poster: '', createdBy: S.user.email, createdAt: SERVER_TIME });
+      if (file && file.size) {
+        const { full, thumb } = await photoPair(file);
+        await B.batchWrite([{ op: 'set', path: `photos/event_${eid}`, data: { data: full, updatedAt: SERVER_TIME } }, { op: 'set', path: `events/${eid}`, data: { poster: thumb }, merge: true }]);
+      }
+      toast(ev ? 'Event saved.' : 'Event created.');
+    },
+  });
+}
+function eventDelete(id) {
+  const ev = evById(id);
+  if (!ev) return;
+  openDialog({
+    title: 'Delete event', confirm: 'Delete event', danger: true,
+    body: `<p>Delete <b>${esc(ev.title)}</b>${S.att.length ? ` and its ${plural(S.att.length, 'attendance record')}` : ''}? ${S.att.length ? 'Download the Excel first if you need it.' : ''}</p>`,
+    onConfirm: async () => {
+      const ops = S.att.map(a => ({ op: 'delete', path: `events/${id}/attendance/${a.id}` }));
+      ops.push({ op: 'delete', path: `eventCodes/${id}` }, { op: 'delete', path: `photos/event_${id}` }, { op: 'delete', path: `events/${id}` });
+      closeEventView();
+      await B.batchWrite(ops);
+      toast('Event deleted.');
+      go('events');
+    },
+  });
+}
+function attendeeDialog(eventId) {
+  const present = new Set(S.att.map(a => a.id));
+  const people = Object.entries(S.users).filter(([email]) => !present.has(email)).map(([email, u]) => ({ email, name: u.name || email, id: username(email) }));
+  const domain = CONFIG.allowedDomains[0];
+  openDialog({
+    title: 'Add attendee', confirm: 'Add', wide: true,
+    body: `<p>For someone whose phone couldn’t scan. Search registered members, or type a name and student ID.</p>
+      <div class="field"><label for="m-q">Search by name or student ID</label><input id="m-q" autocomplete="off" placeholder="e.g. Riya or 202403322"></div>
+      <div id="m-res" class="m-res"></div>
+      <div class="row2"><div class="field"><label for="m-name">Name</label><input id="m-name" name="name" maxlength="60"></div>
+        <div class="field"><label for="m-id">Student ID</label><input id="m-id" name="sid" maxlength="20" inputmode="numeric"><small>Saved as ID@${esc(domain)}</small></div></div>`,
+    onConfirm: async fd => {
+      const name = String(fd.get('name') || '').trim(), sid = String(fd.get('sid') || '').trim().toLowerCase();
+      if (!name || !/^[a-z0-9._-]{3,}$/.test(sid)) throw new Error('Enter a name and a student ID, or pick someone from the search.');
+      const email = `${sid}@${domain}`;
+      if (present.has(email)) throw new Error('They’re already checked in.');
+      await addAttendee(eventId, { email, name, studentId: sid });
+    },
+  });
+  const q = $('#m-q'), res = $('#m-res');
+  const paint = () => {
+    const t = q.value.trim().toLowerCase();
+    const hits = t.length < 2 ? [] : people.filter(p => p.name.toLowerCase().includes(t) || p.id.includes(t)).slice(0, 8);
+    res.innerHTML = hits.map(p => `<button type="button" class="m-hit" data-email="${esc(p.email)}"><b>${esc(p.name)}</b><span>${esc(p.id)}</span></button>`).join('') || (t.length >= 2 ? '<p class="muted small">No registered member matches. Type their name and ID below.</p>' : '');
+  };
+  q.oninput = paint;
+  res.onclick = async e => {
+    const b = e.target.closest('.m-hit');
+    if (!b) return;
+    const p = people.find(x => x.email === b.dataset.email);
+    try { await addAttendee(eventId, { email: p.email, name: p.name, studentId: p.id }); $('#dlg').close(); } catch (x) { toast(friendly(x), 'err'); }
+  };
+}
+async function addAttendee(eventId, { email, name, studentId }) {
+  await B.setPath(`events/${eventId}/attendance/${email}`, { name, studentId, email, at: SERVER_TIME, method: 'manual', addedBy: S.user.email });
+  toast(`${name} added.`);
+}
+function attendanceXlsx(eventId) {
+  const ev = evById(eventId);
+  const list = [...S.att].sort((a, b) => String(a.at).localeCompare(String(b.at)));
+  const rows = [['#', 'Name', 'Student ID', 'Email', 'Checked in', 'How'], ...list.map((a, i) => [i + 1, a.name, a.studentId, a.email || a.id, fmtStamp(a.at), HOW[a.method] || a.method || ''])];
+  const safe = s => String(s).replace(/[\\/:*?"<>|]+/g, ' ').replace(/\s+/g, ' ').trim();
+  downloadBlob(xlsxBlob(ev.title, rows), `EHC attendance - ${safe(ev.title)} - ${ev.date}.xlsx`);
+}
+
+/* ---------- the check-in screen for the projector ---------- */
+async function startDisplay(id) {
+  const ev = evById(id);
+  if (!ev) return;
+  stopDisplay();
+  if (!ev.attendanceOpen) await B.setPath(`events/${id}`, { attendanceOpen: true, updatedAt: SERVER_TIME }, true);
+  const D = S.display = { id, code: '', left: ROTATE_S, timers: [], lock: null };
+  const rotate = async () => {
+    const next = newCode();
+    // Save first, show second: the QR on screen is always one the database will accept.
+    await B.setPath(`eventCodes/${id}`, { current: next, previous: D.code || next, rotatedAt: SERVER_TIME });
+    if (S.display !== D) return;
+    D.code = next; D.left = ROTATE_S;
+    paintDisplay(true);
+  };
+  const el = document.createElement('div');
+  el.id = 'display'; el.className = 'display';
+  document.body.appendChild(el);
+  document.body.classList.add('displaying');
+  paintDisplay(true);
+  try { await rotate(); } catch (e) { toast(friendly(e), 'err'); }
+  D.timers.push(setInterval(() => rotate().catch(e => toast(friendly(e), 'err')), ROTATE_S * 1000));
+  D.timers.push(setInterval(() => { D.left = Math.max(0, D.left - 1); const bar = $('#disp-bar'); if (bar) bar.style.transform = `scaleX(${D.left / ROTATE_S})`; }, 1000));
+  try { D.lock = navigator.wakeLock ? await navigator.wakeLock.request('screen') : null; } catch { /* keep-awake not supported */ }
+}
+function stopDisplay() {
+  const D = S.display;
+  if (!D) return;
+  D.timers.forEach(clearInterval);
+  try { D.lock && D.lock.release(); } catch { /* already released */ }
+  S.display = null;
+  const el = $('#display');
+  if (el) el.remove();
+  document.body.classList.remove('displaying');
+  if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+}
+function paintDisplay(full = false) {
+  const D = S.display, el = $('#display');
+  if (!D || !el) return;
+  const ev = evById(D.id) || { title: 'Event' };
+  const url = `${location.origin}${location.pathname}?checkin=${D.id}.${D.code}`;
+  if (full || !el.firstChild) {
+    el.innerHTML = `<div class="disp-top"><img src="${LOGO_DARK}" alt="EHC" class="disp-logo"><div class="disp-actions">
+        ${DEMO ? '<button class="btn sm" data-act="disp-sim">Simulate a scan</button>' : ''}<button class="btn sm" data-act="disp-full">Full screen</button><button class="btn sm" data-act="disp-exit">Exit</button></div></div>
+      <div class="disp-main">
+        <div class="disp-qr">${D.code ? qrSVG(url) : '<p>Starting…</p>'}<div class="disp-bar"><i id="disp-bar"></i></div></div>
+        <div class="disp-info"><p class="disp-kicker">Check in</p><h1>${esc(ev.title)}</h1>
+          <p class="disp-how">Point your phone camera at the code and open the link. Signed in with your college account, that’s it.</p>
+          <p class="disp-code-l">Camera won’t scan? Open Events on the site and type</p><p class="disp-code">${esc(D.code || '······')}</p>
+          <p class="disp-count"><b id="disp-n">${S.att.length}</b> checked in</p></div>
+      </div>`;
+  } else { const n = $('#disp-n'); if (n) n.textContent = S.att.length; }
+}
+async function simulateScan() { // preview only: pretend a sample member scanned
+  const D = S.display;
+  if (!D) return;
+  const present = new Set(S.att.map(a => a.id));
+  const pool = [['202403322@dau.ac.in', 'Riya Shah (sample)'], ['202502210@dau.ac.in', 'Kabir Desai (sample)'], ['202301077@dau.ac.in', 'Ananya Iyer (sample)'], ['202504411@dau.ac.in', 'Meera Patel (sample)'], ['202405512@dau.ac.in', 'Arjun Rao (sample)'], ['202506613@dau.ac.in', 'Ishaan Mehta (sample)']].filter(([e]) => !present.has(e));
+  if (!pool.length) { toast('Every sample member is already in.'); return; }
+  const [email, name] = pool[0];
+  await B.setPath(`events/${D.id}/attendance/${email}`, { name, studentId: username(email), email, at: SERVER_TIME, method: 'qr', code: D.code });
 }
 
 /* =====================================================================
@@ -2175,7 +2888,27 @@ function openChat() {
 }
 
 const ACTIONS = {
-  nav: el => go(el.dataset.view),
+  nav: el => { if (el.dataset.view === 'events' && S.eventView) closeEventView(); go(el.dataset.view); },
+  'ev-new': () => eventDialog(),
+  'ev-open': el => openEvent(el.dataset.id),
+  'ev-back': () => { closeEventView(); go('events'); },
+  'ev-edit': el => eventDialog(el.dataset.id),
+  'ev-del': el => eventDelete(el.dataset.id),
+  'ev-display': el => startDisplay(el.dataset.id),
+  'ev-close': async el => {
+    try { await B.setPath(`events/${el.dataset.id}`, { attendanceOpen: false, updatedAt: SERVER_TIME }, true); stopDisplay(); toast('Check-in closed. You can still add people by hand.'); }
+    catch (e) { toast(friendly(e), 'err'); }
+  },
+  'att-add': el => attendeeDialog(el.dataset.id),
+  'att-remove': el => {
+    const a = S.att.find(x => x.id === el.dataset.email);
+    if (!a) return;
+    openDialog({ title: 'Remove attendee', confirm: 'Remove', danger: true, body: `<p>Remove <b>${esc(a.name)}</b> (${esc(a.studentId)}) from this event’s attendance?</p>`, onConfirm: async () => { await B.delPath(`events/${S.eventView}/attendance/${a.id}`); toast('Removed.'); } });
+  },
+  'att-xlsx': el => attendanceXlsx(el.dataset.id),
+  'disp-exit': () => stopDisplay(),
+  'disp-full': () => { const el = $('#display'); if (el && el.requestFullscreen) el.requestFullscreen().catch(() => {}); },
+  'disp-sim': () => simulateScan().catch(e => toast(friendly(e), 'err')),
   more: () => moreSheet(),
   'edit-own': el => startEdit(el.dataset.id),
   'stop-edit': () => { endEdit(); go('mine'); },
@@ -2216,7 +2949,7 @@ const ACTIONS = {
     try { await B.signIn(el.dataset.role); }
     catch (e) { S.authError = friendly(e); render(); }
   },
-  signout: () => { if ($('#dlg').open) $('#dlg').close(); S.chat = { open: false, msgs: [], card: null, busy: false, mode: S.chat.mode }; if (S.editing) endEdit(); B.signOut(); },
+  signout: () => { stopDisplay(); closeEventView(); if ($('#dlg').open) $('#dlg').close(); S.chat = { open: false, msgs: [], card: null, busy: false, mode: S.chat.mode }; if (S.editing) endEdit(); B.signOut(); },
   'demo-switch': async () => { const role = S.isAdmin ? 'member' : 'admin'; await B.signOut(); await B.signIn(role); },
   'demo-reset': () => { B.reset(); S.cart = {}; toast('Sample data reset.'); },
   cat: el => { S.filters.cat = el.dataset.cat; render(); },
@@ -2232,7 +2965,12 @@ const ACTIONS = {
     onConfirm: async () => { await B.cancelOwnRequest(el.dataset.id); toast('Request cancelled.'); },
   }),
   'queue-filter': el => { S.queueFilter = el.dataset.f; render(); },
-  'req-action': el => openActionDialog(el.dataset.id, el.dataset.action),
+  'req-action': async el => {
+    if (el.dataset.action !== 'review') { openActionDialog(el.dataset.id, el.dataset.action); return; }
+    try { await B.transition(el.dataset.id, 'review', {}, S.user.email); toast(`#${shortId(el.dataset.id)} is under review. The requester can’t change it now.`); }
+    catch (e) { toast(friendly(e), 'err'); }
+  },
+  'req-remark': el => remarkDialog(el.dataset.id),
   'comp-new': () => compDialog(),
   'comp-edit': el => compDialog(el.dataset.id),
   'comp-del': el => compDelete(el.dataset.id),
@@ -2248,6 +2986,13 @@ const ACTIONS = {
   },
 };
 const FORMS = {
+  'checkin-code': async f => {
+    const btn = f.querySelector('[type=submit]');
+    btn.disabled = true;
+    try { checkinResult(await doCheckIn(f.dataset.id, f.code.value, 'code')); render(); }
+    catch (e) { toast(friendly(e), 'err'); }
+    finally { btn.disabled = false; }
+  },
   chat: f => { const ta = f.querySelector('textarea'); const t = ta.value; ta.value = ''; ta.style.height = ''; chatSend(t); },
   'profile-setup': async f => {
     const err = $('#setup-err'), btn = f.querySelector('[type=submit]');
@@ -2258,6 +3003,7 @@ const FORMS = {
       await B.saveProfile(S.user.email, p);
       S.profile = p; S.needsProfile = false;
       render();
+      runPendingCheckin();
       toast(`Thanks, ${firstName(p.name)}. You’re all set.`);
     } catch (e) { err.textContent = friendly(e); err.hidden = false; btn.disabled = false; }
   },
@@ -2287,7 +3033,9 @@ document.addEventListener('input', e => {
 // Enter sends, Shift+Enter makes a new line; the box grows with the text. Escape closes the panel.
 document.addEventListener('keydown', e => {
   if (e.target.id === 'chat-in' && e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); e.target.form.requestSubmit(); }
+  if (e.key === 'Escape' && S.display && !document.fullscreenElement && !$('#dlg').open) { stopDisplay(); return; }
   if (e.key === 'Escape' && S.chat.open && !$('#dlg').open && !$('#lightbox').open) { S.chat.open = false; render(); }
+  if (e.key === 'Enter' && e.target.matches && e.target.matches('.ev.clickable')) openEvent(e.target.dataset.id);
 });
 document.addEventListener('input', e => { if (e.target.id === 'chat-in') { e.target.style.height = ''; e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px'; } });
 document.addEventListener('change', e => {
@@ -2306,7 +3054,8 @@ document.addEventListener('submit', e => {
 async function handleAuth(u) {
   unsubs.forEach(f => f()); unsubs = [];
   S.authReady = true;
-  Object.assign(S, { user: null, isAdmin: false, profile: null, needsProfile: false, components: [], myRequests: [], allRequests: [], admins: [], users: {}, locations: [] });
+  stopDisplay(); closeEventView();
+  Object.assign(S, { user: null, isAdmin: false, profile: null, needsProfile: false, components: [], myRequests: [], allRequests: [], admins: [], users: {}, locations: [], priv: {}, reqPriv: {}, events: [], myAtt: {} });
   if (!u) { render(); return; }
   if (!emailAllowed(u.email) || u.verified === false) {
     S.authError = `${u.email} isn’t a ${domainsText()} account. Sign in with your college Google account.`;
@@ -2331,11 +3080,23 @@ async function handleAuth(u) {
     unsubs.push(B.watchAdmins(list => { S.admins = list; render(); }));
     unsubs.push(B.watchUsers(map => { S.users = map; render(); }));
     unsubs.push(B.watchLocations(list => { S.locations = list; render(); }));
+    unsubs.push(B.watchPath('componentPrivate', list => { S.priv = Object.fromEntries(list.map(d => [d.id, d])); render(); }));
+    unsubs.push(B.watchPath('requestPrivate', list => { S.reqPriv = Object.fromEntries(list.map(d => [d.id, d])); render(); }));
   }
+  // Members only see events marked for the website; the core team sees drafts too.
+  unsubs.push(B.watchPath('events', list => { S.events = list; render(); paintDisplay(); if (!S.isAdmin) loadMyAttendance(); }, S.isAdmin ? null : ['published', '==', true]));
+  if (S.pendingCheckin) S.view = 'events';
   render();
+  runPendingCheckin();
 }
 
 (async function boot() {
+  const ci = new URLSearchParams(location.search).get('checkin');
+  if (ci && /^[\w-]+\.[A-Za-z0-9]{6}$/.test(ci)) {
+    const [eventId, code] = ci.split('.');
+    S.pendingCheckin = { eventId, code };
+    history.replaceState(null, '', location.pathname + location.hash); // a refresh shouldn't re-submit it
+  }
   render();
   try { B = DEMO ? makeDemoBackend() : await makeFirebaseBackend(); }
   catch (e) {

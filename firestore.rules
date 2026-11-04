@@ -1,13 +1,14 @@
 rules_version = '2';
 
-// EHC Inventory: Firestore security rules.
+// EHC: Firestore security rules.
 //
-// These rules ARE the security model. The web page only hides buttons; anything
-// not allowed here is impossible, whatever someone does in their browser console.
+// These rules ARE the security model. The web pages only hide buttons; anything not allowed
+// here is impossible, whatever someone does in their browser console.
 //
-// Allowed sign-in domain: the regex in collegeEmail(). If you change
-// CONFIG.allowedDomains in public/index.html, change it here too.
-// Two domains, e.g.: '^[^@]+@(dau|daiict)[.]ac[.]in$'
+// Allowed sign-in domain: the regex in collegeEmail(). If you change CONFIG.allowedDomains in
+// public/inventory/index.html, change it here too. Two domains: '^[^@]+@(dau|daiict)[.]ac[.]in$'
+//
+// Deploy after every change:  firebase deploy --only firestore:rules
 
 service cloud.firestore {
   match /databases/{database}/documents {
@@ -29,8 +30,10 @@ service cloud.firestore {
         && exists(/databases/$(database)/documents/admins/$(myEmail()));
     }
 
+    /* ---------------- people ---------------- */
+
     // admins/{email}: document ID is the lower-cased email address.
-    // The very first admin is created by hand in the Firebase console (see README).
+    // The very first admin is created by hand in the Firebase console (see DEPLOY.md).
     match /admins/{adminEmail} {
       allow get: if isCollege() && (adminEmail == myEmail() || isAdmin());
       allow list: if isAdmin();
@@ -43,7 +46,6 @@ service cloud.firestore {
     }
 
     // users/{email}: the name and phone each person registers once.
-    // You read and write only your own; admins can read everyone's (names on requests, phone for pickups).
     match /users/{userEmail} {
       allow read: if isCollege() && (userEmail == myEmail() || isAdmin());
       allow create, update: if isCollege()
@@ -55,7 +57,10 @@ service cloud.firestore {
       allow delete: if isCollege() && userEmail == myEmail();
     }
 
+    /* ---------------- inventory ---------------- */
+
     // components/{id}: anyone with a college account can browse; only admins change stock.
+    // Nothing private goes here: every field is readable by every member.
     match /components/{componentId} {
       allow read: if isCollege();
       allow create, update: if isAdmin()
@@ -69,6 +74,12 @@ service cloud.firestore {
       allow delete: if isAdmin();
     }
 
+    // componentPrivate/{componentId}: core-team remarks and purchase rate for a part.
+    // A separate collection because Firestore can't hide single fields from readers.
+    match /componentPrivate/{componentId} {
+      allow read, write: if isAdmin();
+    }
+
     // locations/{id}: where things are kept, with a small thumbnail. Core team only.
     match /locations/{locationId} {
       allow read, delete: if isAdmin();
@@ -80,7 +91,6 @@ service cloud.firestore {
     }
 
     // locationPhotos/{locationId}: the full-size photo, fetched only when someone opens it.
-    // Stored as a JPEG data URL because Cloud Storage needs the paid plan; a Firestore doc caps at 1 MiB.
     match /locationPhotos/{locationId} {
       allow read, delete: if isAdmin();
       allow create, update: if isAdmin()
@@ -93,9 +103,9 @@ service cloud.firestore {
       allow read: if isAdmin()
         || (isCollege() && resource.data.requesterEmail == myEmail());
 
-      // Anyone with a college account can open a request, only in their own name,
-      // only as "pending". Item quantities and kinds are re-checked by the admin's
-      // approval against live inventory, so a forged item list can't move stock.
+      // Anyone with a college account can open a request, only in their own name, only as
+      // "pending". Item quantities and kinds are re-checked against live inventory when the
+      // core team approves, so a forged item list can't move stock.
       allow create: if isCollege()
         && request.resource.data.keys().hasOnly(['type', 'requesterEmail', 'requesterName', 'requesterPhone', 'title', 'message', 'neededBy', 'items', 'status', 'createdAt', 'updatedAt', 'history'])
         && request.resource.data.requesterEmail == myEmail()
@@ -105,9 +115,9 @@ service cloud.firestore {
         && request.resource.data.message is string && request.resource.data.message.size() <= 2000
         && request.resource.data.items is list && request.resource.data.items.size() <= 30;
 
-      // Admins move requests through the lifecycle. Requesters may edit or cancel their
-      // own request only while it's still pending. Edits can't touch status, type, owner or
-      // history, and approval re-checks every item against live stock anyway.
+      // Admins move requests through the lifecycle and can change the items at any point
+      // before hand-over. The requester can edit or cancel their own request only while it is
+      // "pending": once the core team marks it "reviewing" or approves it, it's locked for them.
       allow update: if isAdmin()
         || (isCollege()
             && resource.data.requesterEmail == myEmail()
@@ -122,6 +132,65 @@ service cloud.firestore {
                 && request.resource.data.items is list && request.resource.data.items.size() <= 30)
             ));
 
+      allow delete: if isAdmin();
+    }
+
+    // requestPrivate/{requestId}: core-team remarks on a request. The requester can read their
+    // request document, so anything they mustn't see lives here instead.
+    match /requestPrivate/{requestId} {
+      allow read, write: if isAdmin();
+    }
+
+    /* ---------------- events and check-in ---------------- */
+
+    // events/{id}: public when published (the website lists them, signed in or not).
+    // While check-in is open, signed-in college users can read it even if unpublished,
+    // so the check-in screen works for internal meetings too.
+    match /events/{eventId} {
+      allow read: if isAdmin()
+        || resource.data.get('published', false) == true
+        || (isCollege() && resource.data.get('attendanceOpen', false) == true);
+      allow write: if isAdmin();
+
+      // events/{id}/attendance/{email}: one document per person, so nobody can check in twice.
+      // A person can check in only themselves, only while check-in is open, only with the code
+      // currently on the screen (or the one just before it). Their name must match their
+      // registration, their student ID must match their email, and the time is the server's.
+      match /attendance/{attendeeEmail} {
+        allow read: if isAdmin() || (isCollege() && attendeeEmail == myEmail());
+        allow create: if isAdmin()
+          || (isCollege()
+              && attendeeEmail == myEmail()
+              && request.resource.data.keys().hasOnly(['name', 'studentId', 'email', 'at', 'method', 'code'])
+              && request.resource.data.email == myEmail()
+              && request.resource.data.studentId == myEmail().split('@')[0]
+              && request.resource.data.name == get(/databases/$(database)/documents/users/$(myEmail())).data.name
+              && request.resource.data.at == request.time
+              && request.resource.data.method in ['qr', 'code']
+              && get(/databases/$(database)/documents/events/$(eventId)).data.get('attendanceOpen', false) == true
+              && request.resource.data.code in [
+                   get(/databases/$(database)/documents/eventCodes/$(eventId)).data.current,
+                   get(/databases/$(database)/documents/eventCodes/$(eventId)).data.previous
+                 ]);
+        allow update, delete: if isAdmin();
+      }
+    }
+
+    // eventCodes/{eventId}: the rotating check-in code. Only the core team's check-in screen
+    // reads or writes it; the rules above compare against it without exposing it.
+    match /eventCodes/{eventId} {
+      allow read, write: if isAdmin();
+    }
+
+    /* ---------------- images ---------------- */
+
+    // photos/{id}: full-size images (event posters now, website content later).
+    // Stored as JPEG data URLs because Cloud Storage needs the paid plan.
+    match /photos/{photoId} {
+      allow read: if true;
+      allow create, update: if isAdmin()
+        && request.resource.data.data is string
+        && request.resource.data.data.size() < 900000;
       allow delete: if isAdmin();
     }
   }
