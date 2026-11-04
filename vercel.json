@@ -1,0 +1,5 @@
+   {
+     "redirects": [
+       { "source": "/:path*", "destination": "https://ehc-inventory.web.app/:path*", "permanent": true }
+     ]
+   }
